@@ -5,10 +5,10 @@ import tw from "tailwind.macro";
 
 import Button from "./Button";
 
-const ControlPanel = ({ className, send }) => (
+const ControlPanel = ({ className, machine }) => (
   <div className={className}>
-    <Button clickHandler={() => send("NEW_GAME")}>New game</Button>
-    <Button clickHandler={() => send("QUIT_GAME")}>Quit</Button>
+    <Button clickHandler={() => machine.send("NEW_GAME")}>New game</Button>
+    <Button clickHandler={() => machine.send("QUIT_GAME")}>Quit</Button>
   </div>
 );
 

@@ -1,8 +1,4 @@
-import { Machine } from "xstate";
-
-import machineOptions from "./machineOptions";
 import gameStates from "./game";
-import initialContext from "./context";
 
 const machineConfig = {
   id: "game",
@@ -23,7 +19,6 @@ const machineConfig = {
       onExit: ["hideCards"]
     },
     running: {
-      activities: ["ticking"],
       on: {
         QUIT_GAME: "idle",
         "done.state.game.running.endGame": "cleanUp"
@@ -38,8 +33,4 @@ const machineConfig = {
   }
 };
 
-const gameMachine = Machine(machineConfig, machineOptions, {
-  ...initialContext
-});
-
-export default gameMachine;
+export default machineConfig;

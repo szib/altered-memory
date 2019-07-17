@@ -6,8 +6,8 @@ import tw from "tailwind.macro";
 import Card from "./Card";
 
 // eslint-disable-next-line react/prop-types
-const Board = ({ current, send, className }) => {
-  const { context } = current;
+const Board = ({ machine, className }) => {
+  const { context, send } = machine;
   const { cards } = context;
 
   const clickOnCardHandler = id => {
