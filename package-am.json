@@ -1,5 +1,5 @@
 {
-  "name": "test-cra",
+  "name": "altered-memory",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -15,7 +15,6 @@
     "xstate": "^4.6.7"
   },
   "scripts": {
-    "precommit": "pretty-quick staged",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -33,6 +32,17 @@
   "eslintConfig": {
     "extends": "react-app"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+      "prettier --single-quote --write",
+      "git add"
+    ]
+  },
   "browserslist": {
     "production": [
       ">0.2%",
@@ -43,17 +53,6 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
-    ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
-      "prettier --write",
-      "git add"
     ]
   },
   "devDependencies": {
