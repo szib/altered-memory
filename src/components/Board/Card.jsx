@@ -3,11 +3,7 @@ import React from "react";
 import styled from "styled-components";
 import tw from "tailwind.macro";
 
-const Card = ({ className, clickOnCardHandler, style }) => (
-  <div className={className} style={style} onClick={clickOnCardHandler} />
-);
-
-const StyledCard = styled(Card)`
+const CardDiv = styled.div`
   box-sizing: border-box;
 
   width: 20vmin;
@@ -30,4 +26,9 @@ const StyledCard = styled(Card)`
   ${tw`rounded-lg cursor-pointer`}
 `;
 
-export default StyledCard;
+const Card = props => {
+  const { clickOnCardHandler } = props;
+  return <CardDiv {...props} onClick={clickOnCardHandler} />;
+};
+
+export default Card;

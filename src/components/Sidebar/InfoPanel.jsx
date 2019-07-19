@@ -5,21 +5,21 @@ import tw from "tailwind.macro";
 
 import Item from "./InfoPanelItem";
 
+const StyledDiv = styled.div`
+  ${tw`bg-gray-900 text-gray-100`}
+  ${tw`flex flex-col justify-around`}
+`;
+
 const InfoPanel = ({ className, machine }) => {
   const { context } = machine;
   const { score, turn } = context;
 
   return (
-    <div className={className}>
+    <StyledDiv className={className}>
       <Item title="Score" value={score} />
       <Item title="Turn" value={turn} />
-    </div>
+    </StyledDiv>
   );
 };
 
-const StyledInfoPanel = styled(InfoPanel)`
-  ${tw`bg-gray-900 text-gray-100`}
-  ${tw`flex flex-col justify-around`}
-`;
-
-export default StyledInfoPanel;
+export default InfoPanel;

@@ -7,6 +7,15 @@ import styled from "styled-components";
 import Card from "./Card";
 const AnimatedCard = animated(Card);
 
+const BoardDiv = styled.div`
+  box-sizing: border-box;
+
+  display: grid;
+  grid-template-columns: repeat(4, 20vmin);
+  grid-template-rows: repeat(4, 20vmin);
+  grid-gap: 2vh 2vh;
+`;
+
 const Board = ({ machine, className }) => {
   const { context, send } = machine;
   const { cards } = context;
@@ -34,16 +43,7 @@ const Board = ({ machine, className }) => {
     );
   });
 
-  return <div className={className}>{cardElements}</div>;
+  return <BoardDiv className={className}>{cardElements}</BoardDiv>;
 };
 
-const StyledBoard = styled(Board)`
-  box-sizing: border-box;
-
-  display: grid;
-  grid-template-columns: repeat(4, 20vmin);
-  grid-template-rows: repeat(4, 20vmin);
-  grid-gap: 2vh 2vh;
-`;
-
-export default StyledBoard;
+export default Board;
