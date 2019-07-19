@@ -13,20 +13,11 @@ const BoardDiv = styled.div`
   grid-gap: 2vh 2vh;
 `;
 
-const Board = ({ machine, className }) => {
-  const { context, send } = machine;
+const Board = ({ context, clickOnCardHandler, className }) => {
   const { cards } = context;
 
-  const clickOnCardHandler = id => {
-    send("CLICK_ON_CARD", { cardId: id });
-  };
-
   const cardElements = cards.map(card => (
-    <Card
-      key={card.id}
-      card={card}
-      clickOnCardHandler={() => clickOnCardHandler(card.id)}
-    />
+    <Card key={card.id} card={card} clickOnCardHandler={clickOnCardHandler} />
   ));
 
   return <BoardDiv className={className}>{cardElements}</BoardDiv>;

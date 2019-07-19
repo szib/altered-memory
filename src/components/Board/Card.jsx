@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 
 import { useSpring, animated } from "react-spring";
 
@@ -31,15 +31,17 @@ const CardDiv = animated(styled.div`
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.4);
   background-image: url(${props => props.image});
 
-  ${tw`opacity-75 hover:opacity-100`}
-
   ${tw`rounded-lg`}
 `);
 
 const trans = (y, s) => `perspective(600px) rotateY(${y}deg) scale(${s})`;
 
 const Card = props => {
-  const { card } = props;
+  const { card, clickOnCardHandler } = props;
+
+  const clickHandler = useCallback(() => {
+    clickOnCardHandler(card.id);
+  }, [card.id, clickOnCardHandler]);
 
   const springConfig = faceUp =>
     Object.assign({}, faceUp ? tw`bg-orange-400` : tw`bg-blue-400`, {
@@ -52,10 +54,9 @@ const Card = props => {
 
   set(springConfig(card.faceUp));
   const { ys, opacity, backgroundColor } = springProps;
-  const { clickOnCardHandler } = props;
 
   return (
-    <CardWrapper onClick={clickOnCardHandler}>
+    <CardWrapper onClick={clickHandler}>
       <CardDiv
         style={{
           opacity: opacity.interpolate(o => 1 - o),

@@ -13,21 +13,7 @@ import BoardWrapper from "./components/Board/BoardWrapper";
 import InfoPanel from "./components/Sidebar/InfoPanel";
 import ControlPanel from "./components/Sidebar/ControlPanel";
 
-const App = ({ className }) => {
-  const machine = useMachine(machineConfig, machineOptions, machineContext);
-
-  return (
-    <div id="app" className={className}>
-      <BoardWrapper>
-        <Board machine={machine} />
-      </BoardWrapper>
-      <InfoPanel machine={machine} />
-      <ControlPanel machine={machine} />
-    </div>
-  );
-};
-
-const StyledApp = styled(App)`
+const AppDiv = styled.div`
   ${tw`w-screen h-screen`}
   display: grid;
 
@@ -39,4 +25,23 @@ const StyledApp = styled(App)`
     "board navbar";
 `;
 
-export default StyledApp;
+const App = ({ className }) => {
+  const machine = useMachine(machineConfig, machineOptions, machineContext);
+  const { context, send } = machine;
+
+  const clickOnCardHandler = id => {
+    send("CLICK_ON_CARD", { cardId: id });
+  };
+
+  return (
+    <AppDiv className={className}>
+      <BoardWrapper>
+        <Board context={context} clickOnCardHandler={clickOnCardHandler} />
+      </BoardWrapper>
+      <InfoPanel machine={machine} />
+      <ControlPanel machine={machine} />
+    </AppDiv>
+  );
+};
+
+export default App;
