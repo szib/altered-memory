@@ -9,6 +9,7 @@ import machineConfig from "./stateMachine/index";
 import machineContext from "./stateMachine/context";
 
 import Board from "./components/Board/Board";
+import BoardWrapper from "./components/Board/BoardWrapper";
 import InfoPanel from "./components/Sidebar/InfoPanel";
 import ControlPanel from "./components/Sidebar/ControlPanel";
 
@@ -17,7 +18,9 @@ const App = ({ className }) => {
 
   return (
     <div id="app" className={className}>
-      <Board machine={machine} />
+      <BoardWrapper>
+        <Board machine={machine} />
+      </BoardWrapper>
       <InfoPanel machine={machine} />
       <ControlPanel machine={machine} />
     </div>

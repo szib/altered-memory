@@ -3,7 +3,6 @@ import React from "react";
 import { useTransition, animated } from "react-spring";
 
 import styled from "styled-components";
-import tw from "tailwind.macro";
 
 import Card from "./Card";
 const AnimatedCard = animated(Card);
@@ -24,7 +23,6 @@ const Board = ({ machine, className }) => {
   };
 
   const cardElements = transitions.map(trans => {
-    console.log("trans", trans);
     const { item, key, props } = trans;
     return (
       <AnimatedCard
@@ -41,9 +39,6 @@ const Board = ({ machine, className }) => {
 
 const StyledBoard = styled(Board)`
   box-sizing: border-box;
-  ${tw`bg-gray-800 w-full flex justify-center align-middle `}
-  ${tw`w-full h-full p-16`}
-  grid-area: board;
 
   display: grid;
   grid-template-columns: repeat(4, 20vmin);
