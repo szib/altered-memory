@@ -1,36 +1,81 @@
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from "react";
+
+import { useSpring, animated } from "react-spring";
 
 import styled from "styled-components";
 import tw from "tailwind.macro";
 
-// eslint-disable-next-line react/prop-types
-const Card = ({ className, clickOnCardHandler }) => (
-  <div className={className} onClick={clickOnCardHandler} />
-);
-
-const StyledCard = styled(Card)`
+const CardWrapper = styled.div`
+  position: relative;
   box-sizing: border-box;
 
   width: 20vmin;
   height: 20vmin;
-  
+`;
+
+const CardDiv = animated(styled.div`
+  box-sizing: border-box;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  transform-origin: center;
+
   background-repeat: no-repeat;
   background-size: contain;
   background-blend-mode: normal;
-  box-shadow: 5px 5px 10px rgba(0,0,0,0.4);
-
-  color: ${props => props.color};
-
-  ${props => (props.card.faceUp ? tw`bg-orange-400` : tw`bg-blue-400`)}
-  
-  background-image: url(${props =>
-    props.card.faceUp ? props.card.frontImage : props.card.backImage});
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.4);
+  background-image: url(${props => props.image});
 
   ${tw`opacity-75 hover:opacity-100`}
 
-  ${tw`rounded-lg cursor-pointer`}
-`;
+  ${tw`rounded-lg`}
+`);
 
-export default StyledCard;
+const trans = (y, s) => `perspective(600px) rotateY(${y}deg) scale(${s})`;
+
+const Card = props => {
+  const { card } = props;
+
+  const springConfig = faceUp =>
+    Object.assign({}, faceUp ? tw`bg-orange-400` : tw`bg-blue-400`, {
+      opacity: faceUp ? 1 : 0,
+      ys: [faceUp ? 180 : 0, 0.98],
+      config: { mass: 2, tension: 1000, friction: 42 }
+    });
+
+  const [springProps, set] = useSpring(() => springConfig(card.faceUp));
+
+  set(springConfig(card.faceUp));
+  const { ys, opacity, backgroundColor } = springProps;
+  const { clickOnCardHandler } = props;
+
+  return (
+    <CardWrapper onClick={clickOnCardHandler}>
+      <CardDiv
+        style={{
+          opacity: opacity.interpolate(o => 1 - o),
+          transform: ys.interpolate(trans),
+          backgroundColor
+        }}
+        image={card.backImage}
+      />
+      <CardDiv
+        style={{
+          opacity,
+          transform: ys.interpolate(trans),
+          backgroundColor
+        }}
+        image={card.frontImage}
+        onMouseEnter={() => set({ ys: [card.faceUp ? 180 : 0, 1] })}
+        onMouseLeave={() => set({ ys: [card.faceUp ? 180 : 0, 0.98] })}
+      />
+    </CardWrapper>
+  );
+};
+
+export default Card;

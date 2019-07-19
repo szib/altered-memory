@@ -1,13 +1,20 @@
 import React from "react";
 
 import styled from "styled-components";
-import tw from "tailwind.macro";
 
 import Card from "./Card";
 
-// eslint-disable-next-line react/prop-types
-const Board = ({ current, send, className }) => {
-  const { context } = current;
+const BoardDiv = styled.div`
+  box-sizing: border-box;
+
+  display: grid;
+  grid-template-columns: repeat(4, 20vmin);
+  grid-template-rows: repeat(4, 20vmin);
+  grid-gap: 2vh 2vh;
+`;
+
+const Board = ({ machine, className }) => {
+  const { context, send } = machine;
   const { cards } = context;
 
   const clickOnCardHandler = id => {
@@ -22,19 +29,7 @@ const Board = ({ current, send, className }) => {
     />
   ));
 
-  return <div className={className}>{cardElements}</div>;
+  return <BoardDiv className={className}>{cardElements}</BoardDiv>;
 };
 
-const StyledBoard = styled(Board)`
-  box-sizing: border-box;
-  ${tw`bg-gray-800 w-full flex justify-center align-middle `}
-  ${tw`w-full h-full p-16`}
-  grid-area: board;
-
-  display: grid;
-  grid-template-columns: repeat(4, 20vmin);
-  grid-template-rows: repeat(4, 20vmin);
-  grid-gap: 2vh 2vh;
-`;
-
-export default StyledBoard;
+export default Board;

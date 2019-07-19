@@ -2,21 +2,27 @@ import React from "react";
 
 import styled from "styled-components";
 import tw from "tailwind.macro";
-import useMachine from "./hooks/useMachine";
-import GameMachine from "./stateMachine";
+
+import { useMachine } from "use-machine";
+import machineOptions from "./stateMachine/machineOptions";
+import machineConfig from "./stateMachine/index";
+import machineContext from "./stateMachine/context";
 
 import Board from "./components/Board/Board";
+import BoardWrapper from "./components/Board/BoardWrapper";
 import InfoPanel from "./components/Sidebar/InfoPanel";
 import ControlPanel from "./components/Sidebar/ControlPanel";
 
 const App = ({ className }) => {
-  const [current, send] = useMachine(GameMachine);
+  const machine = useMachine(machineConfig, machineOptions, machineContext);
 
   return (
     <div id="app" className={className}>
-      <Board current={current} send={send} />
-      <InfoPanel current={current} />
-      <ControlPanel current={current} send={send} />
+      <BoardWrapper>
+        <Board machine={machine} />
+      </BoardWrapper>
+      <InfoPanel machine={machine} />
+      <ControlPanel machine={machine} />
     </div>
   );
 };
