@@ -6,13 +6,16 @@ const machineConfig = {
 
   states: {
     idle: {
-      onEntry: ["resetContext", "initCards"],
+      onEntry: ["resetContext"],
       on: {
         NEW_GAME: "init"
       }
     },
     init: {
-      onEntry: ["shuffleCards", "showCards"],
+      onEntry: ["initCards", "shuffleCards", "showCards"],
+      on: {
+        QUIT_GAME: "idle"
+      },
       after: {
         4000: { target: "running" }
       },

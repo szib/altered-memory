@@ -1,26 +1,40 @@
 import React from "react";
 
+import { useTransition, animated } from "react-spring";
+
 import styled from "styled-components";
 import tw from "tailwind.macro";
 
 import Card from "./Card";
+const AnimatedCard = animated(Card);
 
-// eslint-disable-next-line react/prop-types
 const Board = ({ machine, className }) => {
   const { context, send } = machine;
   const { cards } = context;
+
+  const transitions = useTransition(cards, card => card.id, {
+    from: { opacity: 0 },
+    enter: { opacity: 1 },
+    leave: { opacity: 0 },
+    config: { duration: 1000 }
+  });
 
   const clickOnCardHandler = id => {
     send("CLICK_ON_CARD", { cardId: id });
   };
 
-  const cardElements = cards.map(card => (
-    <Card
-      key={card.id}
-      card={card}
-      clickOnCardHandler={() => clickOnCardHandler(card.id)}
-    />
-  ));
+  const cardElements = transitions.map(trans => {
+    console.log("trans", trans);
+    const { item, key, props } = trans;
+    return (
+      <AnimatedCard
+        key={key}
+        style={props}
+        card={item}
+        clickOnCardHandler={() => clickOnCardHandler(item.id)}
+      ></AnimatedCard>
+    );
+  });
 
   return <div className={className}>{cardElements}</div>;
 };

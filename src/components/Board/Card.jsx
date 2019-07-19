@@ -1,13 +1,10 @@
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from "react";
 
 import styled from "styled-components";
 import tw from "tailwind.macro";
 
-// eslint-disable-next-line react/prop-types
-const Card = ({ className, clickOnCardHandler }) => (
-  <div className={className} onClick={clickOnCardHandler} />
+const Card = ({ className, clickOnCardHandler, style }) => (
+  <div className={className} style={style} onClick={clickOnCardHandler} />
 );
 
 const StyledCard = styled(Card)`
