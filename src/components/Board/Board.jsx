@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 
-import styled from "styled-components";
+import styled from 'styled-components';
 
-import Card from "./Card";
+import Card from './Card';
 
 const BoardDiv = styled.div`
   box-sizing: border-box;

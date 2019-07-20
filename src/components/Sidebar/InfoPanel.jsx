@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react';
 
-import styled from "styled-components";
-import tw from "tailwind.macro";
+import styled from 'styled-components';
+import tw from 'tailwind.macro';
 
-import Item from "./InfoPanelItem";
+import Item from './InfoPanelItem';
 
 const StyledDiv = styled.div`
   ${tw`bg-gray-900 text-gray-100`}

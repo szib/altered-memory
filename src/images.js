@@ -1,4 +1,4 @@
-import backImage from "./assets/images/back.svg";
+import backImage from './assets/images/back.svg';
 
 const importAll = r => {
   const images = {};
@@ -9,7 +9,7 @@ const importAll = r => {
 };
 
 export const cardImages = importAll(
-  require.context("./assets/images/cards", false, /\.(png|jpe?g|svg)$/)
+  require.context('./assets/images/cards', false, /\.(png|jpe?g|svg)$/)
 );
 
 export { backImage };

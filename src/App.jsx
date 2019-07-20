@@ -1,17 +1,17 @@
-import React from "react";
+import React from 'react';
 
-import styled from "styled-components";
-import tw from "tailwind.macro";
+import styled from 'styled-components';
+import tw from 'tailwind.macro';
 
-import { useMachine } from "use-machine";
-import machineOptions from "./stateMachine/machineOptions";
-import machineConfig from "./stateMachine/index";
-import machineContext from "./stateMachine/context";
+import { useMachine } from 'use-machine';
+import machineOptions from './stateMachine/machineOptions';
+import machineConfig from './stateMachine/index';
+import machineContext from './stateMachine/context';
 
-import Board from "./components/Board/Board";
-import BoardWrapper from "./components/Board/BoardWrapper";
-import InfoPanel from "./components/Sidebar/InfoPanel";
-import ControlPanel from "./components/Sidebar/ControlPanel";
+import Board from './components/Board/Board';
+import BoardWrapper from './components/Board/BoardWrapper';
+import InfoPanel from './components/Sidebar/InfoPanel';
+import ControlPanel from './components/Sidebar/ControlPanel';
 
 const AppDiv = styled.div`
   ${tw`w-screen h-screen`}
@@ -21,8 +21,8 @@ const AppDiv = styled.div`
   grid-template-rows: 2fr 1fr;
 
   grid-template-areas:
-    "board info"
-    "board navbar";
+    'board info'
+    'board navbar';
 `;
 
 const App = ({ className }) => {
@@ -30,7 +30,7 @@ const App = ({ className }) => {
   const { context, send } = machine;
 
   const clickOnCardHandler = id => {
-    send("CLICK_ON_CARD", { cardId: id });
+    send('CLICK_ON_CARD', { cardId: id });
   };
 
   return (

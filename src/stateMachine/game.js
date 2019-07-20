@@ -1,47 +1,47 @@
 const gameStates = {
-  id: "game",
-  initial: "init",
+  id: 'game',
+  initial: 'init',
   states: {
     init: {
       on: {
-        "": "s0"
-      }
+        '': 's0',
+      },
     },
     s0: {
-      onEntry: ["incrementTurn"],
+      onEntry: ['incrementTurn'],
       on: {
         CLICK_ON_CARD: {
-          target: "s1",
-          cond: "selectable"
-        }
+          target: 's1',
+          cond: 'selectable',
+        },
       },
-      onExit: ["playClickSound", "selectCard", "setFaceUp"]
+      onExit: ['playClickSound', 'selectCard', 'setFaceUp'],
     },
     s1: {
       on: {
         CLICK_ON_CARD: {
-          target: "s2",
-          cond: "selectable"
-        }
+          target: 's2',
+          cond: 'selectable',
+        },
       },
-      onExit: ["playClickSound", "selectCard", "setFaceUp"]
+      onExit: ['playClickSound', 'selectCard', 'setFaceUp'],
     },
     s2: {
-      onEntry: ["checkMatch"],
+      onEntry: ['checkMatch'],
       on: {
-        CLICK_ON_CARD: "s0"
+        CLICK_ON_CARD: 's0',
       },
       after: {
-        10: { target: "endGame", cond: "allFound" },
-        20: { target: "s0", cond: "isMatched" },
-        1000: { target: "s0" }
+        10: { target: 'endGame', cond: 'allFound' },
+        20: { target: 's0', cond: 'isMatched' },
+        1000: { target: 's0' },
       },
-      onExit: ["deselectCards", "setFaceUp"]
+      onExit: ['deselectCards', 'setFaceUp'],
     },
     endGame: {
-      type: "final"
-    }
-  }
+      type: 'final',
+    },
+  },
 };
 
 export default gameStates;

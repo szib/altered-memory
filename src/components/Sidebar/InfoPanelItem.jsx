@@ -1,8 +1,8 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import styled from "styled-components";
-import tw from "tailwind.macro";
+import styled from 'styled-components';
+import tw from 'tailwind.macro';
 
 const StyledDiv = styled.div`
   ${tw`flex flex-col justify-center self-center`}
@@ -18,7 +18,7 @@ const InfoPanelItem = ({ title, value }) => (
 
 InfoPanelItem.propTypes = {
   title: PropTypes.string.isRequired,
-  value: PropTypes.number.isRequired
+  value: PropTypes.number.isRequired,
 };
 
 export default InfoPanelItem;

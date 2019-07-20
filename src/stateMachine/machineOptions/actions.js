@@ -1,4 +1,5 @@
-import { backImage, cardImages } from "../../images";
+/* eslint-disable no-param-reassign */
+import { backImage, cardImages } from '../../images';
 
 const incrementScore = context => {
   context.score += 1;
@@ -17,6 +18,7 @@ const selectCard = (context, event) => {
 };
 
 const deselectCards = context => {
+  // eslint-disable-next-line no-return-assign
   context.cards.map(card => (card.selected = false));
 };
 
@@ -34,6 +36,7 @@ const isMatch = cards => {
 
 const checkMatch = context => {
   if (isMatch(context.cards)) {
+    // eslint-disable-next-line no-use-before-define
     playSuccessSound();
     context.score += context.provisionalScore;
     context.provisionalScore = 110;
@@ -42,6 +45,7 @@ const checkMatch = context => {
       return c;
     });
   } else {
+    // eslint-disable-next-line no-use-before-define
     playFailSound();
   }
 };
@@ -57,7 +61,7 @@ const initCards = context => {
       faceUp: false,
       found: false,
       backImage,
-      frontImage: cardImages[kind]
+      frontImage: cardImages[kind],
     };
     cards.push(card);
   }
@@ -128,5 +132,5 @@ export default {
   incrementScore,
   checkMatch,
   showCards,
-  hideCards
+  hideCards,
 };

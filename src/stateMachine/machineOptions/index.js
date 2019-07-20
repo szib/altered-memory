@@ -1,11 +1,11 @@
-import gameActions from "./actions";
-import gameGuards from "./guards";
+import gameActions from './actions';
+import gameGuards from './guards';
 
 export default {
   guards: {
-    ...gameGuards
+    ...gameGuards,
   },
   actions: {
-    ...gameActions
-  }
+    ...gameActions,
+  },
 };
