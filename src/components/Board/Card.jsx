@@ -6,11 +6,14 @@ import styled from 'styled-components';
 import tw from 'tailwind.macro';
 
 const CardWrapper = styled.div`
-  position: relative;
   box-sizing: border-box;
 
-  width: 20vmin;
-  height: 20vmin;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: ${props => props.cardSize * 0.95}px;
+  height: ${props => props.cardSize * 0.95}px;
 `;
 
 const CardDiv = animated(styled.div`
@@ -37,7 +40,7 @@ const CardDiv = animated(styled.div`
 const trans = (y, s) => `perspective(600px) rotateY(${y}deg) scale(${s})`;
 
 const Card = props => {
-  const { card, clickOnCardHandler } = props;
+  const { card, clickOnCardHandler, cardSize, style } = props;
 
   const clickHandler = useCallback(() => {
     clickOnCardHandler(card.id);
@@ -55,8 +58,10 @@ const Card = props => {
   set(springConfig(card.faceUp));
   const { ys, opacity, backgroundColor } = springProps;
 
+  // console.warn(style);
+
   return (
-    <CardWrapper onClick={clickHandler}>
+    <CardWrapper onClick={clickHandler} cardSize={cardSize} style={style}>
       <CardDiv
         style={{
           opacity: opacity.interpolate(o => 1 - o),

@@ -14,6 +14,10 @@ const gameStates = {
           target: 's1',
           cond: 'selectable',
         },
+        SWAP_CARDS: {
+          target: 's0',
+          actions: ['swapCards'],
+        },
       },
       onExit: ['playClickSound', 'selectCard', 'setFaceUp'],
     },
@@ -36,7 +40,7 @@ const gameStates = {
         20: { target: 's0', cond: 'isMatched' },
         1000: { target: 's0' },
       },
-      onExit: ['deselectCards', 'setFaceUp'],
+      onExit: ['deselectCards', 'setFaceUp', 'swapCards'],
     },
     endGame: {
       type: 'final',

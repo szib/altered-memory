@@ -9,7 +9,6 @@ import machineConfig from './stateMachine/index';
 import machineContext from './stateMachine/context';
 
 import Board from './components/Board/Board';
-import BoardWrapper from './components/Board/BoardWrapper';
 import InfoPanel from './components/Sidebar/InfoPanel';
 import ControlPanel from './components/Sidebar/ControlPanel';
 
@@ -27,7 +26,7 @@ const AppDiv = styled.div`
 
 const App = ({ className }) => {
   const machine = useMachine(machineConfig, machineOptions, machineContext);
-  const { context, send } = machine;
+  const { send } = machine;
 
   const clickOnCardHandler = id => {
     send('CLICK_ON_CARD', { cardId: id });
@@ -35,9 +34,7 @@ const App = ({ className }) => {
 
   return (
     <AppDiv className={className}>
-      <BoardWrapper>
-        <Board context={context} clickOnCardHandler={clickOnCardHandler} />
-      </BoardWrapper>
+      <Board machine={machine} clickOnCardHandler={clickOnCardHandler} />
       <InfoPanel machine={machine} />
       <ControlPanel machine={machine} />
     </AppDiv>
