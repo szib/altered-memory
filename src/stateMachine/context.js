@@ -6,4 +6,5 @@ export default {
   cards: [],
   timerInterval: 1000,
   time: 0,
+  level: 1,
 };

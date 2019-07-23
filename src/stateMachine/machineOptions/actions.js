@@ -1,11 +1,6 @@
 /* eslint-disable no-param-reassign */
 import { backImage, cardImages } from '../../images';
-
-const getRandomInt = (min, max) => {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-};
+import getRandomCards from './levels';
 
 const incrementScore = context => {
   context.score += 1;
@@ -94,6 +89,7 @@ const resetContext = context => {
   context.score = 0;
   context.cards = [];
   context.time = 0;
+  context.level = 1;
 };
 
 const playClickSound = () => {
@@ -129,15 +125,18 @@ const hideCards = context => {
 };
 
 const swapCards = (context, event) => {
-  // console.group('swap cards');
-  // console.log('context', context);
-  // console.log('event', event);
-  // console.groupEnd();
-  const firstId = event.firstId || getRandomInt(0, 15);
-  const secondId = event.secondId || getRandomInt(0, 15);
-  const tmp = context.cards[firstId].position;
-  context.cards[firstId].position = context.cards[secondId].position;
-  context.cards[secondId].position = tmp;
+  const cards = getRandomCards(context.level);
+  for (let idx = 0; idx < cards.length; idx += 2) {
+    const firstId = cards[idx];
+    const secondId = cards[idx + 1];
+    const tmp = context.cards[firstId].position;
+    context.cards[firstId].position = context.cards[secondId].position;
+    context.cards[secondId].position = tmp;
+  }
+};
+
+const levelUp = (context, event) => {
+  context.level += 1;
 };
 
 export default {
@@ -148,6 +147,7 @@ export default {
   deselectCards,
   setFaceUp,
   swapCards,
+  levelUp,
 
   // machine/indexedDB.js
   resetContext,

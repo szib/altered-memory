@@ -12,12 +12,13 @@ const StyledDiv = styled.div`
 
 const InfoPanel = ({ className, machine }) => {
   const { context } = machine;
-  const { score, turn } = context;
+  const { score, turn, level } = context;
 
   return (
     <StyledDiv className={className}>
       <Item title="Score" value={score} />
       <Item title="Turn" value={turn} />
+      <Item title="Level" value={level} />
     </StyledDiv>
   );
 };
