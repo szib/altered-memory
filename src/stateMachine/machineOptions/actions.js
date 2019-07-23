@@ -32,17 +32,10 @@ const isMatch = cards => {
 
 const checkMatch = context => {
   if (isMatch(context.cards)) {
-    // eslint-disable-next-line no-use-before-define
-    playSuccessSound();
-    context.score += context.provisionalScore;
-    context.provisionalScore = 110;
     context.cards.map(c => {
       if (c.selected) c.found = true;
       return c;
     });
-  } else {
-    // eslint-disable-next-line no-use-before-define
-    playFailSound();
   }
 };
 
@@ -85,18 +78,6 @@ const resetContext = context => {
   context.cards = [];
   context.time = 0;
   context.level = 10;
-};
-
-const playFailSound = () => {
-  // const clickSoundEl = document.createElement('audio');
-  // clickSoundEl.src = failSound;
-  // clickSoundEl.play();
-};
-
-const playSuccessSound = () => {
-  // const clickSoundEl = document.createElement('audio');
-  // clickSoundEl.src = successSound;
-  // clickSoundEl.play();
 };
 
 const showCards = context => {
