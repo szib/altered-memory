@@ -8,18 +8,13 @@ const gameStates = {
       },
     },
     s0: {
-      onEntry: ['incrementTurn'],
       on: {
         CLICK_ON_CARD: {
           target: 's1',
           cond: 'selectable',
         },
-        SWAP_CARDS: {
-          target: 's0',
-          actions: ['swapCards'],
-        },
       },
-      onExit: ['playClickSound', 'selectCard', 'setFaceUp'],
+      onExit: ['selectCard', 'setFaceUp'],
     },
     s1: {
       on: {
@@ -28,19 +23,35 @@ const gameStates = {
           cond: 'selectable',
         },
       },
-      onExit: ['playClickSound', 'selectCard', 'setFaceUp'],
+      onExit: ['selectCard', 'setFaceUp'],
     },
     s2: {
       onEntry: ['checkMatch'],
-      on: {
-        CLICK_ON_CARD: 's0',
-      },
       after: {
-        10: { target: 'endGame', cond: 'allFound' },
-        20: { target: 's0', cond: 'isMatched' },
+        1: { target: 'match', cond: 'isMatched' },
+        2: { target: 'noMatch' },
+      },
+    },
+    noMatch: {
+      onEntry: ['decrementLives'],
+      after: {
+        1: { target: 'endGame', cond: 'isPlayerDead' },
+        2: { target: 'swappingCards' },
+      },
+    },
+    swappingCards: {
+      onEntry: ['swapCards'],
+      after: {
         1000: { target: 's0' },
       },
-      onExit: ['deselectCards', 'setFaceUp', 'swapCards'],
+      onExit: ['deselectCards', 'setFaceUp'],
+    },
+    match: {
+      after: {
+        1: { target: 'endGame', cond: 'allFound' },
+        2: { target: 's0' },
+      },
+      onExit: ['deselectCards', 'setFaceUp'],
     },
     endGame: {
       type: 'final',

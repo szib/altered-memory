@@ -2,13 +2,8 @@
 import { backImage, cardImages } from '../../images';
 import getRandomCards from './levels';
 
-const incrementScore = context => {
-  context.score += 1;
-};
-
-const incrementTurn = context => {
-  context.provisionalScore = Math.round(context.provisionalScore * 0.9);
-  context.turn += 1;
+const decrementLives = context => {
+  context.lives -= 1;
 };
 
 const selectCard = (context, event) => {
@@ -85,17 +80,11 @@ const shuffleCards = context => {
 };
 
 const resetContext = context => {
-  context.turn = 0;
+  context.lives = 5;
   context.score = 0;
   context.cards = [];
   context.time = 0;
-  context.level = 1;
-};
-
-const playClickSound = () => {
-  // const clickSoundEl = document.createElement('audio');
-  // clickSoundEl.src = clickSound;
-  // clickSoundEl.play();
+  context.level = 10;
 };
 
 const playFailSound = () => {
@@ -124,7 +113,7 @@ const hideCards = context => {
   });
 };
 
-const swapCards = (context, event) => {
+const swapCards = context => {
   const cards = getRandomCards(context.level);
   for (let idx = 0; idx < cards.length; idx += 2) {
     const firstId = cards[idx];
@@ -135,14 +124,13 @@ const swapCards = (context, event) => {
   }
 };
 
-const levelUp = (context, event) => {
+const levelUp = context => {
   context.level += 1;
 };
 
 export default {
   // game.js
-  incrementTurn,
-  playClickSound,
+  decrementLives,
   selectCard,
   deselectCards,
   setFaceUp,
@@ -153,7 +141,6 @@ export default {
   resetContext,
   initCards,
   shuffleCards,
-  incrementScore,
   checkMatch,
   showCards,
   hideCards,
