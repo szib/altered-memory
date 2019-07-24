@@ -8,18 +8,8 @@ const machineConfig = {
     idle: {
       onEntry: ['resetContext'],
       on: {
-        NEW_GAME: 'init',
+        NEW_GAME: 'running',
       },
-    },
-    init: {
-      onEntry: ['initCards', 'shuffleCards', 'showCards'],
-      on: {
-        QUIT_GAME: 'idle',
-      },
-      after: {
-        4000: { target: 'running' },
-      },
-      onExit: ['hideCards'],
     },
     running: {
       on: {

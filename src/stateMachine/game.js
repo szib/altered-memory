@@ -3,9 +3,17 @@ const gameStates = {
   initial: 'init',
   states: {
     init: {
-      on: {
-        '': 's0',
+      onEntry: ['initCards', 'shuffleCards'],
+      after: {
+        1200: { target: 'showCards' },
       },
+    },
+    showCards: {
+      onEntry: ['showCards'],
+      after: {
+        4000: { target: 's0' },
+      },
+      onExit: ['hideCards'],
     },
     s0: {
       on: {
@@ -48,10 +56,16 @@ const gameStates = {
     },
     match: {
       after: {
-        1: { target: 'endGame', cond: 'allFound' },
+        1: { target: 'endLevel', cond: 'allFound' },
         2: { target: 's0' },
       },
       onExit: ['deselectCards', 'setFaceUp'],
+    },
+    endLevel: {
+      onEntry: ['levelUp'],
+      after: {
+        2000: { target: 'init' },
+      },
     },
     endGame: {
       type: 'final',

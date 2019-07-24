@@ -73,11 +73,11 @@ const shuffleCards = context => {
 };
 
 const resetContext = context => {
-  context.lives = 5;
+  context.lives = 20;
   context.score = 0;
   context.cards = [];
   context.time = 0;
-  context.level = 10;
+  context.level = 1;
 };
 
 const showCards = context => {
@@ -107,6 +107,7 @@ const swapCards = context => {
 
 const levelUp = context => {
   context.level += 1;
+  context.cards = [];
 };
 
 export default {
