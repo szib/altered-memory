@@ -78,6 +78,7 @@ const resetContext = context => {
   context.cards = [];
   context.time = 0;
   context.level = 1;
+  context.bonusMultiplyer = 1;
 };
 
 const showCards = context => {
@@ -110,6 +111,19 @@ const levelUp = context => {
   context.cards = [];
 };
 
+const addScore = context => {
+  // console.log({ score: context.score, mp: context.bonusMultiplyer });
+  context.score += 10 * context.bonusMultiplyer;
+};
+
+const increaseBonus = context => {
+  context.bonusMultiplyer += 2;
+};
+
+const decreaseBonus = context => {
+  if (context.bonusMultiplyer > 1) context.bonusMultiplyer -= 1;
+};
+
 export default {
   // game.js
   decrementLives,
@@ -126,4 +140,8 @@ export default {
   checkMatch,
   showCards,
   hideCards,
+
+  addScore,
+  increaseBonus,
+  decreaseBonus,
 };

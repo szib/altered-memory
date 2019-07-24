@@ -41,7 +41,7 @@ const gameStates = {
       },
     },
     noMatch: {
-      onEntry: ['decrementLives'],
+      onEntry: ['decrementLives', 'decreaseBonus'],
       after: {
         1: { target: 'endGame', cond: 'isPlayerDead' },
         2: { target: 'swappingCards' },
@@ -55,11 +55,12 @@ const gameStates = {
       onExit: ['deselectCards', 'setFaceUp'],
     },
     match: {
+      onEntry: ['addScore'],
       after: {
         1: { target: 'endLevel', cond: 'allFound' },
         2: { target: 's0' },
       },
-      onExit: ['deselectCards', 'setFaceUp'],
+      onExit: ['increaseBonus', 'deselectCards', 'setFaceUp'],
     },
     endLevel: {
       onEntry: ['levelUp'],
