@@ -44,15 +44,15 @@ const gameStates = {
       onEntry: ['decrementLives', 'decreaseBonus'],
       after: {
         1: { target: 'endGame', cond: 'isPlayerDead' },
-        2: { target: 'swappingCards' },
+        1000: { target: 'swappingCards' },
       },
+      onExit: ['deselectCards', 'setFaceUp'],
     },
     swappingCards: {
       onEntry: ['swapCards'],
       after: {
         1000: { target: 's0' },
       },
-      onExit: ['deselectCards', 'setFaceUp'],
     },
     match: {
       onEntry: ['addScore'],
