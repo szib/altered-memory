@@ -1,9 +1,7 @@
 export default {
-  name: '',
-  provisionalScore: 110,
-  turn: 0,
+  lives: 20,
   score: 0,
+  level: 1,
   cards: [],
-  timerInterval: 1000,
-  time: 0,
+  bonusMultiplyer: 1,
 };

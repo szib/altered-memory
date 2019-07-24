@@ -1,19 +1,9 @@
 /* eslint-disable no-param-reassign */
 import { backImage, cardImages } from '../../images';
+import getRandomCards from './levels';
 
-const getRandomInt = (min, max) => {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-};
-
-const incrementScore = context => {
-  context.score += 1;
-};
-
-const incrementTurn = context => {
-  context.provisionalScore = Math.round(context.provisionalScore * 0.9);
-  context.turn += 1;
+const decrementLives = context => {
+  context.lives -= 1;
 };
 
 const selectCard = (context, event) => {
@@ -42,17 +32,10 @@ const isMatch = cards => {
 
 const checkMatch = context => {
   if (isMatch(context.cards)) {
-    // eslint-disable-next-line no-use-before-define
-    playSuccessSound();
-    context.score += context.provisionalScore;
-    context.provisionalScore = 110;
     context.cards.map(c => {
       if (c.selected) c.found = true;
       return c;
     });
-  } else {
-    // eslint-disable-next-line no-use-before-define
-    playFailSound();
   }
 };
 
@@ -90,28 +73,12 @@ const shuffleCards = context => {
 };
 
 const resetContext = context => {
-  context.turn = 0;
+  context.lives = 20;
   context.score = 0;
   context.cards = [];
   context.time = 0;
-};
-
-const playClickSound = () => {
-  // const clickSoundEl = document.createElement('audio');
-  // clickSoundEl.src = clickSound;
-  // clickSoundEl.play();
-};
-
-const playFailSound = () => {
-  // const clickSoundEl = document.createElement('audio');
-  // clickSoundEl.src = failSound;
-  // clickSoundEl.play();
-};
-
-const playSuccessSound = () => {
-  // const clickSoundEl = document.createElement('audio');
-  // clickSoundEl.src = successSound;
-  // clickSoundEl.play();
+  context.level = 1;
+  context.bonusMultiplyer = 1;
 };
 
 const showCards = context => {
@@ -128,33 +95,53 @@ const hideCards = context => {
   });
 };
 
-const swapCards = (context, event) => {
-  // console.group('swap cards');
-  // console.log('context', context);
-  // console.log('event', event);
-  // console.groupEnd();
-  const firstId = event.firstId || getRandomInt(0, 15);
-  const secondId = event.secondId || getRandomInt(0, 15);
-  const tmp = context.cards[firstId].position;
-  context.cards[firstId].position = context.cards[secondId].position;
-  context.cards[secondId].position = tmp;
+const swapCards = context => {
+  const cards = getRandomCards(context.level);
+  for (let idx = 0; idx < cards.length; idx += 2) {
+    const firstId = cards[idx];
+    const secondId = cards[idx + 1];
+    const tmp = context.cards[firstId].position;
+    context.cards[firstId].position = context.cards[secondId].position;
+    context.cards[secondId].position = tmp;
+  }
+};
+
+const levelUp = context => {
+  context.level += 1;
+  context.cards = [];
+};
+
+const addScore = context => {
+  // console.log({ score: context.score, mp: context.bonusMultiplyer });
+  context.score += 10 * context.bonusMultiplyer;
+};
+
+const increaseBonus = context => {
+  context.bonusMultiplyer += 2;
+};
+
+const decreaseBonus = context => {
+  if (context.bonusMultiplyer > 1) context.bonusMultiplyer -= 1;
 };
 
 export default {
   // game.js
-  incrementTurn,
-  playClickSound,
+  decrementLives,
   selectCard,
   deselectCards,
   setFaceUp,
   swapCards,
+  levelUp,
 
   // machine/indexedDB.js
   resetContext,
   initCards,
   shuffleCards,
-  incrementScore,
   checkMatch,
   showCards,
   hideCards,
+
+  addScore,
+  increaseBonus,
+  decreaseBonus,
 };

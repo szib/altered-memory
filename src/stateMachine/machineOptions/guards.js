@@ -12,10 +12,13 @@ const isMatched = context => {
 const allFound = context =>
   context.cards.filter(card => card.found === false).length === 0;
 
+const isPlayerDead = context => context.lives < 1;
+
 const guards = {
   selectable,
   allFound,
   isMatched,
+  isPlayerDead,
 };
 
 export default guards;
