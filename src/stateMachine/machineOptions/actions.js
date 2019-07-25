@@ -137,6 +137,13 @@ const decreaseBonus = context => {
   }
 };
 
+const preloadImages = () => {
+  Object.values(cardImages).forEach(img => {
+    new Image().src = img;
+  });
+  new Image().src = backImage;
+};
+
 export default {
   // game.js
   decrementLives,
@@ -157,4 +164,6 @@ export default {
   addScore,
   increaseBonus,
   decreaseBonus,
+
+  preloadImages,
 };
