@@ -78,6 +78,7 @@ const resetContext = context => {
   context.cards = [];
   context.time = 0;
   context.level = 1;
+  context.chances = [0, 0, 0];
   context.bonusMultiplyer = 1;
 };
 
@@ -96,10 +97,15 @@ const hideCards = context => {
 };
 
 const swapCards = context => {
-  const cards = getRandomCards(context.level);
-  for (let idx = 0; idx < cards.length; idx += 2) {
-    const firstId = cards[idx];
-    const secondId = cards[idx + 1];
+  const [cardsToSwap, newChances] = getRandomCards(
+    context.chances,
+    context.level
+  );
+  context.chances = newChances;
+
+  for (let idx = 0; idx < cardsToSwap.length; idx += 2) {
+    const firstId = cardsToSwap[idx];
+    const secondId = cardsToSwap[idx + 1];
     const tmp = context.cards[firstId].position;
     context.cards[firstId].position = context.cards[secondId].position;
     context.cards[secondId].position = tmp;
@@ -108,20 +114,27 @@ const swapCards = context => {
 
 const levelUp = context => {
   context.level += 1;
+  const newChances = context.chances.map(chance => Math.floor(chance / 2));
+  context.chances = newChances;
+  context.lives += Math.ceil(context.level / 2);
   context.cards = [];
 };
 
 const addScore = context => {
-  // console.log({ score: context.score, mp: context.bonusMultiplyer });
   context.score += 10 * context.bonusMultiplyer;
 };
 
 const increaseBonus = context => {
-  context.bonusMultiplyer += 2;
+  context.bonusMultiplyer += 1;
 };
 
 const decreaseBonus = context => {
-  if (context.bonusMultiplyer > 1) context.bonusMultiplyer -= 1;
+  const multiplyer = context.bonusMultiplyer - 2;
+  if (multiplyer < 1) {
+    context.bonusMultiplyer = 1;
+  } else {
+    context.bonusMultiplyer = multiplyer;
+  }
 };
 
 export default {

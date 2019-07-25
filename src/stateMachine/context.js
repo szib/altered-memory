@@ -4,4 +4,5 @@ export default {
   level: 1,
   cards: [],
   bonusMultiplyer: 1,
+  chances: [0, 0, 0],
 };
