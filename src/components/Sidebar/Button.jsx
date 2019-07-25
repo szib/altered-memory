@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import styled from 'styled-components';
 import tw from 'tailwind.macro';
@@ -16,10 +15,5 @@ const Button = ({ children, clickHandler }) => (
     {children}
   </StyledButton>
 );
-
-Button.propTypes = {
-  children: PropTypes.string.isRequired,
-  clickHandler: PropTypes.func.isRequired,
-};
 
 export default Button;

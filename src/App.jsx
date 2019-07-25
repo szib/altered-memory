@@ -1,43 +1,18 @@
 import React from 'react';
 
-import styled from 'styled-components';
-import tw from 'tailwind.macro';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-import { useMachine } from 'use-machine';
-import machineOptions from './stateMachine/machineOptions';
-import machineConfig from './stateMachine/index';
-import machineContext from './stateMachine/context';
+import Game from './Game';
+import LandingPage from './LandingPage';
 
-import Board from './components/Board/Board';
-import InfoPanel from './components/Sidebar/InfoPanel';
-import ControlPanel from './components/Sidebar/ControlPanel';
-
-const AppDiv = styled.div`
-  ${tw`w-screen h-screen`}
-  display: grid;
-
-  grid-template-columns: auto 200px;
-  grid-template-rows: 2fr 1fr;
-
-  grid-template-areas:
-    'board info'
-    'board navbar';
-`;
-
-const App = ({ className }) => {
-  const machine = useMachine(machineConfig, machineOptions, machineContext);
-  const { send } = machine;
-
-  const clickOnCardHandler = id => {
-    send('CLICK_ON_CARD', { cardId: id });
-  };
-
+const App = () => {
   return (
-    <AppDiv className={className}>
-      <Board machine={machine} clickOnCardHandler={clickOnCardHandler} />
-      <InfoPanel machine={machine} />
-      <ControlPanel machine={machine} />
-    </AppDiv>
+    <Router>
+      <Switch>
+        <Route path="/game" component={Game} />
+        <Route path="/" render={LandingPage} />
+      </Switch>
+    </Router>
   );
 };
 
