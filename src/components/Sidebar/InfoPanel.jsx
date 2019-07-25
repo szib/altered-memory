@@ -7,7 +7,13 @@ import Item from './InfoPanelItem';
 
 const StyledDiv = styled.div`
   ${tw`bg-gray-900 text-gray-100`}
-  ${tw`flex flex-col justify-around`}
+
+  @media screen and (orientation:portrait) {
+    ${tw`flex flex-row justify-around`}
+  }
+  @media screen and (orientation: landscape) {
+    ${tw`flex flex-col justify-around`}
+  }
 `;
 
 const InfoPanel = ({ className, machine }) => {

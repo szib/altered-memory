@@ -24,7 +24,7 @@ const ControlPanel = ({ className, machine }) => {
       {isGameRunning ? (
         <Button clickHandler={() => machine.send('QUIT_GAME')}>Quit</Button>
       ) : (
-        <Button clickHandler={() => machine.send('NEW_GAME')}>New game</Button>
+        <Button clickHandler={() => machine.send('NEW_GAME')}>Start</Button>
       )}
       <Link to="/">
         <Button>Main menu</Button>

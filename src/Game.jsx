@@ -16,12 +16,23 @@ const AppDiv = styled.div`
   ${tw`w-screen h-screen`}
   display: grid;
 
-  grid-template-columns: auto 200px;
-  grid-template-rows: 2fr 1fr;
+  @media screen and (orientation: portrait) {
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: auto 100px;
 
-  grid-template-areas:
-    'board info'
-    'board navbar';
+    grid-template-areas:
+      'board board'
+      'info navbar';
+  }
+
+  @media screen and (orientation: landscape) {
+    grid-template-columns: auto 200px;
+    grid-template-rows: 2fr 1fr;
+
+    grid-template-areas:
+      'board info'
+      'board navbar';
+  }
 `;
 
 const Game = ({ className }) => {
