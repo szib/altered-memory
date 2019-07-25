@@ -6,7 +6,12 @@ import tw from 'tailwind.macro';
 
 const StyledDiv = styled.div`
   ${tw`flex flex-col justify-center self-center`}
-  ${tw`text-4xl text-center`}
+  @media screen and (orientation:portrait) {
+    ${tw`text-xl text-center`}
+  }
+  @media screen and (orientation: landscape) {
+    ${tw`text-4xl text-center`}
+  }
 `;
 
 const InfoPanelItem = ({ title, value }) => (

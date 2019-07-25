@@ -6,7 +6,7 @@ const machineConfig = {
 
   states: {
     idle: {
-      onEntry: ['resetContext'],
+      onEntry: ['preloadImages', 'resetContext'],
       on: {
         NEW_GAME: 'running',
       },
