@@ -5,8 +5,8 @@ import tw from 'tailwind.macro';
 
 const StyledButton = styled.button`
   ${tw`w-full bg-transparent border-none`}
-  ${tw`opacity-25 hover:opacity-100`}
-  ${tw`text-gray-100`}
+  ${tw`opacity-50 hover:opacity-100`}
+  ${tw`text-color5 font-display`}
   outline: none;
 
   @media screen and (orientation:portrait) {

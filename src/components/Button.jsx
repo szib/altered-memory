@@ -1,9 +1,14 @@
 import tw from 'tailwind.macro';
 
 const Button = tw.button`
-  text-gray-100 bg-blue-800
-  hover:bg-blue-700
-  rounded w-full
+  font-display
+  text-color5 
+  bg-transparent
+  hover:bg-color2
+  rounded 
+  w-full
+  border-2
+  border-color5
   px-8 py-4
   px-8 py-4 m-2
 `;

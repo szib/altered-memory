@@ -6,7 +6,7 @@ import tw from 'tailwind.macro';
 import Item from './InfoPanelItem';
 
 const StyledDiv = styled.div`
-  ${tw`bg-gray-900 text-gray-100`}
+  ${tw`bg-color2 text-color5`}
 
   @media screen and (orientation:portrait) {
     ${tw`flex flex-row justify-around`}

@@ -9,7 +9,7 @@ import Button from './Button';
 
 const StyledDiv = styled.div`
   grid-area: navbar;
-  ${tw`bg-gray-900 text-gray-100 flex flex-col justify-center`}
+  ${tw`bg-color2 flex flex-col justify-center`}
 `;
 
 const ControlPanel = ({ className, machine }) => {
