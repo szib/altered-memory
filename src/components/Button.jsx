@@ -1,14 +1,11 @@
-// import React from 'react';
-
-import styled from 'styled-components';
 import tw from 'tailwind.macro';
 
-const Button = styled.button`
-  ${tw`text-gray-100 bg-blue-800`}
-  ${tw`hover:bg-blue-700`}
-  ${tw`rounded w-full`}
-  ${tw`px-8 py-4`}
-  ${tw`px-8 py-4 m-2`}
+const Button = tw.button`
+  text-gray-100 bg-blue-800
+  hover:bg-blue-700
+  rounded w-full
+  px-8 py-4
+  px-8 py-4 m-2
 `;
 
 export default Button;
