@@ -58,8 +58,6 @@ const Card = props => {
   set(springConfig(card.faceUp));
   const { ys, opacity, backgroundColor } = springProps;
 
-  // console.warn(style);
-
   return (
     <CardWrapper onClick={clickHandler} cardSize={cardSize} style={style}>
       <CardDiv

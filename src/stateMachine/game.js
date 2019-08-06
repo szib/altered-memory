@@ -49,9 +49,9 @@ const gameStates = {
       onExit: ['deselectCards', 'setFaceUp'],
     },
     swappingCards: {
-      onEntry: ['swapCards'],
-      after: {
-        1000: { target: 's0' },
+      onEntry: ['resetZIndex', 'swapCards'],
+      on: {
+        '': { target: 's0' },
       },
     },
     match: {
