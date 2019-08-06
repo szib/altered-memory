@@ -5,11 +5,11 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import tw from 'tailwind.macro';
 
-import Button from './Button';
+import Button from '../Button';
 
 const StyledDiv = styled.div`
   grid-area: navbar;
-  ${tw`bg-color2 flex flex-col justify-center`}
+  ${tw`bg-color2 flex flex-col justify-center px-2`}
 `;
 
 const ControlPanel = ({ className, machine }) => {
@@ -22,9 +22,9 @@ const ControlPanel = ({ className, machine }) => {
   return (
     <StyledDiv className={className}>
       {isGameRunning ? (
-        <Button clickHandler={() => machine.send('QUIT_GAME')}>Quit</Button>
+        <Button onClick={() => machine.send('QUIT_GAME')}>Quit</Button>
       ) : (
-        <Button clickHandler={() => machine.send('NEW_GAME')}>Start</Button>
+        <Button onClick={() => machine.send('NEW_GAME')}>Start</Button>
       )}
       <Link to="/">
         <Button>Main menu</Button>

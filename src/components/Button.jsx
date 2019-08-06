@@ -1,16 +1,27 @@
 import tw from 'tailwind.macro';
 
-const Button = tw.button`
+const StyledButton = tw.button`
   font-display
+  
   text-color5 
   bg-transparent
-  hover:bg-color2
-  rounded 
   w-full
-  border-2
+  mx-auto
+  
+  border
+  rounded 
+  hover:border-transparent 
   border-color5
+  
   px-8 py-4
-  px-8 py-4 m-2
+  px-8 py-4
+  my-2
+
+  hover:bg-color5
+  hover:text-color1
+  hover:opacity-75
+
+  outline-none
 `;
 
-export default Button;
+export default StyledButton;
