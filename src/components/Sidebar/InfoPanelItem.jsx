@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import tw from 'tailwind.macro';
 
 const StyledDiv = styled.div`
-  ${tw`flex flex-col justify-center self-center`}
+  ${tw`flex flex-col justify-center self-center font-display`}
   @media screen and (orientation:portrait) {
     ${tw`text-xl text-center`}
   }

@@ -53,6 +53,7 @@ const initCards = context => {
       backImage,
       frontImage: cardImages[kind],
       position: [idx % boardSize, Math.floor(idx / boardSize)],
+      isMoving: false,
     };
     cards.push(card);
   }
@@ -70,6 +71,13 @@ const shuffleCards = context => {
     ];
   }
   context.cards = cards;
+};
+
+const resetZIndex = context => {
+  context.cards.map(card => {
+    card.isMoving = false;
+    return card;
+  });
 };
 
 const resetContext = context => {
@@ -109,6 +117,8 @@ const swapCards = context => {
     const tmp = context.cards[firstId].position;
     context.cards[firstId].position = context.cards[secondId].position;
     context.cards[secondId].position = tmp;
+    context.cards[firstId].isMoving = true;
+    context.cards[secondId].isMoving = true;
   }
 };
 
@@ -152,6 +162,7 @@ export default {
   setFaceUp,
   swapCards,
   levelUp,
+  resetZIndex,
 
   // machine/indexedDB.js
   resetContext,

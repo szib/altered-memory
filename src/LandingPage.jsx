@@ -4,25 +4,51 @@ import tw from 'tailwind.macro';
 
 import Button from './components/Button';
 
+const Screen = tw.div`
+  bg-color1 
+  w-screen h-screen 
+  flex justify-center items-center
+  `;
+
+const Container = tw.div`
+  h-full w-full
+  m-20 
+  flex flex-col justify-center items-center
+`;
+
+const Title = tw.div`
+  text-color5 
+  font-display
+  text-6xl 
+  text-center
+  mb-6
+  `;
+
+const Text = tw.div`
+  text-color5 
+  font-display
+  text-2xl 
+  text-center
+  my-2
+`;
+
 const LandingPage = () => {
   return (
-    <div
-      id="screen"
-      style={tw`bg-gray-700 w-screen h-screen flex justify-center items-center`}
-    >
-      <div
-        id="container"
-        style={tw`h-full w-full p-10 flex flex-col justify-center items-center`}
-      >
-        <div style={tw`text-piros text-5xl `}>Altered Memory</div>
-        <Link to="/game" as={Button}>
-          <Button>New game</Button>
-        </Link>
-        <Link to="/help">
-          <Button>Help</Button>
-        </Link>
-      </div>
-    </div>
+    <Screen>
+      <Container>
+        <Title>Altered Memory</Title>
+        <Text>It's not rocket science.</Text>
+        <Text>Just memorize them.</Text>
+        <Text>Then find them.</Text>
+        <Text>Oh. One more thing...</Text>
+        <Text>You really do not want to make mistakes...</Text>
+        <Text>
+          <Link to="/game" as={Button}>
+            <Button>--></Button>
+          </Link>
+        </Text>
+      </Container>
+    </Screen>
   );
 };
 

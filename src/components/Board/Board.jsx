@@ -12,7 +12,8 @@ const AnimatedCard = animated(Card);
 
 const BoardWrapper = styled.div`
   box-sizing: border-box;
-  ${tw`bg-gray-700 w-full`}
+  ${tw`w-full`}
+  ${tw`bg-color1`}
   ${tw`w-full h-full p-16`}
   grid-area: board;
   position: relative;
@@ -31,12 +32,20 @@ const Board = ({ machine, clickOnCardHandler, className }) => {
   const offsetY = bounds && (bounds.height - boardSize) / 2;
 
   const transitions = useTransition(cards, card => card.id, {
-    from: ({ position }) => ({ position, opacity: 0 }),
-    enter: ({ position }) => ({ position, opacity: 1 }),
-    update: ({ position }) => ({ position }),
+    from: ({ position }) => ({
+      position,
+      opacity: 0,
+    }),
+    enter: ({ position }) => ({
+      position,
+      opacity: 1,
+    }),
+    update: ({ position }) => ({
+      position,
+    }),
     leave: { height: 0, opacity: 0 },
-    config: { mass: 5, tension: 500, friction: 100 },
-    trail: 25,
+    config: { mass: 10, tension: 500, friction: 100 },
+    trail: 10,
   });
 
   const trans = (x, y) =>
@@ -49,6 +58,7 @@ const Board = ({ machine, clickOnCardHandler, className }) => {
           key={key}
           style={{
             transform: position.interpolate((x, y) => trans(x, y)),
+            zIndex: item.isMoving ? 1000 : 10,
             ...rest,
           }}
           card={item}
