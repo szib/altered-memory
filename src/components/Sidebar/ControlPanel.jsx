@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactGA from 'react-ga';
 
 import { Link } from 'react-router-dom';
 
@@ -19,12 +20,20 @@ const ControlPanel = ({ className, machine }) => {
     'running'
   );
 
+  const newGameHandler = () => {
+    ReactGA.event({
+      category: 'Game',
+      action: 'Started a new game',
+    });
+    machine.send('NEW_GAME');
+  };
+
   return (
     <StyledDiv className={className}>
       {isGameRunning ? (
         <Button onClick={() => machine.send('QUIT_GAME')}>Quit</Button>
       ) : (
-        <Button onClick={() => machine.send('NEW_GAME')}>Start</Button>
+        <Button onClick={newGameHandler}>Start</Button>
       )}
       <Link to="/">
         <Button>Main menu</Button>
