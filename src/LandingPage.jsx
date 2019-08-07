@@ -47,6 +47,15 @@ const LandingPage = () => {
             <Button>--></Button>
           </Link>
         </Text>
+        <Text style={{ textTransform: 'uppercase' }}>
+          We use cookies. Close the page now if you're not happy with this.
+        </Text>
+        <Text style={{ textTransform: 'uppercase' }}>
+          We are in development mode, so anything could happen.
+        </Text>
+        <Text style={{ textTransform: 'uppercase' }}>
+          And the exact opposite too.
+        </Text>
       </Container>
     </Screen>
   );
