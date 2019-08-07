@@ -16,9 +16,9 @@ const getUniqueCards = numberOfCards => {
 
 const getChances = (currentChances, level) => {
   const newChances = [...currentChances];
-  newChances[0] += 4 + level * 3;
-  newChances[1] += 2 + level * 2;
-  newChances[2] += 1 + level;
+  newChances[0] += getRandomInt(5, 5 + level * 5);
+  newChances[1] += getRandomInt(0, level * 2);
+  newChances[2] += getRandomInt(0, level);
   return newChances;
 };
 
@@ -30,7 +30,8 @@ const getRandomCards = (currentChances, level) => {
   const newChances = chances.map(chance => {
     if (randomNumber < chance) {
       numberOfCardsToMove += 2;
-      return Math.floor(chance / 2);
+      // return Math.floor(chance / 2);
+      return chance - randomNumber;
     }
     return chance;
   });

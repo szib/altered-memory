@@ -81,13 +81,12 @@ const resetZIndex = context => {
 };
 
 const resetContext = context => {
-  context.lives = 20;
+  context.lives = 10;
   context.score = 0;
-  context.cards = [];
-  context.time = 0;
   context.level = 1;
-  context.chances = [0, 0, 0];
+  context.cards = [];
   context.bonusMultiplyer = 1;
+  context.chances = [0, 0, 0];
 };
 
 const showCards = context => {
@@ -135,11 +134,11 @@ const addScore = context => {
 };
 
 const increaseBonus = context => {
-  context.bonusMultiplyer += 1;
+  context.bonusMultiplyer *= 2;
 };
 
 const decreaseBonus = context => {
-  const multiplyer = context.bonusMultiplyer - 2;
+  const multiplyer = Math.floor(context.bonusMultiplyer / 3);
   if (multiplyer < 1) {
     context.bonusMultiplyer = 1;
   } else {
