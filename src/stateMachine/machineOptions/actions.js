@@ -85,7 +85,7 @@ const resetContext = context => {
   context.score = 0;
   context.level = 1;
   context.cards = [];
-  context.bonusMultiplyer = 1;
+  context.bonus = 1;
   context.chances = [0, 0, 0];
 };
 
@@ -130,19 +130,19 @@ const levelUp = context => {
 };
 
 const addScore = context => {
-  context.score += 10 * context.bonusMultiplyer;
+  context.score += context.level * 5 + context.bonus;
 };
 
 const increaseBonus = context => {
-  context.bonusMultiplyer *= 2;
+  context.bonus *= 2;
 };
 
 const decreaseBonus = context => {
-  const multiplyer = Math.floor(context.bonusMultiplyer / 3);
+  const multiplyer = Math.floor(context.bonus / 3);
   if (multiplyer < 1) {
-    context.bonusMultiplyer = 1;
+    context.bonus = 1;
   } else {
-    context.bonusMultiplyer = multiplyer;
+    context.bonus = multiplyer;
   }
 };
 
