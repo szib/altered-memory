@@ -43,7 +43,7 @@ const gameStates = {
     noMatch: {
       onEntry: ['decrementLives', 'decreaseBonus'],
       after: {
-        1: { target: 'endGame', cond: 'isPlayerDead' },
+        500: { target: 'endGame', cond: 'isPlayerDead' },
         1000: { target: 'swappingCards' },
       },
       onExit: ['deselectCards', 'setFaceUp'],
