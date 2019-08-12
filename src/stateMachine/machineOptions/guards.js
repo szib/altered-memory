@@ -1,6 +1,6 @@
 const selectable = (context, event) => {
   const id = parseInt(event.cardId, 10);
-  const card = context.cards.find(card => card.id === id);
+  const card = context.cards.find(c => c.id === id);
   return card.selected === false && card.faceUp === false;
 };
 
@@ -12,10 +12,13 @@ const isMatched = context => {
 const allFound = context =>
   context.cards.filter(card => card.found === false).length === 0;
 
+const isPlayerDead = context => context.lives < 1;
+
 const guards = {
   selectable,
   allFound,
-  isMatched
+  isMatched,
+  isPlayerDead,
 };
 
 export default guards;

@@ -1,47 +1,77 @@
 const gameStates = {
-  id: "game",
-  initial: "init",
+  id: 'game',
+  initial: 'init',
   states: {
     init: {
-      on: {
-        "": "s0"
-      }
+      onEntry: ['initCards', 'shuffleCards'],
+      after: {
+        1200: { target: 'showCards' },
+      },
+    },
+    showCards: {
+      onEntry: ['showCards'],
+      after: {
+        4000: { target: 's0' },
+      },
+      onExit: ['hideCards'],
     },
     s0: {
-      onEntry: ["incrementTurn"],
       on: {
         CLICK_ON_CARD: {
-          target: "s1",
-          cond: "selectable"
-        }
+          target: 's1',
+          cond: 'selectable',
+        },
       },
-      onExit: ["playClickSound", "selectCard", "setFaceUp"]
+      onExit: ['selectCard', 'setFaceUp'],
     },
     s1: {
       on: {
         CLICK_ON_CARD: {
-          target: "s2",
-          cond: "selectable"
-        }
+          target: 's2',
+          cond: 'selectable',
+        },
       },
-      onExit: ["playClickSound", "selectCard", "setFaceUp"]
+      onExit: ['selectCard', 'setFaceUp'],
     },
     s2: {
-      onEntry: ["checkMatch"],
-      on: {
-        CLICK_ON_CARD: "s0"
-      },
+      onEntry: ['checkMatch'],
       after: {
-        10: { target: "endGame", cond: "allFound" },
-        20: { target: "s0", cond: "isMatched" },
-        1000: { target: "s0" }
+        1: { target: 'match', cond: 'isMatched' },
+        2: { target: 'noMatch' },
       },
-      onExit: ["deselectCards", "setFaceUp"]
+    },
+    noMatch: {
+      onEntry: ['decrementLives', 'decreaseBonus'],
+      after: {
+        500: { target: 'endGame', cond: 'isPlayerDead' },
+        1000: { target: 'swappingCards' },
+      },
+      onExit: ['deselectCards', 'setFaceUp'],
+    },
+    swappingCards: {
+      onEntry: ['resetZIndex', 'swapCards'],
+      on: {
+        '': { target: 's0' },
+      },
+    },
+    match: {
+      onEntry: ['addScore'],
+      after: {
+        1: { target: 'endLevel', cond: 'allFound' },
+        2: { target: 's0' },
+      },
+      onExit: ['increaseBonus', 'deselectCards', 'setFaceUp'],
+    },
+    endLevel: {
+      onEntry: ['levelUp'],
+      after: {
+        2000: { target: 'init' },
+      },
     },
     endGame: {
-      type: "final"
-    }
-  }
+      type: 'final',
+    },
+  },
 };
 
 export default gameStates;

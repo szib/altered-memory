@@ -1,29 +1,33 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React from 'react';
 
-import styled from "styled-components";
-import tw from "tailwind.macro";
+import styled from 'styled-components';
+import tw from 'tailwind.macro';
 
-import Item from "./InfoPanelItem";
+import Item from './InfoPanelItem';
 
-const InfoPanel = ({ className, current }) => {
-  const { context } = current;
-  const { score, turn } = context;
+const StyledDiv = styled.div`
+  ${tw`bg-color2 text-color5`}
 
-  const timer = useSelector(state => state.timer);
+  @media screen and (orientation:portrait) {
+    ${tw`flex flex-row justify-around`}
+  }
+  @media screen and (orientation: landscape) {
+    ${tw`flex flex-col justify-around`}
+  }
+`;
+
+const InfoPanel = ({ className, machine }) => {
+  const { context } = machine;
+  const { score, lives, level, bonus } = context;
 
   return (
-    <div className={className}>
+    <StyledDiv className={className}>
       <Item title="Score" value={score} />
-      <Item title="Turn" value={turn} />
-      <Item title="Time" value={timer} />
-    </div>
+      <Item title="Bonus" value={bonus} />
+      <Item title="Lives" value={lives} />
+      <Item title="Level" value={level} />
+    </StyledDiv>
   );
 };
 
-const StyledInfoPanel = styled(InfoPanel)`
-  ${tw`bg-gray-900 text-gray-100`}
-  ${tw`flex flex-col justify-around`}
-`;
-
-export default StyledInfoPanel;
+export default InfoPanel;

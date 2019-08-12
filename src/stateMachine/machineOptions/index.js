@@ -1,17 +1,11 @@
-import gameActions from "./actions";
-import gameGuards from "./guards";
-import gameActivities from "./activities";
+import gameActions from './actions';
+import gameGuards from './guards';
 
 export default {
   guards: {
-    ...gameGuards
+    ...gameGuards,
   },
-
   actions: {
-    ...gameActions
+    ...gameActions,
   },
-
-  activities: {
-    ...gameActivities
-  }
 };

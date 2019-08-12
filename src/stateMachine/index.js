@@ -1,45 +1,29 @@
-import { Machine } from "xstate";
-
-import machineOptions from "./machineOptions";
-import gameStates from "./game";
-import initialContext from "./context";
+import gameStates from './game';
 
 const machineConfig = {
-  id: "game",
-  initial: "idle",
+  id: 'game',
+  initial: 'idle',
 
   states: {
     idle: {
-      onEntry: ["resetContext", "initCards"],
+      onEntry: ['preloadImages', 'resetContext'],
       on: {
-        NEW_GAME: "init"
-      }
-    },
-    init: {
-      onEntry: ["shuffleCards", "showCards"],
-      after: {
-        4000: { target: "running" }
+        NEW_GAME: 'running',
       },
-      onExit: ["hideCards"]
     },
     running: {
-      activities: ["ticking"],
       on: {
-        QUIT_GAME: "idle",
-        "done.state.game.running.endGame": "cleanUp"
+        QUIT_GAME: 'idle',
+        'done.state.game.running.endGame': 'cleanUp',
       },
-      ...gameStates
+      ...gameStates,
     },
     cleanUp: {
       after: {
-        2000: { target: "idle" }
-      }
-    }
-  }
+        2000: { target: 'idle' },
+      },
+    },
+  },
 };
 
-const gameMachine = Machine(machineConfig, machineOptions, {
-  ...initialContext
-});
-
-export default gameMachine;
+export default machineConfig;

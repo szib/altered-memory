@@ -1,18 +1,9 @@
-import store from "../../redux/store";
-import { timerResetAction } from "../../redux/actions/timerActions";
-import {
-  initCardsAction,
-  shuffleCardsAction
-} from "../../redux/actions/gridActions";
-import { backImage, cardImages } from "../../images";
+/* eslint-disable no-param-reassign */
+import { backImage, cardImages } from '../../images';
+import getRandomCards from './levels';
 
-const incrementScore = context => {
-  context.score += 1;
-};
-
-const incrementTurn = context => {
-  context.provisionalScore = Math.round(context.provisionalScore * 0.9);
-  context.turn += 1;
+const decrementLives = context => {
+  context.lives -= 1;
 };
 
 const selectCard = (context, event) => {
@@ -23,6 +14,7 @@ const selectCard = (context, event) => {
 };
 
 const deselectCards = context => {
+  // eslint-disable-next-line no-return-assign
   context.cards.map(card => (card.selected = false));
 };
 
@@ -40,21 +32,16 @@ const isMatch = cards => {
 
 const checkMatch = context => {
   if (isMatch(context.cards)) {
-    playSuccessSound();
-    context.score += context.provisionalScore;
-    context.provisionalScore = 110;
     context.cards.map(c => {
       if (c.selected) c.found = true;
       return c;
     });
-  } else {
-    playFailSound();
   }
 };
 
 const initCards = context => {
-  store.dispatch(initCardsAction());
   const cards = [];
+  const boardSize = 4;
   for (let idx = 0; idx < 16; idx += 1) {
     const kind = idx % 8;
     const card = {
@@ -64,7 +51,9 @@ const initCards = context => {
       faceUp: false,
       found: false,
       backImage,
-      frontImage: cardImages[kind]
+      frontImage: cardImages[kind],
+      position: [idx % boardSize, Math.floor(idx / boardSize)],
+      isMoving: false,
     };
     cards.push(card);
   }
@@ -72,39 +61,32 @@ const initCards = context => {
 };
 
 const shuffleCards = context => {
-  store.dispatch(shuffleCardsAction());
   // https://en.wikipedia.org/wiki/Fisher–Yates_shuffle
   const cards = [...context.cards];
   for (let i = cards.length - 1; i > 0; i -= 1) {
     const j = Math.floor(Math.random() * (i + 1));
-    [cards[i], cards[j]] = [cards[j], cards[i]];
+    [cards[i].position, cards[j].position] = [
+      cards[j].position,
+      cards[i].position,
+    ];
   }
   context.cards = cards;
 };
 
+const resetZIndex = context => {
+  context.cards.map(card => {
+    card.isMoving = false;
+    return card;
+  });
+};
+
 const resetContext = context => {
-  context.turn = 0;
+  context.lives = 10;
   context.score = 0;
+  context.level = 1;
   context.cards = [];
-  store.dispatch(timerResetAction());
-};
-
-const playClickSound = () => {
-  // const clickSoundEl = document.createElement('audio');
-  // clickSoundEl.src = clickSound;
-  // clickSoundEl.play();
-};
-
-const playFailSound = () => {
-  // const clickSoundEl = document.createElement('audio');
-  // clickSoundEl.src = failSound;
-  // clickSoundEl.play();
-};
-
-const playSuccessSound = () => {
-  // const clickSoundEl = document.createElement('audio');
-  // clickSoundEl.src = successSound;
-  // clickSoundEl.play();
+  context.bonus = 1;
+  context.chances = [0, 0, 0];
 };
 
 const showCards = context => {
@@ -121,20 +103,77 @@ const hideCards = context => {
   });
 };
 
+const swapCards = context => {
+  const [cardsToSwap, newChances] = getRandomCards(
+    context.chances,
+    context.level
+  );
+  context.chances = newChances;
+
+  for (let idx = 0; idx < cardsToSwap.length; idx += 2) {
+    const firstId = cardsToSwap[idx];
+    const secondId = cardsToSwap[idx + 1];
+    const tmp = context.cards[firstId].position;
+    context.cards[firstId].position = context.cards[secondId].position;
+    context.cards[secondId].position = tmp;
+    context.cards[firstId].isMoving = true;
+    context.cards[secondId].isMoving = true;
+  }
+};
+
+const levelUp = context => {
+  context.level += 1;
+  const newChances = context.chances.map(chance => Math.floor(chance / 2));
+  context.chances = newChances;
+  context.lives += Math.ceil(context.level / 2);
+  context.cards = [];
+};
+
+const addScore = context => {
+  context.score += context.level * 5 + context.bonus;
+};
+
+const increaseBonus = context => {
+  context.bonus *= 2;
+};
+
+const decreaseBonus = context => {
+  const multiplyer = Math.floor(context.bonus / 3);
+  if (multiplyer < 1) {
+    context.bonus = 1;
+  } else {
+    context.bonus = multiplyer;
+  }
+};
+
+const preloadImages = () => {
+  Object.values(cardImages).forEach(img => {
+    new Image().src = img;
+  });
+  new Image().src = backImage;
+};
+
 export default {
   // game.js
-  incrementTurn,
-  playClickSound,
+  decrementLives,
   selectCard,
   deselectCards,
   setFaceUp,
+  swapCards,
+  levelUp,
+  resetZIndex,
 
   // machine/indexedDB.js
   resetContext,
   initCards,
   shuffleCards,
-  incrementScore,
   checkMatch,
   showCards,
-  hideCards
+  hideCards,
+
+  addScore,
+  increaseBonus,
+  decreaseBonus,
+
+  preloadImages,
 };
