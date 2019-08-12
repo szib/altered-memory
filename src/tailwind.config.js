@@ -10,6 +10,7 @@ module.exports = {
     },
     fontFamily: {
       display: ['Orbitron', 'sans-serif'],
+      body: ['Fjalla One', 'sans-serif'],
     },
     extend: {},
   },
