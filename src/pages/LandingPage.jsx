@@ -1,8 +1,9 @@
+/* eslint-disable react/no-unescaped-entities */
 import React from 'react';
 import { Link } from 'react-router-dom';
 import tw from 'tailwind.macro';
 
-import Button from './components/Button';
+import Button from '../components/Button';
 
 const Screen = tw.div`
   bg-color1 
@@ -32,6 +33,11 @@ const Text = tw.div`
   my-2
 `;
 
+const SmallText = tw(Text)`
+  text-sm
+  uppercase
+`;
+
 const LandingPage = () => {
   return (
     <Screen>
@@ -44,18 +50,16 @@ const LandingPage = () => {
         <Text>You really do not want to make mistakes...</Text>
         <Text>
           <Link to="/game" as={Button}>
-            <Button>--></Button>
+            <Button>Start game</Button>
           </Link>
         </Text>
-        <Text style={{ textTransform: 'uppercase' }}>
+        <SmallText>
           We use cookies. Close the page now if you're not happy with this.
-        </Text>
-        <Text style={{ textTransform: 'uppercase' }}>
+        </SmallText>
+        <SmallText>
           We are in development mode, so anything could happen.
-        </Text>
-        <Text style={{ textTransform: 'uppercase' }}>
-          And the exact opposite too.
-        </Text>
+        </SmallText>
+        <SmallText>And the exact opposite too.</SmallText>
       </Container>
     </Screen>
   );

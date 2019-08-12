@@ -5,13 +5,13 @@ import styled from 'styled-components';
 import tw from 'tailwind.macro';
 
 import { useMachine } from 'use-machine';
-import machineOptions from './stateMachine/machineOptions';
-import machineConfig from './stateMachine/index';
-import machineContext from './stateMachine/context';
+import machineOptions from '../stateMachine/machineOptions';
+import machineConfig from '../stateMachine/index';
+import machineContext from '../stateMachine/context';
 
-import Board from './components/Board/Board';
-import InfoPanel from './components/Sidebar/InfoPanel';
-import ControlPanel from './components/Sidebar/ControlPanel';
+import Board from '../components/Board/Board';
+import InfoPanel from '../components/Sidebar/InfoPanel';
+import ControlPanel from '../components/Sidebar/ControlPanel';
 
 const AppDiv = styled.div`
   ${tw`w-screen h-screen`}
@@ -41,10 +41,7 @@ const Game = ({ className }) => {
   const { send } = machine;
 
   useEffect(() => {
-    if (process.env.NODE_ENV === 'development') {
-      console.log('DEV MODE');
-    } else {
-      console.log('PROD MODE');
+    if (process.env.NODE_ENV === 'production') {
       ReactGA.initialize('UA-145268762-1');
       ReactGA.pageview('/game');
     }
