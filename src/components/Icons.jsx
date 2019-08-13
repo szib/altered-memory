@@ -5,7 +5,7 @@ import tw from 'tailwind.macro';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 
-const style = tw`text-3xl mx-2`;
+const style = tw`text-3xl mx-2 cursor-pointer`;
 
 export const Github = () => {
   const clickHandler = () => window.open('https://github.com/szib', '_blank');
