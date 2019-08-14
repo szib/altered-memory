@@ -1,8 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import styled from 'styled-components';
 import tw from 'tailwind.macro';
 
+import Button from '../Button';
 import Item from './InfoPanelItem';
 
 const StyledDiv = styled.div`
@@ -26,6 +28,9 @@ const InfoPanel = ({ className, machine }) => {
       <Item title="Bonus" value={bonus} />
       <Item title="Lives" value={lives} />
       <Item title="Level" value={level} />
+      <Link to="/" as={Button}>
+        <Button>Back</Button>
+      </Link>
     </StyledDiv>
   );
 };

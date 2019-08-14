@@ -9,7 +9,7 @@ const gameStates = {
       },
     },
     showCards: {
-      onEntry: ['showCards'],
+      onEntry: ['showCards', 'newGameGoogleAnalytics'],
       after: {
         4000: { target: 's0' },
       },

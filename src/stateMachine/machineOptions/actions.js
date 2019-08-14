@@ -1,4 +1,6 @@
 /* eslint-disable no-param-reassign */
+import ReactGA from 'react-ga';
+
 import { backImage, cardImages } from '../../images';
 import getRandomCards from './levels';
 
@@ -153,6 +155,14 @@ const preloadImages = () => {
   new Image().src = backImage;
 };
 
+const newGameGoogleAnalytics = () => {
+  console.log('GA');
+  ReactGA.event({
+    category: 'Game',
+    action: 'Started a new game',
+  });
+};
+
 export default {
   // game.js
   decrementLives,
@@ -176,4 +186,5 @@ export default {
   decreaseBonus,
 
   preloadImages,
+  newGameGoogleAnalytics,
 };
