@@ -75,6 +75,10 @@ const shuffleCards = context => {
   context.cards = cards;
 };
 
+const removeCards = context => {
+  context.cards = [];
+};
+
 const resetZIndex = context => {
   context.cards.map(card => {
     card.isMoving = false;
@@ -83,12 +87,17 @@ const resetZIndex = context => {
 };
 
 const resetContext = context => {
-  context.lives = 10;
+  context.isRunning = false;
+  context.lives = 3;
   context.score = 0;
   context.level = 1;
   context.cards = [];
   context.bonus = 1;
   context.chances = [0, 0, 0];
+};
+
+const startGame = context => {
+  context.isRunning = true;
 };
 
 const showCards = context => {
@@ -177,6 +186,7 @@ export default {
   resetContext,
   initCards,
   shuffleCards,
+  removeCards,
   checkMatch,
   showCards,
   hideCards,
@@ -187,4 +197,5 @@ export default {
 
   preloadImages,
   newGameGoogleAnalytics,
+  startGame,
 };

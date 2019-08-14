@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 import styled from 'styled-components';
 import tw from 'tailwind.macro';
@@ -22,15 +21,17 @@ const InfoPanel = ({ className, machine }) => {
   const { context } = machine;
   const { score, lives, level, bonus } = context;
 
+  const clickHandler = () => {
+    machine.send('QUIT_GAME');
+  };
+
   return (
     <StyledDiv className={className}>
       <Item title="Score" value={score} />
       <Item title="Bonus" value={bonus} />
       <Item title="Lives" value={lives} />
       <Item title="Level" value={level} />
-      <Link to="/" as={Button}>
-        <Button>Back</Button>
-      </Link>
+      <Button onClick={clickHandler}>Quit game</Button>
     </StyledDiv>
   );
 };

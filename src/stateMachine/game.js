@@ -3,7 +3,7 @@ const gameStates = {
   initial: 'init',
   states: {
     init: {
-      onEntry: ['initCards', 'shuffleCards'],
+      onEntry: ['startGame', 'initCards', 'shuffleCards'],
       after: {
         1200: { target: 'showCards' },
       },

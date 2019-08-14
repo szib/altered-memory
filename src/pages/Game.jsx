@@ -9,6 +9,8 @@ import machineOptions from '../stateMachine/machineOptions';
 import machineConfig from '../stateMachine/index';
 import machineContext from '../stateMachine/context';
 
+import GameStarter from './GameStarter';
+import StatsPage from './StatsPage';
 import Board from '../components/Board/Board';
 import InfoPanel from '../components/Sidebar/InfoPanel';
 
@@ -33,7 +35,7 @@ const AppDiv = styled.div`
 
 const Game = ({ className }) => {
   const machine = useMachine(machineConfig, machineOptions, machineContext);
-  const { send } = machine;
+  const { state, send } = machine;
 
   useEffect(() => {
     if (process.env.NODE_ENV === 'production') {
@@ -45,6 +47,9 @@ const Game = ({ className }) => {
   const clickOnCardHandler = id => {
     send('CLICK_ON_CARD', { cardId: id });
   };
+
+  if (state.value === 'idle') return <GameStarter machine={machine} />;
+  if (state.value === 'showingStats') return <StatsPage machine={machine} />;
 
   return (
     <AppDiv className={className}>
