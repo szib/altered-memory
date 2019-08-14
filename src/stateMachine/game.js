@@ -3,7 +3,7 @@ const gameStates = {
   initial: 'init',
   states: {
     init: {
-      onEntry: ['startGame', 'initCards', 'shuffleCards'],
+      onEntry: ['initCards', 'shuffleCards'],
       after: {
         1200: { target: 'showCards' },
       },
@@ -16,6 +16,7 @@ const gameStates = {
       onExit: ['hideCards'],
     },
     s0: {
+      onEntry: ['logContext', 'incrementTurns'],
       on: {
         CLICK_ON_CARD: {
           target: 's1',
@@ -41,7 +42,7 @@ const gameStates = {
       },
     },
     noMatch: {
-      onEntry: ['decrementLives', 'decreaseBonus'],
+      onEntry: ['decrementLives', 'decreaseBonus', 'incrementFails'],
       after: {
         500: { target: 'endGame', cond: 'isPlayerDead' },
         1000: { target: 'swappingCards' },
@@ -55,12 +56,12 @@ const gameStates = {
       },
     },
     match: {
-      onEntry: ['addScore'],
+      onEntry: ['addScore', 'incrementMatches', 'increaseBonus'],
       after: {
         1: { target: 'endLevel', cond: 'allFound' },
         2: { target: 's0' },
       },
-      onExit: ['increaseBonus', 'deselectCards', 'setFaceUp'],
+      onExit: ['deselectCards', 'setFaceUp'],
     },
     endLevel: {
       onEntry: ['levelUp'],

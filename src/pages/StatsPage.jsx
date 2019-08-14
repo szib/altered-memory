@@ -1,8 +1,4 @@
-import React, { useEffect } from 'react';
-import ReactGA from 'react-ga';
-
-import styled from 'styled-components';
-import tw from 'tailwind.macro';
+import React from 'react';
 
 import Button from '../components/Button';
 import * as TW from '../components/TW';
