@@ -42,7 +42,12 @@ const gameStates = {
       },
     },
     noMatch: {
-      onEntry: ['decrementLives', 'decreaseBonus', 'incrementFails'],
+      onEntry: [
+        'decrementLives',
+        'decreaseBonus',
+        'incrementFails',
+        'resetStreak',
+      ],
       after: {
         500: { target: 'endGame', cond: 'isPlayerDead' },
         1000: { target: 'swappingCards' },
@@ -62,7 +67,12 @@ const gameStates = {
       },
     },
     match: {
-      onEntry: ['addScore', 'incrementMatches', 'increaseBonus'],
+      onEntry: [
+        'addScore',
+        'incrementMatches',
+        'increaseBonus',
+        'incrementStreak',
+      ],
       after: {
         1: { target: 'endLevel', cond: 'allFound' },
         2: { target: 's0' },

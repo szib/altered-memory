@@ -10,3 +10,21 @@ export const incrementMatches = context => {
 export const incrementTurns = context => {
   context.turns += 1;
 };
+
+export const incrementStreak = context => {
+  context.streak += 1;
+  if (context.longestStreak < context.streak)
+    context.longestStreak = context.streak;
+};
+
+export const resetStreak = context => {
+  context.streak = 0;
+};
+
+export const resetStats = context => {
+  context.turns = 0;
+  context.matches = 0;
+  context.fails = 0;
+  context.streak = 0;
+  context.longestStreak = 0;
+};

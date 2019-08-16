@@ -34,15 +34,12 @@ const resetZIndex = context => {
 
 const resetContext = context => {
   context.isRunning = false;
-  context.lives = 3;
+  context.lives = 12;
   context.score = 0;
   context.level = 1;
   context.cards = [];
   context.bonus = 1;
   context.chances = [0, 0, 0];
-  context.turns = 0;
-  context.matches = 0;
-  context.fails = 0;
 };
 
 const levelUp = context => {

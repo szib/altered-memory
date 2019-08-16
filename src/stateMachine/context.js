@@ -1,5 +1,5 @@
 export default {
-  lives: 20,
+  lives: 12,
   score: 0,
   level: 1,
   cards: [],
@@ -8,4 +8,6 @@ export default {
   turns: 0,
   matches: 0,
   fails: 0,
+  streak: 0,
+  longestStreak: 0,
 };
