@@ -11,6 +11,7 @@ const GameStarter = ({ machine }) => {
   return (
     <TW.Screen>
       <TW.Container>
+        <TW.Text>[TODO: settings panel]</TW.Text>
         <Button onClick={startGame}>Start game</Button>
       </TW.Container>
     </TW.Screen>

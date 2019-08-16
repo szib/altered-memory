@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import tw from 'tailwind.macro';
 
@@ -23,6 +24,9 @@ const GameStarter = ({ machine }) => {
 
         <Item title="Fails" value={fails} />
         <Button onClick={startGame}>New game</Button>
+        <Link to="/" as={Button}>
+          <Button>Back</Button>
+        </Link>
       </TW.Container>
     </TW.Screen>
   );
