@@ -47,7 +47,13 @@ const gameStates = {
         500: { target: 'endGame', cond: 'isPlayerDead' },
         1000: { target: 'swappingCards' },
       },
-      onExit: ['deselectCards', 'setFaceUp'],
+      onExit: [
+        'logCards',
+        'deselectCards',
+        'logCards',
+        'setFaceUp',
+        'logCards',
+      ],
     },
     swappingCards: {
       onEntry: ['resetZIndex', 'swapCards'],

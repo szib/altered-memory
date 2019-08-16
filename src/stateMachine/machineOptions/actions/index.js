@@ -1,6 +1,7 @@
 /* eslint-disable no-param-reassign */
 
 import * as Cards from './cards';
+import * as Logger from './logger';
 import * as Utils from './utils';
 import * as Scores from './scores';
 import * as Stats from './stats';
@@ -58,6 +59,7 @@ export default {
   ...Stats,
   ...Scores,
   ...Cards,
+  ...Logger,
 
   decrementLives,
   resetContext,
