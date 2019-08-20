@@ -9,36 +9,33 @@ import machineOptions from '../stateMachine/machineOptions';
 import machineConfig from '../stateMachine/index';
 import machineContext from '../stateMachine/context';
 
+import GameStarter from './GameStarter';
+import StatsPage from './StatsPage';
 import Board from '../components/Board/Board';
 import InfoPanel from '../components/Sidebar/InfoPanel';
-import ControlPanel from '../components/Sidebar/ControlPanel';
 
 const AppDiv = styled.div`
   ${tw`w-screen h-screen`}
   display: grid;
 
   @media screen and (orientation: portrait) {
-    grid-template-columns: 2fr 1fr;
     grid-template-rows: auto 100px;
 
     grid-template-areas:
-      'board board'
-      'info navbar';
+      'board'
+      'info';
   }
 
   @media screen and (orientation: landscape) {
     grid-template-columns: auto 200px;
-    grid-template-rows: 2fr 1fr;
 
-    grid-template-areas:
-      'board info'
-      'board navbar';
+    grid-template-areas: 'board info';
   }
 `;
 
 const Game = ({ className }) => {
   const machine = useMachine(machineConfig, machineOptions, machineContext);
-  const { send } = machine;
+  const { state, send } = machine;
 
   useEffect(() => {
     if (process.env.NODE_ENV === 'production') {
@@ -51,11 +48,13 @@ const Game = ({ className }) => {
     send('CLICK_ON_CARD', { cardId: id });
   };
 
+  if (state.value === 'idle') return <GameStarter machine={machine} />;
+  if (state.value === 'showingStats') return <StatsPage machine={machine} />;
+
   return (
     <AppDiv className={className}>
       <Board machine={machine} clickOnCardHandler={clickOnCardHandler} />
       <InfoPanel machine={machine} />
-      <ControlPanel machine={machine} />
     </AppDiv>
   );
 };

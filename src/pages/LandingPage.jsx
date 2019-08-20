@@ -22,7 +22,7 @@ const LandingPage = () => {
           </Link>
         </TW.Text>
         <TW.Text>
-          <Link to="/About" as={Button}>
+          <Link to="/about" as={Button}>
             <Button>About</Button>
           </Link>
         </TW.Text>

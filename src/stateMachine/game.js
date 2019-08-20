@@ -9,13 +9,14 @@ const gameStates = {
       },
     },
     showCards: {
-      onEntry: ['showCards'],
+      onEntry: ['showCards', 'newGameGoogleAnalytics'],
       after: {
         4000: { target: 's0' },
       },
       onExit: ['hideCards'],
     },
     s0: {
+      onEntry: ['logContext', 'incrementTurns'],
       on: {
         CLICK_ON_CARD: {
           target: 's1',
@@ -41,12 +42,23 @@ const gameStates = {
       },
     },
     noMatch: {
-      onEntry: ['decrementLives', 'decreaseBonus'],
+      onEntry: [
+        'decrementLives',
+        'decreaseBonus',
+        'incrementFails',
+        'resetStreak',
+      ],
       after: {
         500: { target: 'endGame', cond: 'isPlayerDead' },
         1000: { target: 'swappingCards' },
       },
-      onExit: ['deselectCards', 'setFaceUp'],
+      onExit: [
+        'logCards',
+        'deselectCards',
+        'logCards',
+        'setFaceUp',
+        'logCards',
+      ],
     },
     swappingCards: {
       onEntry: ['resetZIndex', 'swapCards'],
@@ -55,12 +67,18 @@ const gameStates = {
       },
     },
     match: {
-      onEntry: ['addScore'],
+      onEntry: [
+        'addScore',
+        'incrementMatches',
+        'increaseBonus',
+        'incrementStreak',
+        'setHighestBonus',
+      ],
       after: {
         1: { target: 'endLevel', cond: 'allFound' },
         2: { target: 's0' },
       },
-      onExit: ['increaseBonus', 'deselectCards', 'setFaceUp'],
+      onExit: ['deselectCards', 'setFaceUp'],
     },
     endLevel: {
       onEntry: ['levelUp'],
