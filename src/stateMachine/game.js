@@ -72,6 +72,7 @@ const gameStates = {
         'incrementMatches',
         'increaseBonus',
         'incrementStreak',
+        'setHighestBonus',
       ],
       after: {
         1: { target: 'endLevel', cond: 'allFound' },

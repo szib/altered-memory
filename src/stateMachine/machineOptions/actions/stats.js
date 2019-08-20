@@ -21,10 +21,16 @@ export const resetStreak = context => {
   context.streak = 0;
 };
 
+export const setHighestBonus = context => {
+  const { bonus } = context;
+  if (bonus > context.highestBonus) context.highestBonus = bonus;
+};
+
 export const resetStats = context => {
   context.turns = 0;
   context.matches = 0;
   context.fails = 0;
   context.streak = 0;
   context.longestStreak = 0;
+  context.highestBonus = 1;
 };
