@@ -17,16 +17,18 @@ const GameStarter = ({ machine }) => {
   return (
     <TW.Screen>
       <TW.Container style={tw`text-color5`}>
-        <Item title="Score" value={score} />
-        <Item title="Turns" value={turns} />
-        <Item title="Matches" value={matches} />
-        <Item title="Longest steak" value={longestStreak} />
+        <TW.Panel>
+          <Item title="Score" value={score} />
+          <Item title="Turns" value={turns} />
+          <Item title="Matches" value={matches} />
+          <Item title="Longest steak" value={longestStreak} />
 
-        <Item title="Fails" value={fails} />
-        <Button onClick={startGame}>New game</Button>
-        <Link to="/" as={Button}>
-          <Button>Back</Button>
-        </Link>
+          <Item title="Fails" value={fails} />
+          <Button onClick={startGame}>New game</Button>
+          <Link to="/" as={Button}>
+            <Button>Back</Button>
+          </Link>
+        </TW.Panel>
       </TW.Container>
     </TW.Screen>
   );
