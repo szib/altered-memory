@@ -6,21 +6,27 @@ const machineConfig = {
 
   states: {
     idle: {
-      onEntry: ['preloadImages', 'resetContext'],
+      onEntry: ['preloadImages', 'resetContext', 'resetStats'],
       on: {
-        NEW_GAME: 'running',
+        START_GAME: 'running',
       },
     },
     running: {
       on: {
-        QUIT_GAME: 'idle',
+        QUIT_GAME: 'cleanUp',
         'done.state.game.running.endGame': 'cleanUp',
       },
       ...gameStates,
     },
     cleanUp: {
+      onEntry: ['removeCards'],
       after: {
-        2000: { target: 'idle' },
+        2000: { target: 'showingStats' },
+      },
+    },
+    showingStats: {
+      on: {
+        NEW_GAME: 'idle',
       },
     },
   },

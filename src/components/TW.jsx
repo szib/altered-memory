@@ -32,3 +32,18 @@ export const SmallText = tw(Text)`
 `;
 
 export const A = tw.a`text-color5`;
+
+export const Panel = tw.div`
+  w-full
+  h-full
+
+  p-8
+
+  bg-transparent
+  text-color5
+
+  border-solid
+  border-2
+  border-color5
+  rounded
+`;
