@@ -7,6 +7,11 @@ module.exports = {
       'dark-pen': 'rgba(231, 119, 40, 1)',
       'dark-card-front': 'rgba(231, 119, 40, 1)',
       'dark-card-back': 'rgba(30, 151, 191, 1)',
+      'ocean-paper': 'rgba(3, 37, 108, 1)',
+      'ocean-paper-alt': 'rgba(37, 65, 178, 1)',
+      'ocean-card-back': 'rgba(23, 104, 172, 1)',
+      'ocean-card-front': 'rgba(6, 190, 225, 1)',
+      'ocean-pen': 'rgba(209, 209, 209, 1)',
     },
     fontFamily: {
       display: ['Orbitron', 'sans-serif'],
