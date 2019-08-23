@@ -13,7 +13,7 @@ const AnimatedCard = animated(Card);
 const BoardWrapper = styled.div`
   box-sizing: border-box;
   ${tw`w-full`}
-  ${tw`bg-color1`}
+  ${tw`bg-dark-paper`}
   ${tw`w-full h-full p-16`}
   grid-area: board;
   position: relative;

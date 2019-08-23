@@ -1,7 +1,7 @@
 import tw from 'tailwind.macro';
 
 export const Screen = tw.div`
-  bg-color1 
+  bg-dark-paper 
   w-screen min-h-screen 
   flex justify-center items-center
   `;
@@ -12,14 +12,14 @@ export const Container = tw.div`
 `;
 
 export const Title = tw.div`
-  text-color5 
+  text-dark-pen 
   font-display
   text-6xl 
   text-center
   `;
 
 export const Text = tw.div`
-  text-color5 
+  text-dark-pen 
   font-body
   text-2xl 
   text-center
@@ -31,7 +31,7 @@ export const SmallText = tw(Text)`
   uppercase
 `;
 
-export const A = tw.a`text-color5`;
+export const A = tw.a`text-dark-pen`;
 
 export const Panel = tw.div`
   w-full
@@ -40,10 +40,10 @@ export const Panel = tw.div`
   p-8
 
   bg-transparent
-  text-color5
+  text-dark-pen
 
   border-solid
   border-2
-  border-color5
+  border-dark-pen
   rounded
 `;

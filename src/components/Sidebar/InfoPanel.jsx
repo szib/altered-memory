@@ -7,7 +7,7 @@ import Button from '../Button';
 import Item from './InfoPanelItem';
 
 const StyledDiv = styled.div`
-  ${tw`bg-color2 text-color5`}
+  ${tw`bg-dark-paper-alt text-dark-pen`}
 
   @media screen and (orientation:portrait) {
     ${tw`flex flex-row justify-around`}
