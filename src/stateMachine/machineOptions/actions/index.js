@@ -5,6 +5,7 @@ import * as Logger from './logger';
 import * as Utils from './utils';
 import * as Scores from './scores';
 import * as Stats from './stats';
+import * as Options from './options';
 import * as GoogleAnalytics from './googleAnalytics';
 
 const decrementLives = context => {
@@ -57,6 +58,7 @@ export default {
   ...Scores,
   ...Cards,
   ...Logger,
+  ...Options,
 
   decrementLives,
   resetContext,

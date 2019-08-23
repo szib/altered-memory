@@ -8,11 +8,17 @@ const GameStarter = ({ machine }) => {
     machine.send('START_GAME');
   };
 
+  const setDeck = deckName => {
+    machine.send({ type: 'SET_DECK', deckName });
+  };
+
   return (
     <TW.Screen>
       <TW.Container>
         <TW.Panel>
-          <TW.Text>[TODO: settings panel]</TW.Text>
+          <TW.Title>Altered Memory</TW.Title>
+          <Button onClick={() => setDeck('original')}>Original icons</Button>
+          <Button onClick={() => setDeck('tech')}>Tech icons</Button>
           <Button onClick={startGame}>Start game</Button>
         </TW.Panel>
       </TW.Container>

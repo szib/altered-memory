@@ -11,4 +11,5 @@ export default {
   streak: 0,
   longestStreak: 0,
   highestBonus: 1,
+  deckName: 'original',
 };
