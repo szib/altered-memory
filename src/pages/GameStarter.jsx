@@ -3,6 +3,8 @@ import React from 'react';
 import Button from '../components/Button';
 import * as TW from '../components/TW';
 
+import DeckSelector from '../components/Options/DeckSelector';
+
 const GameStarter = ({ machine }) => {
   const startGame = () => {
     machine.send('START_GAME');
@@ -17,8 +19,10 @@ const GameStarter = ({ machine }) => {
       <TW.Container>
         <TW.Panel>
           <TW.Title>Altered Memory</TW.Title>
-          <Button onClick={() => setDeck('original')}>Original icons</Button>
-          <Button onClick={() => setDeck('tech')}>Tech icons</Button>
+          <DeckSelector
+            clickHandler={setDeck}
+            activeDeck={machine.context.deckName}
+          />
           <Button onClick={startGame}>Start game</Button>
         </TW.Panel>
       </TW.Container>

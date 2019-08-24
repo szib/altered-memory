@@ -34,16 +34,13 @@ export const SmallText = tw(Text)`
 export const A = tw.a`text-dark-pen`;
 
 export const Panel = tw.div`
-  w-full
-  h-full
-
   p-8
 
   bg-transparent
   text-dark-pen
 
   border-solid
-  border-2
+  border
   border-dark-pen
   rounded
 `;
