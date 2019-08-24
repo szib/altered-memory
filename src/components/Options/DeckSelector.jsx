@@ -4,7 +4,7 @@ import * as TW from '../TW';
 import Button from '../Button';
 
 const DeckSelector = ({ clickHandler, activeDeck }) => {
-  const decks = ['original', 'tech'];
+  const decks = ['original', 'tech', 'sports'];
 
   return (
     <TW.Panel>

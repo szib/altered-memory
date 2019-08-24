@@ -16,9 +16,14 @@ const tech = importAll(
   require.context('./assets/images/tech', false, /\.(png|jpe?g|svg)$/)
 );
 
+const sports = importAll(
+  require.context('./assets/images/sports', false, /\.(png|jpe?g|svg)$/)
+);
+
 export const cardImages = {
   original,
   tech,
+  sports,
 };
 
 export { backImage };
