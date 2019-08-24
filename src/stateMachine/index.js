@@ -9,6 +9,10 @@ const machineConfig = {
       onEntry: ['preloadImages', 'resetContext', 'resetStats'],
       on: {
         START_GAME: 'running',
+        SET_DECK: {
+          target: 'idle',
+          actions: ['setDeck'],
+        },
       },
     },
     running: {
