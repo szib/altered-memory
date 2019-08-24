@@ -7,7 +7,7 @@ import Button from '../components/Button';
 import * as TW from '../components/TW';
 
 const Item = tw.div`
-  text-color5 
+  text-dark-pen 
   font-body
   text-xl 
   text-center
@@ -30,7 +30,7 @@ const GameStarter = ({ machine }) => {
 
   return (
     <TW.Screen>
-      <TW.Container style={tw`text-color5`}>
+      <TW.Container style={tw`text-dark-pen`}>
         <TW.Panel>
           <TW.Title>Stats</TW.Title>
           <Item>{`Score: ${score}`}</Item>
