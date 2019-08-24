@@ -1,7 +1,9 @@
 import tw from 'tailwind.macro';
 
 const StyledButton = tw.button`
+  cursor-pointer
   font-display
+  text-xl
   
   text-dark-pen 
   bg-transparent
@@ -13,7 +15,6 @@ const StyledButton = tw.button`
   hover:border-transparent 
   border-dark-pen
   
-  px-8 py-4
   px-8 py-4
   my-2
 
