@@ -1,5 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from 'react';
+
+import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 
 import tw from 'tailwind.macro';
@@ -11,6 +13,7 @@ import { Github, LinkedIn } from '../components/Icons';
 const LandingPage = () => {
   return (
     <TW.Screen>
+      <Helmet title="About" />
       <TW.Container>
         <TW.Panel>
           <TW.Title>Altered Memory</TW.Title>
