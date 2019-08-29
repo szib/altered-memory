@@ -10,7 +10,7 @@ import Button from '../components/Button';
 import * as TW from '../components/TW';
 import { Github, LinkedIn } from '../components/Icons';
 
-const LandingPage = () => {
+const AboutPage = () => {
   return (
     <TW.Screen>
       <Helmet title="About" />
@@ -51,4 +51,4 @@ const LandingPage = () => {
   );
 };
 
-export default LandingPage;
+export default AboutPage;
