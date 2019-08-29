@@ -1,17 +1,13 @@
 /* eslint-disable no-param-reassign */
 export const addScore = context => {
-  context.score += context.level * 5 + context.bonus;
+  context.score += context.level + context.bonus;
 };
 
 export const increaseBonus = context => {
-  context.bonus *= 2;
+  context.bonus += 1 + context.streak;
 };
 
 export const decreaseBonus = context => {
-  const multiplyer = Math.floor(context.bonus / 3);
-  if (multiplyer < 1) {
-    context.bonus = 1;
-  } else {
-    context.bonus = multiplyer;
-  }
+  const newBonus = Math.floor((context.bonus - 2) * 0.8);
+  context.bonus = Math.max(1, newBonus);
 };
