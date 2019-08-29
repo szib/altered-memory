@@ -6,12 +6,12 @@ const machineConfig = {
 
   states: {
     idle: {
-      onEntry: ['preloadImages', 'resetContext', 'resetStats'],
+      onEntry: ['resetContext', 'resetStats'],
       on: {
         START_GAME: 'running',
         SET_DECK: {
           target: 'idle',
-          actions: ['setDeck'],
+          actions: ['setDeck', 'preloadImages'],
         },
       },
     },
