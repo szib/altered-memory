@@ -1,5 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from 'react';
+
+import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 
 import tw from 'tailwind.macro';
@@ -8,9 +10,10 @@ import Button from '../components/Button';
 import * as TW from '../components/TW';
 import { Github, LinkedIn } from '../components/Icons';
 
-const LandingPage = () => {
+const AboutPage = () => {
   return (
     <TW.Screen>
+      <Helmet title="About" />
       <TW.Container>
         <TW.Panel>
           <TW.Title>Altered Memory</TW.Title>
@@ -48,4 +51,4 @@ const LandingPage = () => {
   );
 };
 
-export default LandingPage;
+export default AboutPage;

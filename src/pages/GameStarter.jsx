@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { Link } from 'react-router-dom';
+
 import Button from '../components/Button';
 import * as TW from '../components/TW';
 
@@ -24,6 +26,9 @@ const GameStarter = ({ machine }) => {
             activeDeck={machine.context.deckName}
           />
           <Button onClick={startGame}>Start game</Button>
+          <Link to="/" as={Button}>
+            <Button>Back</Button>
+          </Link>
         </TW.Panel>
       </TW.Container>
     </TW.Screen>

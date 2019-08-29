@@ -26,10 +26,6 @@ const LandingPage = () => {
             <Button>About</Button>
           </Link>
         </TW.Text>
-        <TW.SmallText>
-          We use cookies. Close the page now if you're not happy with this. No
-          harm done so far...
-        </TW.SmallText>
       </TW.Container>
     </TW.Screen>
   );

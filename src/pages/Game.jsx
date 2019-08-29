@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react';
-import ReactGA from 'react-ga';
+import React from 'react';
 
 import styled from 'styled-components';
 import tw from 'tailwind.macro';
@@ -36,13 +35,6 @@ const AppDiv = styled.div`
 const Game = ({ className }) => {
   const machine = useMachine(machineConfig, machineOptions, machineContext);
   const { state, send } = machine;
-
-  useEffect(() => {
-    if (process.env.NODE_ENV === 'production') {
-      ReactGA.initialize('UA-145268762-1');
-      ReactGA.pageview('/game');
-    }
-  }, []);
 
   const clickOnCardHandler = id => {
     send('CLICK_ON_CARD', { cardId: id });

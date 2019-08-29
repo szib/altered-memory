@@ -4,6 +4,9 @@ import styled from 'styled-components';
 import tw from 'tailwind.macro';
 
 import * as TW from '../TW';
+import DeckImages from './DeckImages';
+
+import { cardImages } from '../../images';
 
 const Button = styled.div`
   ${tw`
@@ -23,10 +26,12 @@ const Button = styled.div`
     border-0
     border-b-2
 
-    hover:border-dark-pen
+    border-dark-pen
+    opacity-75
+    hover:opacity-100
 
   `}
-  ${props => (props.active ? tw`opacity-100` : tw`opacity-75`)}
+  ${props => (props.active ? tw`border-solid opacity-100` : tw`border-none`)}
 `;
 
 const Options = tw.div`
@@ -35,6 +40,8 @@ const Options = tw.div`
 
 const DeckSelector = ({ clickHandler, activeDeck }) => {
   const decks = ['original', 'tech', 'sports'];
+
+  const images = cardImages[activeDeck];
 
   return (
     <TW.Panel>
@@ -50,6 +57,7 @@ const DeckSelector = ({ clickHandler, activeDeck }) => {
           </Button>
         ))}
       </Options>
+      {images && <DeckImages images={images} />}
     </TW.Panel>
   );
 };
