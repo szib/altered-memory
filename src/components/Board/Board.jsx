@@ -34,18 +34,12 @@ const Board = ({ machine, clickOnCardHandler, className }) => {
   const transitions = useTransition(cards, card => card.id, {
     from: ({ position }) => ({
       position,
-      opacity: 0,
-    }),
-    enter: ({ position }) => ({
-      position,
-      opacity: 1,
     }),
     update: ({ position }) => ({
       position,
     }),
-    leave: { height: 0, opacity: 0 },
-    config: { mass: 10, tension: 500, friction: 100 },
-    trail: 10,
+    leave: { height: 0 },
+    config: { mass: 12, tension: 300, friction: 70 },
   });
 
   const trans = (x, y) =>
