@@ -10,8 +10,10 @@ const gameStates = {
     },
     showCards: {
       onEntry: ['showCards'],
-      after: {
-        4000: { target: 's0' },
+      on: {
+        TIMER_DONE: {
+          target: 's0',
+        },
       },
       onExit: ['hideCards'],
     },
