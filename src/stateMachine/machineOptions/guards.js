@@ -9,14 +9,14 @@ const isMatched = context => {
   return selectedCards[0].kind === selectedCards[1].kind;
 };
 
-const allFound = context =>
-  context.cards.filter(card => card.found === false).length === 0;
+const notAllFound = context =>
+  context.cards.filter(card => card.found === false).length > 0;
 
 const isPlayerDead = context => context.lives < 1;
 
 const guards = {
   selectable,
-  allFound,
+  notAllFound,
   isMatched,
   isPlayerDead,
 };

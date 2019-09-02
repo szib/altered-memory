@@ -23,10 +23,10 @@ const machineConfig = {
       ...gameStates,
     },
     cleanUp: {
-      onEntry: ['removeCards'],
       after: {
-        2000: { target: 'showingStats' },
+        1200: { target: 'showingStats' },
       },
+      onExit: ['removeCards'],
     },
     showingStats: {
       on: {

@@ -10,8 +10,10 @@ const gameStates = {
     },
     showCards: {
       onEntry: ['showCards'],
-      after: {
-        4000: { target: 's0' },
+      on: {
+        TIMER_DONE: {
+          target: 's0',
+        },
       },
       onExit: ['hideCards'],
     },
@@ -49,7 +51,7 @@ const gameStates = {
         'resetStreak',
       ],
       after: {
-        500: { target: 'endGame', cond: 'isPlayerDead' },
+        999: { target: 'endGame', cond: 'isPlayerDead' },
         1000: { target: 'swappingCards' },
       },
       onExit: [
@@ -75,8 +77,8 @@ const gameStates = {
         'setHighestBonus',
       ],
       after: {
-        1: { target: 'endLevel', cond: 'allFound' },
-        2: { target: 's0' },
+        2: { target: 's0', cond: 'notAllFound' },
+        1000: { target: 'endLevel' },
       },
       onExit: ['deselectCards', 'setFaceUp'],
     },
