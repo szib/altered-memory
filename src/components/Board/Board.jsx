@@ -6,6 +6,8 @@ import tw from 'tailwind.macro';
 import { useMeasure } from '@softbind/react-hooks';
 import { useTransition, animated } from 'react-spring';
 
+import ProgressBar from '../ProgressBar/ProgressBar';
+
 import Card from './Card';
 
 const AnimatedCard = animated(Card);
@@ -23,6 +25,8 @@ const Board = ({ machine, clickOnCardHandler, className }) => {
   const { context } = machine;
   const { cards } = context;
 
+  const showProgressBar = machine.state.value.running === 'showCards';
+
   const boardEl = useRef(null);
   const measure = useMeasure(boardEl, 'bounds');
   const { bounds } = measure;
@@ -34,19 +38,17 @@ const Board = ({ machine, clickOnCardHandler, className }) => {
   const transitions = useTransition(cards, card => card.id, {
     from: ({ position }) => ({
       position,
-      opacity: 0,
-    }),
-    enter: ({ position }) => ({
-      position,
-      opacity: 1,
     }),
     update: ({ position }) => ({
       position,
     }),
-    leave: { height: 0, opacity: 0 },
-    config: { mass: 10, tension: 500, friction: 100 },
-    trail: 10,
+    leave: { height: 0 },
+    config: { mass: 12, tension: 300, friction: 70 },
   });
+
+  const onCompleteHandler = () => {
+    machine.send('TIMER_DONE');
+  };
 
   const trans = (x, y) =>
     `translate3d(${x * cardSize + offsetX}px,${y * cardSize + offsetY}px,0)`;
@@ -71,6 +73,7 @@ const Board = ({ machine, clickOnCardHandler, className }) => {
 
   return (
     <BoardWrapper ref={boardEl} className={className}>
+      {showProgressBar && <ProgressBar onCompleted={onCompleteHandler} />}
       {cardElements}
     </BoardWrapper>
   );

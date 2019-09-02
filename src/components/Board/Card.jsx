@@ -50,7 +50,7 @@ const Card = props => {
     ...(faceUp ? tw`bg-dark-card-front` : tw`bg-dark-card-back`),
     opacity: faceUp ? 1 : 0,
     ys: [faceUp ? 180 : 0, 0.98],
-    config: { mass: 2, tension: 1000, friction: 42 },
+    config: { mass: 2, tension: 500, friction: 42 },
   });
 
   const [springProps, set] = useSpring(() => springConfig(card.faceUp));
