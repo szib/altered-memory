@@ -7,12 +7,15 @@ import useInterval from '../../hooks/useInterval';
 
 const Wrapper = styled.div`
   height: 0.5em;
+  width: 48%;
   ${tw`
-    w-full
+    mt-6
+    mx-auto
+
     bg-dark-paper  
     text-dark-pen
 
-    border-1
+    border
     border-solid
     border-dark-pen
     rounded

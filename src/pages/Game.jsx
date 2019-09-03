@@ -26,7 +26,7 @@ const AppDiv = styled.div`
   }
 
   @media screen and (orientation: landscape) {
-    grid-template-columns: auto 200px;
+    grid-template-columns: auto 250px;
 
     grid-template-areas: 'board info';
   }

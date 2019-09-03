@@ -16,7 +16,7 @@ const BoardWrapper = styled.div`
   box-sizing: border-box;
   ${tw`w-full`}
   ${tw`bg-dark-paper`}
-  ${tw`w-full h-full p-16`}
+  ${tw`w-full h-full`}
   grid-area: board;
   position: relative;
 `;
