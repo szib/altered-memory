@@ -21,11 +21,18 @@ const BoardWrapper = styled.div`
   position: relative;
 `;
 
+const getSeconds = diff => {
+  if (diff === "easy") return 8;
+  if (diff === "hard") return 4;
+  return 6;
+};
+
 const Board = ({ machine, clickOnCardHandler, className }) => {
   const { context } = machine;
-  const { cards } = context;
+  const { cards, difficulty } = context;
 
   const showProgressBar = machine.state.value.running === "showCards";
+  const seconds = getSeconds(difficulty);
 
   const boardEl = useRef(null);
   const measure = useMeasure(boardEl, "bounds");
@@ -73,7 +80,9 @@ const Board = ({ machine, clickOnCardHandler, className }) => {
 
   return (
     <BoardWrapper ref={boardEl} className={className}>
-      {showProgressBar && <ProgressBar onCompleted={onCompleteHandler} />}
+      {showProgressBar && (
+        <ProgressBar seconds={seconds} onCompleted={onCompleteHandler} />
+      )}
       {cardElements}
     </BoardWrapper>
   );

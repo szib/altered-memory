@@ -16,14 +16,20 @@ const GameStarter = ({ machine }) => {
     machine.send({ type: "SET_DECK", deckName });
   };
 
+  const setDifficulty = difficulty => {
+    machine.send({ type: 'SET_DIFFICULTY', difficulty });
+  };
+
   return (
     <TW.Screen>
       <TW.Container>
         <TW.Panel>
           <TW.Title>Altered Memory</TW.Title>
           <DeckSelector
-            clickHandler={setDeck}
+            deckHandler={setDeck}
+            difficultyHandler={setDifficulty}
             activeDeck={machine.context.deckName}
+            activeDifficulty={machine.context.difficulty}
           />
           <Button onClick={startGame}>Start game</Button>
           <Link to="/" as={Button}>

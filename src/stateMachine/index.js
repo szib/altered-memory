@@ -12,6 +12,10 @@ const machineConfig = {
         SET_DECK: {
           target: "idle",
           actions: ["setDeck", "preloadImages"]
+        },
+        SET_DIFFICULTY: {
+          target: "idle",
+          actions: ["setDifficulty"]
         }
       }
     },
