@@ -1,19 +1,19 @@
-import React from 'react';
+import React from "react";
 
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
-import Button from '../components/Button';
-import * as TW from '../components/TW';
+import Button from "../components/Button";
+import * as TW from "../components/TW";
 
-import DeckSelector from '../components/Options/DeckSelector';
+import DeckSelector from "../components/Options/DeckSelector";
 
 const GameStarter = ({ machine }) => {
   const startGame = () => {
-    machine.send('START_GAME');
+    machine.send("START_GAME");
   };
 
   const setDeck = deckName => {
-    machine.send({ type: 'SET_DECK', deckName });
+    machine.send({ type: "SET_DECK", deckName });
   };
 
   return (

@@ -1,4 +1,4 @@
-import tw from 'tailwind.macro';
+import tw from "tailwind.macro";
 
 export const Screen = tw.div`
   bg-dark-paper 

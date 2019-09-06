@@ -1,12 +1,12 @@
-import React from 'react';
+import React from "react";
 
-import styled from 'styled-components';
-import tw from 'tailwind.macro';
+import styled from "styled-components";
+import tw from "tailwind.macro";
 
-import * as TW from '../TW';
-import DeckImages from './DeckImages';
+import * as TW from "../TW";
+import DeckImages from "./DeckImages";
 
-import { cardImages } from '../../images';
+import { cardImages } from "../../images";
 
 const Button = styled.div`
   ${tw`
@@ -39,7 +39,7 @@ const Options = tw.div`
 `;
 
 const DeckSelector = ({ clickHandler, activeDeck }) => {
-  const decks = ['original', 'tech', 'sports'];
+  const decks = ["original", "tech", "sports"];
 
   const images = cardImages[activeDeck];
 

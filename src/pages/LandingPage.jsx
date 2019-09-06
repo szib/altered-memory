@@ -1,11 +1,11 @@
 /* eslint-disable react/no-unescaped-entities */
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
-import Button from '../components/Button';
+import Button from "../components/Button";
 
-import * as TW from '../components/TW';
-import withTransition from '../HOC/withTransition';
+import * as TW from "../components/TW";
+import withTransition from "../HOC/withTransition";
 
 const LandingPage = () => {
   return (

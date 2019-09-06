@@ -1,9 +1,9 @@
-import React, { useCallback } from 'react';
+import React, { useCallback } from "react";
 
-import { useSpring, animated } from 'react-spring';
+import { useSpring, animated } from "react-spring";
 
-import styled from 'styled-components';
-import tw from 'tailwind.macro';
+import styled from "styled-components";
+import tw from "tailwind.macro";
 
 const CardWrapper = styled.div`
   box-sizing: border-box;
@@ -50,7 +50,7 @@ const Card = props => {
     ...(faceUp ? tw`bg-dark-card-front` : tw`bg-dark-card-back`),
     opacity: faceUp ? 1 : 0,
     ys: [faceUp ? 180 : 0, 0.98],
-    config: { mass: 2, tension: 500, friction: 42 },
+    config: { mass: 2, tension: 500, friction: 42 }
   });
 
   const [springProps, set] = useSpring(() => springConfig(card.faceUp));
@@ -64,7 +64,7 @@ const Card = props => {
         style={{
           opacity: opacity.interpolate(o => 1 - o),
           transform: ys.interpolate(trans),
-          backgroundColor,
+          backgroundColor
         }}
         image={card.backImage}
       />
@@ -72,7 +72,7 @@ const Card = props => {
         style={{
           opacity,
           transform: ys.interpolate(trans),
-          backgroundColor,
+          backgroundColor
         }}
         image={card.frontImage}
         onMouseEnter={() => set({ ys: [card.faceUp ? 180 : 0, 1] })}

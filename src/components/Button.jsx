@@ -1,4 +1,4 @@
-import tw from 'tailwind.macro';
+import tw from "tailwind.macro";
 
 const StyledButton = tw.button`
   cursor-pointer

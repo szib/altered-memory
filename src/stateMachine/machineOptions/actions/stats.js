@@ -1,4 +1,3 @@
-/* eslint-disable no-param-reassign */
 export const incrementFails = context => {
   context.fails += 1;
 };

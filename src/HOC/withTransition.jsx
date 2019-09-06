@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 
-import tw from 'tailwind.macro';
+import tw from "tailwind.macro";
 
 const TransitionWrapper = tw.div`absolute w-full`;
 

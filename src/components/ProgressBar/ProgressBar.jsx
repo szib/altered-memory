@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
-import styled from 'styled-components';
-import tw from 'tailwind.macro';
+import styled from "styled-components";
+import tw from "tailwind.macro";
 
-import useInterval from '../../hooks/useInterval';
+import useInterval from "../../hooks/useInterval";
 
 const Wrapper = styled.div`
   height: 0.5em;

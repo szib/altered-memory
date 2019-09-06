@@ -1,4 +1,3 @@
-/* eslint-disable no-param-reassign */
 export const addScore = context => {
   context.score += context.level + context.bonus;
 };

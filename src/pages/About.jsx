@@ -1,15 +1,15 @@
 /* eslint-disable react/no-unescaped-entities */
-import React from 'react';
+import React from "react";
 
-import { Helmet } from 'react-helmet';
-import { Link } from 'react-router-dom';
+import { Helmet } from "react-helmet";
+import { Link } from "react-router-dom";
 
-import tw from 'tailwind.macro';
+import tw from "tailwind.macro";
 
-import Button from '../components/Button';
-import * as TW from '../components/TW';
-import withTransition from '../HOC/withTransition';
-import { Github, LinkedIn } from '../components/Icons';
+import Button from "../components/Button";
+import * as TW from "../components/TW";
+import withTransition from "../HOC/withTransition";
+import { Github, LinkedIn } from "../components/Icons";
 
 const AboutPage = () => {
   return (

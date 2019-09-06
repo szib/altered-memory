@@ -1,10 +1,10 @@
-import React from 'react';
+import React from "react";
 
-import styled from 'styled-components';
-import tw from 'tailwind.macro';
+import styled from "styled-components";
+import tw from "tailwind.macro";
 
-import Button from '../Button';
-import Item from './InfoPanelItem';
+import Button from "../Button";
+import Item from "./InfoPanelItem";
 
 const StyledDiv = styled.div`
   ${tw`bg-dark-paper-alt text-dark-pen`}
@@ -22,7 +22,7 @@ const InfoPanel = ({ className, machine }) => {
   const { score, lives, level, bonus } = context;
 
   const clickHandler = () => {
-    machine.send('QUIT_GAME');
+    machine.send("QUIT_GAME");
   };
 
   return (
