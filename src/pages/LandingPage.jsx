@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import Button from '../components/Button';
 
 import * as TW from '../components/TW';
+import withTransition from '../HOC/withTransition';
 
 const LandingPage = () => {
   return (
@@ -31,4 +32,4 @@ const LandingPage = () => {
   );
 };
 
-export default LandingPage;
+export default withTransition(LandingPage);

@@ -12,6 +12,7 @@ import GameStarter from './GameStarter';
 import StatsPage from './StatsPage';
 import Board from '../components/Board/Board';
 import InfoPanel from '../components/Sidebar/InfoPanel';
+import withTransition from '../HOC/withTransition';
 
 const AppDiv = styled.div`
   ${tw`w-screen h-screen`}
@@ -32,7 +33,7 @@ const AppDiv = styled.div`
   }
 `;
 
-const Game = ({ className }) => {
+const Game = () => {
   const machine = useMachine(machineConfig, machineOptions, machineContext);
   const { state, send } = machine;
 
@@ -40,15 +41,26 @@ const Game = ({ className }) => {
     send('CLICK_ON_CARD', { cardId: id });
   };
 
-  if (state.value === 'idle') return <GameStarter machine={machine} />;
-  if (state.value === 'showingStats') return <StatsPage machine={machine} />;
+  let component;
+  switch (state.value) {
+    case 'idle':
+      component = <GameStarter machine={machine} />;
+      break;
+    case 'showingStats':
+      component = <StatsPage machine={machine} />;
+      break;
 
-  return (
-    <AppDiv className={className}>
-      <Board machine={machine} clickOnCardHandler={clickOnCardHandler} />
-      <InfoPanel machine={machine} />
-    </AppDiv>
-  );
+    default:
+      component = (
+        <>
+          <Board machine={machine} clickOnCardHandler={clickOnCardHandler} />
+          <InfoPanel machine={machine} />
+        </>
+      );
+      break;
+  }
+
+  return <AppDiv>{component}</AppDiv>;
 };
 
-export default Game;
+export default withTransition(Game);

@@ -8,6 +8,7 @@ import tw from 'tailwind.macro';
 
 import Button from '../components/Button';
 import * as TW from '../components/TW';
+import withTransition from '../HOC/withTransition';
 import { Github, LinkedIn } from '../components/Icons';
 
 const AboutPage = () => {
@@ -51,4 +52,4 @@ const AboutPage = () => {
   );
 };
 
-export default AboutPage;
+export default withTransition(AboutPage);
