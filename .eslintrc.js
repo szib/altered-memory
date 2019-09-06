@@ -3,23 +3,22 @@ module.exports = {
     browser: true,
     jest: true,
     es6: true,
-    node: true,
+    node: true
   },
-  extends: ['airbnb', 'prettier'],
-  plugins: ['prettier'],
+  extends: [
+    "prettier",
+    "plugin:prettier/recommended",
+    "plugin:react/recommended"
+  ],
+  plugins: ["prettier"],
   rules: {
-    'prettier/prettier': [
-      'error',
-      {
-        singleQuote: true,
-        trailingComma: 'es5',
-      },
-    ],
-    'react/prop-types': 'off',
+    "react/prop-types": "off"
   },
   parserOptions: {
+    ecmaVersion: 2018,
+    sourceType: "module",
     ecmaFeatures: {
-      jsx: true,
-    },
-  },
+      jsx: true
+    }
+  }
 };
