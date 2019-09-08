@@ -1,5 +1,8 @@
 import React from "react";
 
+import { useSelector, useDispatch } from "react-redux";
+import { toggleMusic, toggleSound } from "../../redux/actions/settings";
+
 import styled from "styled-components";
 import tw from "tailwind.macro";
 
@@ -20,6 +23,9 @@ const StyledDiv = styled.div`
 const InfoPanel = ({ className, machine }) => {
   const { context } = machine;
   const { score, lives, level, bonus } = context;
+  const settings = useSelector(state => state.settings);
+  const { music, sound } = settings;
+  const dispatch = useDispatch();
 
   const clickHandler = () => {
     machine.send("QUIT_GAME");
@@ -31,6 +37,12 @@ const InfoPanel = ({ className, machine }) => {
       <Item title="Bonus" value={bonus} />
       <Item title="Lives" value={lives} />
       <Item title="Level" value={level} />
+      <Button onClick={() => dispatch(toggleSound())}>
+        Sound {sound ? "On" : "Off"}
+      </Button>
+      <Button onClick={() => dispatch(toggleMusic())}>
+        Music {music ? "On" : "Off"}
+      </Button>
       <Button onClick={clickHandler}>Quit game</Button>
     </StyledDiv>
   );
