@@ -3,6 +3,12 @@ import React from "react";
 import tw from "tailwind.macro";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faMusic,
+  faBan,
+  faVolumeUp,
+  faVolumeOff
+} from "@fortawesome/free-solid-svg-icons";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 
 const style = tw`text-3xl mx-2 cursor-pointer`;
@@ -19,5 +25,39 @@ export const LinkedIn = () => {
     window.open("https://www.linkedin.com/in/szib77/", "_blank");
   return (
     <FontAwesomeIcon icon={faLinkedin} onClick={clickHandler} style={style} />
+  );
+};
+
+export const Music = ({ clickHandler, enabled }) => {
+  return (
+    <div className="fa-layers fa-4x" onClick={clickHandler}>
+      <FontAwesomeIcon fixedWidth icon={faMusic} transform="shrink-6" />
+      {!enabled && (
+        <FontAwesomeIcon
+          fixedWidth
+          icon={faBan}
+          style={{ color: "red", opacity: 0.7 }}
+        />
+      )}
+    </div>
+  );
+};
+
+export const Sound = ({ clickHandler, enabled }) => {
+  // TODO: fix width
+  return enabled ? (
+    <FontAwesomeIcon
+      fixedWidth
+      icon={faVolumeUp}
+      onClick={clickHandler}
+      size="4x"
+    />
+  ) : (
+    <FontAwesomeIcon
+      fixedWidth
+      icon={faVolumeOff}
+      onClick={clickHandler}
+      size="4x"
+    />
   );
 };

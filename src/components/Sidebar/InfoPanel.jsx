@@ -8,6 +8,7 @@ import tw from "tailwind.macro";
 
 import Button from "../Button";
 import Item from "./InfoPanelItem";
+import { Music, Sound } from "../Icons";
 
 const StyledDiv = styled.div`
   ${tw`bg-dark-paper-alt text-dark-pen`}
@@ -37,12 +38,10 @@ const InfoPanel = ({ className, machine }) => {
       <Item title="Bonus" value={bonus} />
       <Item title="Lives" value={lives} />
       <Item title="Level" value={level} />
-      <Button onClick={() => dispatch(toggleSound())}>
-        Sound {sound ? "On" : "Off"}
-      </Button>
-      <Button onClick={() => dispatch(toggleMusic())}>
-        Music {music ? "On" : "Off"}
-      </Button>
+      <div style={tw`flex justify-between w-2/3 self-center`}>
+        <Music enabled={music} clickHandler={() => dispatch(toggleMusic())} />
+        <Sound enabled={sound} clickHandler={() => dispatch(toggleSound())} />
+      </div>
       <Button onClick={clickHandler}>Quit game</Button>
     </StyledDiv>
   );
