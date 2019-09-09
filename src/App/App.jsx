@@ -10,6 +10,7 @@ import Music from "./Music";
 import Game from "../pages/Game";
 import About from "../pages/About";
 import LandingPage from "../pages/LandingPage";
+import Settings from "../pages/Settings";
 
 const App = () => {
   const { location } = useContext(__RouterContext);
@@ -27,8 +28,9 @@ const App = () => {
         <animated.div key={key} style={props}>
           <Switch location={item}>
             <Route path="/about" exact component={About} />
-            <Route path="/" exact component={LandingPage} />
+            <Route path="/settings" exact component={Settings} />
             <Route path="/game" exact component={Game} />
+            <Route path="/" exact component={LandingPage} />
           </Switch>
         </animated.div>
       ))}

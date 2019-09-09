@@ -1,5 +1,7 @@
 import React from "react";
 
+import { useSelector } from "react-redux";
+
 import styled from "styled-components";
 import tw from "tailwind.macro";
 
@@ -34,7 +36,10 @@ const AppDiv = styled.div`
 `;
 
 const Game = () => {
-  const machine = useMachine(machineConfig, machineOptions, machineContext);
+  const settings = useSelector(state => state.settings);
+  const context = { ...machineContext, ...settings };
+
+  const machine = useMachine(machineConfig, machineOptions, context);
   const { state, send } = machine;
 
   const clickOnCardHandler = id => {
