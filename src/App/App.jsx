@@ -3,6 +3,8 @@ import React, { useContext } from "react";
 import { Route, Switch, __RouterContext } from "react-router-dom";
 import { useTransition, animated } from "react-spring";
 
+import { useSelector } from "react-redux";
+
 import Music from "./Music";
 
 import Game from "../pages/Game";
@@ -16,10 +18,11 @@ const App = () => {
     enter: { opacity: 1, transform: "translate(0, 0)" },
     leave: { opacity: 1, transform: "translate(-20%, 0)" }
   });
+  const { music } = useSelector(state => state.settings);
 
   return (
     <>
-      <Music playing={true} />
+      <Music playing={music} />
       {transitions.map(({ item, props, key }) => (
         <animated.div key={key} style={props}>
           <Switch location={item}>
