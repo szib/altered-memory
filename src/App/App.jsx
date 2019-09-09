@@ -3,6 +3,8 @@ import React, { useContext } from "react";
 import { Route, Switch, __RouterContext } from "react-router-dom";
 import { useTransition, animated } from "react-spring";
 
+import Music from "./Music";
+
 import Game from "../pages/Game";
 import About from "../pages/About";
 import LandingPage from "../pages/LandingPage";
@@ -17,6 +19,7 @@ const App = () => {
 
   return (
     <>
+      <Music playing={true} />
       {transitions.map(({ item, props, key }) => (
         <animated.div key={key} style={props}>
           <Switch location={item}>
