@@ -46,6 +46,17 @@ const AboutPage = () => {
               <Button>Back</Button>
             </Link>
           </TW.Text>
+          <TW.SmallText>
+            Music by{" "}
+            <a
+              href="https://www.youtube.com/user/myuuji"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={tw`text-dark-pen`}
+            >
+              Nicolas Gasparini (Myuu)
+            </a>
+          </TW.SmallText>
         </TW.Panel>
       </TW.Container>
     </TW.Screen>

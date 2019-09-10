@@ -1,5 +1,7 @@
 import {
   TOGGLE_MUSIC,
+  TURN_MUSIC_ON,
+  TURN_MUSIC_OFF,
   TOGGLE_SOUND,
   SELECT_DECK,
   SELECT_DIFFICULTY
@@ -18,6 +20,10 @@ const settingsReducer = (state = initialState, action) => {
   switch (action.type) {
     case TOGGLE_MUSIC:
       return { ...state, music: !state.music };
+    case TURN_MUSIC_ON:
+      return { ...state, music: true };
+    case TURN_MUSIC_OFF:
+      return { ...state, music: false };
     case TOGGLE_SOUND:
       return { ...state, sound: !state.sound };
     case SELECT_DECK:
