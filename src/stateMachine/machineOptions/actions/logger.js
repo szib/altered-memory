@@ -1,12 +1,10 @@
-/* eslint-disable no-console */
-
 const isInProduction = () => {
-  return process.env.NODE_ENV === 'production';
+  return process.env.NODE_ENV === "production";
 };
 
 export const logContext = context => {
   if (isInProduction) return;
-  console.group('context');
+  console.group("context");
   console.log(context);
   console.groupEnd();
 };

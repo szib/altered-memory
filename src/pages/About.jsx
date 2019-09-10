@@ -1,14 +1,15 @@
 /* eslint-disable react/no-unescaped-entities */
-import React from 'react';
+import React from "react";
 
-import { Helmet } from 'react-helmet';
-import { Link } from 'react-router-dom';
+import { Helmet } from "react-helmet";
+import { Link } from "react-router-dom";
 
-import tw from 'tailwind.macro';
+import tw from "tailwind.macro";
 
-import Button from '../components/Button';
-import * as TW from '../components/TW';
-import { Github, LinkedIn } from '../components/Icons';
+import Button from "../components/Button";
+import * as TW from "../components/TW";
+import withTransition from "../HOC/withTransition";
+import { Github, LinkedIn } from "../components/Icons";
 
 const AboutPage = () => {
   return (
@@ -45,10 +46,21 @@ const AboutPage = () => {
               <Button>Back</Button>
             </Link>
           </TW.Text>
+          <TW.SmallText>
+            Music by{" "}
+            <a
+              href="https://www.youtube.com/user/myuuji"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={tw`text-dark-pen`}
+            >
+              Nicolas Gasparini (Myuu)
+            </a>
+          </TW.SmallText>
         </TW.Panel>
       </TW.Container>
     </TW.Screen>
   );
 };
 
-export default AboutPage;
+export default withTransition(AboutPage);

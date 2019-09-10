@@ -14,11 +14,15 @@
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-helmet": "^5.2.1",
+    "react-redux": "^7.1.1",
     "react-router-dom": "^5.0.1",
     "react-scripts": "^3.1.1",
+    "react-sound": "^1.2.0",
     "react-spring": "^8.0.27",
+    "redux": "^4.0.4",
     "styled-components": "^4.3.2",
     "tailwind.macro": "^1.0.0-alpha.10",
+    "typescript": "^3.6.2",
     "use-machine": "^1.1.1",
     "xstate": "^4.6.7"
   },
@@ -26,7 +30,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint --ext js --ext jsx ./src",
+    "lint:fix": "npm run lint -- --fix"
   },
   "babel": {
     "presets": [
@@ -58,7 +64,11 @@
     }
   },
   "lint-staged": {
-    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+    "*.+(js|jsx|ts|tsx)": [
+      "eslint --fix",
+      "git add"
+    ],
+    "*.+(json|css|md)": [
       "prettier --write",
       "git add"
     ]

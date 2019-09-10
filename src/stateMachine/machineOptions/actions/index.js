@@ -1,11 +1,8 @@
-/* eslint-disable no-param-reassign */
-
-import * as Cards from './cards';
-import * as Logger from './logger';
-import * as Utils from './utils';
-import * as Scores from './scores';
-import * as Stats from './stats';
-import * as Options from './options';
+import * as Cards from "./cards";
+import * as Logger from "./logger";
+import * as Utils from "./utils";
+import * as Scores from "./scores";
+import * as Stats from "./stats";
 
 const decrementLives = context => {
   context.lives -= 1;
@@ -56,11 +53,10 @@ export default {
   ...Scores,
   ...Cards,
   ...Logger,
-  ...Options,
 
   decrementLives,
   resetContext,
   checkMatch,
   levelUp,
-  resetZIndex,
+  resetZIndex
 };

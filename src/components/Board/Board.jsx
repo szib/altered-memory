@@ -1,14 +1,14 @@
-import React, { useRef } from 'react';
+import React, { useRef } from "react";
 
-import styled from 'styled-components';
-import tw from 'tailwind.macro';
+import styled from "styled-components";
+import tw from "tailwind.macro";
 
-import { useMeasure } from '@softbind/react-hooks';
-import { useTransition, animated } from 'react-spring';
+import { useMeasure } from "@softbind/react-hooks";
+import { useTransition, animated } from "react-spring";
 
-import ProgressBar from '../ProgressBar/ProgressBar';
+import ProgressBar from "../ProgressBar/ProgressBar";
 
-import Card from './Card';
+import Card from "./Card";
 
 const AnimatedCard = animated(Card);
 
@@ -16,19 +16,26 @@ const BoardWrapper = styled.div`
   box-sizing: border-box;
   ${tw`w-full`}
   ${tw`bg-dark-paper`}
-  ${tw`w-full h-full p-16`}
+  ${tw`w-full h-full`}
   grid-area: board;
   position: relative;
 `;
 
+const getSeconds = diff => {
+  if (diff === "easy") return 8;
+  if (diff === "hard") return 4;
+  return 6;
+};
+
 const Board = ({ machine, clickOnCardHandler, className }) => {
   const { context } = machine;
-  const { cards } = context;
+  const { cards, difficulty } = context;
 
-  const showProgressBar = machine.state.value.running === 'showCards';
+  const showProgressBar = machine.state.value.running === "showCards";
+  const seconds = getSeconds(difficulty);
 
   const boardEl = useRef(null);
-  const measure = useMeasure(boardEl, 'bounds');
+  const measure = useMeasure(boardEl, "bounds");
   const { bounds } = measure;
   const boardSize = bounds && Math.min(bounds.width, bounds.height) * 0.75;
   const cardSize = Math.floor(boardSize / 4);
@@ -37,17 +44,17 @@ const Board = ({ machine, clickOnCardHandler, className }) => {
 
   const transitions = useTransition(cards, card => card.id, {
     from: ({ position }) => ({
-      position,
+      position
     }),
     update: ({ position }) => ({
-      position,
+      position
     }),
     leave: { height: 0 },
-    config: { mass: 12, tension: 300, friction: 70 },
+    config: { mass: 12, tension: 300, friction: 70 }
   });
 
   const onCompleteHandler = () => {
-    machine.send('TIMER_DONE');
+    machine.send("TIMER_DONE");
   };
 
   const trans = (x, y) =>
@@ -61,7 +68,7 @@ const Board = ({ machine, clickOnCardHandler, className }) => {
           style={{
             transform: position.interpolate((x, y) => trans(x, y)),
             zIndex: item.isMoving ? 1000 : 10,
-            ...rest,
+            ...rest
           }}
           card={item}
           cardSize={cardSize}
@@ -73,7 +80,9 @@ const Board = ({ machine, clickOnCardHandler, className }) => {
 
   return (
     <BoardWrapper ref={boardEl} className={className}>
-      {showProgressBar && <ProgressBar onCompleted={onCompleteHandler} />}
+      {showProgressBar && (
+        <ProgressBar seconds={seconds} onCompleted={onCompleteHandler} />
+      )}
       {cardElements}
     </BoardWrapper>
   );

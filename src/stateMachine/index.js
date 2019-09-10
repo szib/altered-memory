@@ -1,39 +1,30 @@
-import gameStates from './game';
+import gameStates from "./game";
 
 const machineConfig = {
-  id: 'game',
-  initial: 'idle',
+  id: "game",
+  initial: "running",
 
   states: {
-    idle: {
-      onEntry: ['resetContext', 'resetStats'],
-      on: {
-        START_GAME: 'running',
-        SET_DECK: {
-          target: 'idle',
-          actions: ['setDeck', 'preloadImages'],
-        },
-      },
-    },
     running: {
+      onEntry: ["resetContext", "resetStats"],
       on: {
-        QUIT_GAME: 'cleanUp',
-        'done.state.game.running.endGame': 'cleanUp',
+        QUIT_GAME: "cleanUp",
+        "done.state.game.running.endGame": "cleanUp"
       },
-      ...gameStates,
+      ...gameStates
     },
     cleanUp: {
       after: {
-        1200: { target: 'showingStats' },
+        1200: { target: "showingStats" }
       },
-      onExit: ['removeCards'],
+      onExit: ["removeCards"]
     },
     showingStats: {
       on: {
-        NEW_GAME: 'idle',
-      },
-    },
-  },
+        NEW_GAME: "running"
+      }
+    }
+  }
 };
 
 export default machineConfig;

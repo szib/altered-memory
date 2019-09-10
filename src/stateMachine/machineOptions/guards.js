@@ -18,7 +18,7 @@ const guards = {
   selectable,
   notAllFound,
   isMatched,
-  isPlayerDead,
+  isPlayerDead
 };
 
 export default guards;

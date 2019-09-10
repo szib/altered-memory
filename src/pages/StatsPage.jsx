@@ -1,10 +1,10 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
-import tw from 'tailwind.macro';
+import tw from "tailwind.macro";
 
-import Button from '../components/Button';
-import * as TW from '../components/TW';
+import Button from "../components/Button";
+import * as TW from "../components/TW";
 
 const Item = tw.div`
   text-dark-pen 
@@ -16,7 +16,7 @@ const Item = tw.div`
 
 const GameStarter = ({ machine }) => {
   const startGame = () => {
-    machine.send('NEW_GAME');
+    machine.send("NEW_GAME");
   };
 
   const {
@@ -25,7 +25,7 @@ const GameStarter = ({ machine }) => {
     matches,
     turns,
     longestStreak,
-    highestBonus,
+    highestBonus
   } = machine.context;
 
   return (

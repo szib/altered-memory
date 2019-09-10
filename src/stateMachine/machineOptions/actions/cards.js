@@ -1,7 +1,7 @@
 /* eslint-disable no-param-reassign */
 
-import { backImage, cardImages } from '../../../images';
-import getRandomCards from './levels';
+import { backImage, cardImages } from "../../../images";
+import getRandomCards from "./levels";
 
 export const selectCard = (context, event) => {
   const selectedCard = context.cards.find(
@@ -56,7 +56,7 @@ export const swapCards = context => {
 };
 
 export const initCards = context => {
-  const { deckName } = context;
+  const { selectedDeck } = context;
   const cards = [];
   const boardSize = 4;
   for (let idx = 0; idx < 16; idx += 1) {
@@ -68,9 +68,9 @@ export const initCards = context => {
       faceUp: false,
       found: false,
       backImage,
-      frontImage: cardImages[deckName][kind],
+      frontImage: cardImages[selectedDeck][kind],
       position: [idx % boardSize, Math.floor(idx / boardSize)],
-      isMoving: false,
+      isMoving: false
     };
     cards.push(card);
   }
@@ -84,7 +84,7 @@ export const shuffleCards = context => {
     const j = Math.floor(Math.random() * (i + 1));
     [cards[i].position, cards[j].position] = [
       cards[j].position,
-      cards[i].position,
+      cards[i].position
     ];
   }
   context.cards = cards;

@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import tw from 'tailwind.macro';
+import styled from "styled-components";
+import tw from "tailwind.macro";
 
 const BoardWrapper = styled.div`
   box-sizing: border-box;

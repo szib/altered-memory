@@ -1,97 +1,91 @@
 const gameStates = {
-  id: 'game',
-  initial: 'init',
+  id: "game",
+  initial: "init",
   states: {
     init: {
-      onEntry: ['initCards', 'shuffleCards'],
+      onEntry: ["initCards", "shuffleCards"],
       after: {
-        1200: { target: 'showCards' },
-      },
+        1200: { target: "showCards" }
+      }
     },
     showCards: {
-      onEntry: ['showCards'],
+      onEntry: ["showCards"],
       on: {
         TIMER_DONE: {
-          target: 's0',
-        },
+          target: "s0"
+        }
       },
-      onExit: ['hideCards'],
+      onExit: ["hideCards"]
     },
     s0: {
-      onEntry: ['logContext', 'incrementTurns'],
+      onEntry: ["logContext", "incrementTurns"],
       on: {
         CLICK_ON_CARD: {
-          target: 's1',
-          cond: 'selectable',
-        },
+          target: "s1",
+          cond: "selectable"
+        }
       },
-      onExit: ['selectCard', 'setFaceUp'],
+      onExit: ["selectCard", "setFaceUp"]
     },
     s1: {
       on: {
         CLICK_ON_CARD: {
-          target: 's2',
-          cond: 'selectable',
-        },
+          target: "s2",
+          cond: "selectable"
+        }
       },
-      onExit: ['selectCard', 'setFaceUp'],
+      onExit: ["selectCard", "setFaceUp"]
     },
     s2: {
-      onEntry: ['checkMatch'],
+      onEntry: ["checkMatch"],
       after: {
-        1: { target: 'match', cond: 'isMatched' },
-        2: { target: 'noMatch' },
-      },
+        1: { target: "match", cond: "isMatched" },
+        2: { target: "noMatch" }
+      }
     },
     noMatch: {
       onEntry: [
-        'decrementLives',
-        'decreaseBonus',
-        'incrementFails',
-        'resetStreak',
+        "decrementLives",
+        "decreaseBonus",
+        "incrementFails",
+        "resetStreak"
       ],
       after: {
-        999: { target: 'endGame', cond: 'isPlayerDead' },
-        1000: { target: 'swappingCards' },
+        999: { target: "endGame", cond: "isPlayerDead" },
+        1000: { target: "swappingCards" }
       },
-      onExit: [
-        'logCards',
-        'deselectCards',
-        'logCards',
-        'setFaceUp',
-        'logCards',
-      ],
+      onExit: ["logCards", "deselectCards", "logCards", "setFaceUp", "logCards"]
     },
     swappingCards: {
-      onEntry: ['resetZIndex', 'swapCards'],
+      onEntry: ["resetZIndex", "swapCards"],
       on: {
-        '': { target: 's0' },
-      },
+        "": { target: "s0" }
+      }
     },
     match: {
       onEntry: [
-        'addScore',
-        'incrementMatches',
-        'increaseBonus',
-        'incrementStreak',
-        'setHighestBonus',
+        "addScore",
+        "incrementMatches",
+        "increaseBonus",
+        "incrementStreak",
+        "setHighestBonus"
       ],
       after: {
-        2: { target: 's0', cond: 'notAllFound' },
-        1000: { target: 'endLevel' },
+        2: { target: "s0", cond: "notAllFound" },
+        1000: { target: "endLevel" }
       },
-      onExit: ['deselectCards', 'setFaceUp'],
+      onExit: ["deselectCards", "setFaceUp"]
     },
     endLevel: {
-      onEntry: ['levelUp'],
+      onEntry: ["levelUp"],
       after: {
-        2000: { target: 'init' },
-      },
+        2000: { target: "init" }
+      }
     },
     endGame: {
-      type: 'final',
-    },
-  },
+      type: "final"
+    }
+  }
 };
 
 export default gameStates;

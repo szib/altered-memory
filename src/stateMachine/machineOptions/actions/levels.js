@@ -1,4 +1,4 @@
-import shuffle from 'lodash.shuffle';
+import shuffle from "lodash.shuffle";
 
 const getRandomInt = (min = 0, max = 99) => {
   const minInt = Math.ceil(min);
