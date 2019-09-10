@@ -2,24 +2,11 @@ import gameStates from "./game";
 
 const machineConfig = {
   id: "game",
-  initial: "idle",
+  initial: "running",
 
   states: {
-    idle: {
-      onEntry: ["resetContext", "resetStats"],
-      on: {
-        START_GAME: "running",
-        SET_DECK: {
-          target: "idle",
-          actions: ["setDeck", "preloadImages"]
-        },
-        SET_DIFFICULTY: {
-          target: "idle",
-          actions: ["setDifficulty"]
-        }
-      }
-    },
     running: {
+      onEntry: ["resetContext", "resetStats"],
       on: {
         QUIT_GAME: "cleanUp",
         "done.state.game.running.endGame": "cleanUp"
@@ -34,7 +21,7 @@ const machineConfig = {
     },
     showingStats: {
       on: {
-        NEW_GAME: "idle"
+        NEW_GAME: "running"
       }
     }
   }

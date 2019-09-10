@@ -10,7 +10,5 @@ export default {
   fails: 0,
   streak: 0,
   longestStreak: 0,
-  highestBonus: 1,
-  deckName: "original",
-  difficulty: "normal"
+  highestBonus: 1
 };

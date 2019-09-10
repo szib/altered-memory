@@ -17,16 +17,12 @@ const LandingPage = () => {
         <TW.Text>Then find them.</TW.Text>
         <TW.Text>Oh. One more thing...</TW.Text>
         <TW.Text>You really do not want to make mistakes...</TW.Text>
-        <TW.Text>
-          <Link to="/game" as={Button}>
-            <Button>Start game</Button>
-          </Link>
-        </TW.Text>
-        <TW.Text>
-          <Link to="/about" as={Button}>
-            <Button>About</Button>
-          </Link>
-        </TW.Text>
+        <Link to="/settings" as={Button}>
+          <Button>Start game</Button>
+        </Link>
+        <Link to="/about" as={Button}>
+          <Button>About</Button>
+        </Link>
       </TW.Container>
     </TW.Screen>
   );
