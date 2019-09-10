@@ -7,9 +7,9 @@ import {
 
 const initialState = {
   decks: ["original", "tech", "sports"],
-  selectedDeck: "sports",
+  selectedDeck: "original",
   difficulties: ["easy", "normal", "hard"],
-  selectedDifficulty: "hard",
+  selectedDifficulty: "normal",
   music: false,
   sound: true
 };

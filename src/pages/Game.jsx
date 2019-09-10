@@ -10,7 +10,6 @@ import machineOptions from "../stateMachine/machineOptions";
 import machineConfig from "../stateMachine/index";
 import machineContext from "../stateMachine/context";
 
-import GameStarter from "./GameStarter";
 import StatsPage from "./StatsPage";
 import Board from "../components/Board/Board";
 import InfoPanel from "../components/Sidebar/InfoPanel";
@@ -48,9 +47,6 @@ const Game = () => {
 
   let component;
   switch (state.value) {
-    case "idle":
-      component = <GameStarter machine={machine} />;
-      break;
     case "showingStats":
       component = <StatsPage machine={machine} />;
       break;

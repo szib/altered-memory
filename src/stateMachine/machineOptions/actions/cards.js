@@ -56,7 +56,7 @@ export const swapCards = context => {
 };
 
 export const initCards = context => {
-  const { deckName } = context;
+  const { selectedDeck } = context;
   const cards = [];
   const boardSize = 4;
   for (let idx = 0; idx < 16; idx += 1) {
@@ -68,7 +68,7 @@ export const initCards = context => {
       faceUp: false,
       found: false,
       backImage,
-      frontImage: cardImages[deckName][kind],
+      frontImage: cardImages[selectedDeck][kind],
       position: [idx % boardSize, Math.floor(idx / boardSize)],
       isMoving: false
     };
