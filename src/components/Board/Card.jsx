@@ -47,7 +47,7 @@ const Card = props => {
   }, [card.id, clickOnCardHandler]);
 
   const springConfig = faceUp => ({
-    ...(faceUp ? tw`bg-dark-card-front` : tw`bg-dark-card-back`),
+    ...(faceUp ? tw`bg-dark-faceup` : tw`bg-dark-facedown`),
     opacity: faceUp ? 1 : 0,
     ys: [faceUp ? 180 : 0, 0.98],
     config: { mass: 2, tension: 500, friction: 42 }

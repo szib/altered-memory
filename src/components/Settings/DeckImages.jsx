@@ -13,7 +13,7 @@ const DeckImage = styled.div`
   ${tw`
     m-2
     rounded-lg 
-    bg-dark-card-front
+    bg-dark-faceup
     w-10
     h-10
   `}
