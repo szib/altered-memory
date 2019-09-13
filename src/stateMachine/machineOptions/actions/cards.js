@@ -23,6 +23,20 @@ export const setFaceUp = context => {
   });
 };
 
+export const enableClicks = context => {
+  context.cards.map(card => {
+    card.selectable = true;
+    return card;
+  });
+};
+
+export const disableClicks = context => {
+  context.cards.map(card => {
+    card.selectable = false;
+    return card;
+  });
+};
+
 export const showCards = context => {
   context.cards.map(card => {
     card.faceUp = true;
@@ -70,7 +84,8 @@ export const initCards = context => {
       backImage,
       frontImage: cardImages[selectedDeck][kind],
       position: [idx % boardSize, Math.floor(idx / boardSize)],
-      isMoving: false
+      isMoving: false,
+      selectable: false
     };
     cards.push(card);
   }

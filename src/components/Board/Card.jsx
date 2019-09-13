@@ -1,6 +1,9 @@
-import React, { useCallback } from "react";
+import React, { useState } from "react";
 
 import { useSpring, animated } from "react-spring";
+
+import Sound from "react-sound";
+import flipCardSound from "../../assets/sounds/flipcard.wav";
 
 import styled from "styled-components";
 import tw from "tailwind.macro";
@@ -42,9 +45,14 @@ const trans = (y, s) => `perspective(600px) rotateY(${y}deg) scale(${s})`;
 const Card = props => {
   const { card, clickOnCardHandler, cardSize, style } = props;
 
-  const clickHandler = useCallback(() => {
-    clickOnCardHandler(card.id);
-  }, [card.id, clickOnCardHandler]);
+  const [isFlipCardSoundPlaying, setIsFlipCardSoundPlaying] = useState(false);
+
+  const clickHandler = () => {
+    if (card.selectable && !card.selected && !card.faceUp) {
+      setIsFlipCardSoundPlaying(true);
+      clickOnCardHandler(card.id);
+    }
+  };
 
   const springConfig = faceUp => ({
     ...(faceUp ? tw`bg-dark-faceup` : tw`bg-dark-facedown`),
@@ -77,6 +85,13 @@ const Card = props => {
         image={card.frontImage}
         onMouseEnter={() => set({ ys: [card.faceUp ? 180 : 0, 1] })}
         onMouseLeave={() => set({ ys: [card.faceUp ? 180 : 0, 0.98] })}
+      />
+      <Sound
+        url={flipCardSound}
+        playStatus={
+          isFlipCardSoundPlaying ? Sound.status.PLAYING : Sound.status.PAUSED
+        }
+        onFinishedPlaying={() => setIsFlipCardSoundPlaying(false)}
       />
     </CardWrapper>
   );
