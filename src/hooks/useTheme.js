@@ -35,6 +35,20 @@ const useTheme = () => {
         progressbarwrapper: tw`bg-ocean-paper text-ocean-pen border-ocean-pen`
       };
 
+    case "pastel":
+      return {
+        bg: tw`bg-pastel-paper`,
+        text: tw`text-pastel-pen`,
+        border: tw`border-pastel-pen`,
+        faceUpCard: tw`bg-pastel-faceup`,
+        faceDownCard: tw`bg-pastel-facedown`,
+        button: tw`text-pastel-pen border-pastel-pen hover:bg-pastel-pen hover:text-pastel-paper`,
+        settingsbutton: tw`text-pastel-pen border-pastel-pen`,
+        infopanel: tw`bg-pastel-paper2 text-pastel-pen`,
+        progressbar: tw`bg-pastel-pen`,
+        progressbarwrapper: tw`bg-pastel-paper text-pastel-pen border-pastel-pen`
+      };
+
     default:
       break;
   }
