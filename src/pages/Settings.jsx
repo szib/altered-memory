@@ -7,6 +7,7 @@ import * as TW from "../components/TW";
 
 import DeckSelector from "../components/Settings/DeckSelector";
 import DifficultySelector from "../components/Settings/DifficultySelector";
+import ThemeSelector from "../components/Settings/ThemeSelector";
 import MusicOnOFF from "../components/Settings/MusicOnOff";
 
 import withTransition from "../HOC/withTransition";
@@ -20,6 +21,7 @@ const Settings = () => {
           <MusicOnOFF />
           <DeckSelector />
           <DifficultySelector />
+          <ThemeSelector />
           <Link to="/game" as={Button}>
             <Button>Start</Button>
           </Link>

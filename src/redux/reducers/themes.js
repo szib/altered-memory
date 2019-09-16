@@ -1,17 +1,15 @@
 import { SELECT_THEME } from "../actions/themes";
 
-import { themeNames } from "../../config/themes";
-
 const initialState = {
-  themes: ["dark", "ocean"],
-  theme: "ocean"
+  themeList: ["dark", "ocean", "pastel"],
+  selectedTheme: "pastel"
 };
 
 const themeReducer = (state = initialState, action) => {
   switch (action.type) {
     case SELECT_THEME:
-      if (themeNames.indexOf(action.theme) < 0) return state;
-      return { ...state, theme: action.theme };
+      if (state.themeList.indexOf(action.theme) < 0) return state;
+      return { ...state, selectedTheme: action.theme };
     default:
       return state;
   }

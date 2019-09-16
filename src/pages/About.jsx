@@ -1,9 +1,10 @@
 /* eslint-disable react/no-unescaped-entities */
-import React from "react";
+import React, { useContext } from "react";
 
 import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 
+import { ThemeContext } from "styled-components";
 import tw from "tailwind.macro";
 
 import Button from "../components/Button";
@@ -12,6 +13,7 @@ import withTransition from "../HOC/withTransition";
 import { Github, LinkedIn } from "../components/Icons";
 
 const AboutPage = () => {
+  const themeContext = useContext(ThemeContext);
   return (
     <TW.Screen>
       <Helmet title="About" />
@@ -52,7 +54,7 @@ const AboutPage = () => {
               href="https://www.youtube.com/user/myuuji"
               target="_blank"
               rel="noopener noreferrer"
-              style={tw`text-dark-pen`}
+              style={themeContext.text}
             >
               Nicolas Gasparini (Myuu)
             </a>

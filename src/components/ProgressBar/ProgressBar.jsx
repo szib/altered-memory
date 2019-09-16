@@ -12,23 +12,18 @@ const Wrapper = styled.div`
     mt-6
     mx-auto
 
-    bg-dark-paper  
-    text-dark-pen
-
     border
     border-solid
-    border-dark-pen
     rounded
   `}
+  ${props => props.theme.progressbarwrapper}
 `;
 
 const Bar = styled.div`
   width: ${props => props.percentage}%;
   transition: width 1s linear;
-  ${tw`
-    h-full
-    bg-dark-pen
-  `}
+  ${tw`h-full`}
+  ${props => props.theme.progressbar}
 `;
 
 const ProgressBar = ({ seconds = 5, onCompleted }) => {

@@ -11,7 +11,7 @@ import Item from "./InfoPanelItem";
 import { Music } from "../Icons";
 
 const StyledDiv = styled.div`
-  ${tw`bg-dark-paper2 text-dark-pen`}
+  ${props => props.theme.infopanel}
 
   @media screen and (orientation:portrait) {
     ${tw`flex flex-row justify-around`}
