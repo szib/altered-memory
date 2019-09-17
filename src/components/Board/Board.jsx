@@ -70,7 +70,12 @@ const Board = ({ machine, clickOnCardHandler, className }) => {
   return (
     <BoardWrapper ref={boardEl} className={className}>
       {showProgressBar && (
-        <ProgressBar seconds={seconds} onCompleted={onCompleteHandler} />
+        <ProgressBar
+          seconds={seconds}
+          onCompleted={onCompleteHandler}
+          offsetY={offsetY}
+          width={bounds.width}
+        />
       )}
       {cardElements}
     </BoardWrapper>

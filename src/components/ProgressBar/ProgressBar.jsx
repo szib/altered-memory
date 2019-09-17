@@ -7,11 +7,12 @@ import useInterval from "../../hooks/useInterval";
 
 const Wrapper = styled.div`
   height: 0.5em;
-  width: 48%;
-  ${tw`
-    mt-6
-    mx-auto
+  width: ${props => props.width * 0.85}px;
 
+  position: absolute;
+  top: ${props => props.offsetY / 4}px;
+
+  ${tw`
     border
     border-solid
     rounded
@@ -26,7 +27,7 @@ const Bar = styled.div`
   ${props => props.theme.progressbar}
 `;
 
-const ProgressBar = ({ seconds = 5, onCompleted }) => {
+const ProgressBar = ({ seconds = 5, onCompleted, offsetY, width }) => {
   const step = 100 / seconds;
 
   const [percentage, setPercentage] = useState(100);
@@ -44,7 +45,7 @@ const ProgressBar = ({ seconds = 5, onCompleted }) => {
   }, [percentage, onCompleted]);
 
   return (
-    <Wrapper>
+    <Wrapper offsetY={offsetY} width={width}>
       <Bar percentage={percentage} />
     </Wrapper>
   );
