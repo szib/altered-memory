@@ -49,6 +49,20 @@ const useTheme = () => {
         progressbarwrapper: tw`bg-pastel-paper text-pastel-pen border-pastel-pen`
       };
 
+    case "fire":
+      return {
+        bg: tw`bg-fire-paper`,
+        text: tw`text-fire-pen`,
+        border: tw`border-fire-pen`,
+        faceUpCard: tw`bg-fire-faceup`,
+        faceDownCard: tw`bg-fire-facedown`,
+        button: tw`text-fire-pen border-fire-pen hover:bg-fire-pen hover:text-fire-paper`,
+        settingsbutton: tw`text-fire-pen border-fire-pen`,
+        infopanel: tw`bg-fire-paper2 text-fire-pen`,
+        progressbar: tw`bg-fire-pen`,
+        progressbarwrapper: tw`bg-fire-paper text-fire-pen border-fire-pen`
+      };
+
     default:
       break;
   }

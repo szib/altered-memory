@@ -1,8 +1,8 @@
 import { SELECT_THEME } from "../actions/themes";
 
 const initialState = {
-  themeList: ["dark", "ocean", "pastel"],
-  selectedTheme: "pastel"
+  themeList: ["dark", "ocean", "pastel", "fire"],
+  selectedTheme: "fire"
 };
 
 const themeReducer = (state = initialState, action) => {
