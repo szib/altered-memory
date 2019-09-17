@@ -10,6 +10,7 @@ const useTheme = () => {
     case "dark":
       return {
         bg: tw`bg-dark-paper`,
+        bg2: tw`bg-dark-paper2`,
         text: tw`text-dark-pen`,
         border: tw`border-dark-pen`,
         faceUpCard: tw`bg-dark-faceup`,
@@ -24,6 +25,7 @@ const useTheme = () => {
     case "ocean":
       return {
         bg: tw`bg-ocean-paper`,
+        bg2: tw`bg-ocean-paper2`,
         text: tw`text-ocean-pen`,
         border: tw`border-ocean-pen`,
         faceUpCard: tw`bg-ocean-faceup`,
@@ -38,6 +40,7 @@ const useTheme = () => {
     case "pastel":
       return {
         bg: tw`bg-pastel-paper`,
+        bg2: tw`bg-pastel-paper2`,
         text: tw`text-pastel-pen`,
         border: tw`border-pastel-pen`,
         faceUpCard: tw`bg-pastel-faceup`,
@@ -52,6 +55,7 @@ const useTheme = () => {
     case "fire":
       return {
         bg: tw`bg-fire-paper`,
+        bg2: tw`bg-fire-paper2`,
         text: tw`text-fire-pen`,
         border: tw`border-fire-pen`,
         faceUpCard: tw`bg-fire-faceup`,

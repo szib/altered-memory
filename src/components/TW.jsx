@@ -47,11 +47,11 @@ export const A = styled.a`
 export const Panel = styled.div`
   ${tw`
     p-8
-    bg-transparent
     border-solid
     border
     rounded
   `}
   ${props => props.theme.text}
+  ${props => props.theme.bg2}
   ${props => props.theme.border}
 `;
