@@ -8,7 +8,6 @@ const StyledButton = styled.button`
     text-xl
     
     bg-transparent
-    w-full
     mx-auto
     
     border
@@ -16,12 +15,14 @@ const StyledButton = styled.button`
     hover:border-transparent 
     
     px-8 py-4
-    my-2
+    m-2
     
     hover:opacity-75
     outline-none
   `}
+  transition: all 200ms ease-in;
 
+  ${props => props.full && tw`w-full`}
   ${props => props.theme.button}
 `;
 

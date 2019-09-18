@@ -11,33 +11,32 @@ export const Screen = styled.div`
 
 export const Container = styled.div`
   ${tw`
-    m-20 
+    m-10 
     flex flex-col justify-center items-center
+    max-w-4xl
   `}
 `;
 
 export const Title = styled.div`
   ${tw`
     font-display
-    text-6xl 
     text-center
   `}
+  ${props => props.uppercase && tw`uppercase`}
+  ${props => (props.big ? tw`text-6xl` : tw`text-4xl`)}
   ${props => props.theme.text}
 `;
 
 export const Text = styled.div`
   ${tw`
     font-body
-    text-2xl 
+    text-xl 
     text-center
     my-2
   `}
+  ${props => props.small && tw`text-sm`}
+  ${props => props.uppercase && tw`uppercase`}
   ${props => props.theme.text}
-`;
-
-export const SmallText = tw(Text)`
-  text-sm
-  uppercase
 `;
 
 export const A = styled.a`

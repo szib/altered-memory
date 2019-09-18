@@ -14,7 +14,7 @@ const ThemeSelector = () => {
   const { themeList, selectedTheme } = themes;
 
   return (
-    <>
+    <div style={tw`my-4`}>
       <Text>Themes</Text>
       <div style={tw`flex justify-center items-center`}>
         {themeList.map(theme => (
@@ -27,7 +27,7 @@ const ThemeSelector = () => {
           </SettingsButton>
         ))}
       </div>
-    </>
+    </div>
   );
 };
 
