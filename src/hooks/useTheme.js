@@ -67,6 +67,21 @@ const useTheme = () => {
         progressbarwrapper: tw`bg-fire-paper text-fire-pen border-fire-pen`
       };
 
+    case "nature":
+      return {
+        bg: tw`bg-nature-paper`,
+        bg2: tw`bg-nature-paper2`,
+        text: tw`text-nature-pen`,
+        border: tw`border-nature-pen`,
+        faceUpCard: tw`bg-nature-faceup`,
+        faceDownCard: tw`bg-nature-facedown`,
+        button: tw`text-nature-pen border-nature-pen hover:bg-nature-pen hover:text-nature-paper`,
+        settingsbutton: tw`text-nature-pen border-nature-pen`,
+        infopanel: tw`bg-nature-paper2 text-nature-pen`,
+        progressbar: tw`bg-nature-pen`,
+        progressbarwrapper: tw`bg-nature-paper text-nature-pen border-nature-pen`
+      };
+
     default:
       break;
   }

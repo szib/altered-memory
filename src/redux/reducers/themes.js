@@ -1,7 +1,7 @@
 import { SELECT_THEME } from "../actions/themes";
 
 const initialState = {
-  themeList: ["dark", "ocean", "pastel", "fire"],
+  themeList: ["dark", "ocean", "pastel", "fire", "nature"],
   selectedTheme: "dark"
 };
 

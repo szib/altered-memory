@@ -29,6 +29,13 @@ module.exports = {
         pen: "rgba(252, 191, 73, 1)",
         faceup: "rgba(252, 191, 73, 1)",
         facedown: "rgba(234, 226, 183, 1)"
+      },
+      nature: {
+        paper: "rgba(81, 118, 100, 1)",
+        paper2: "rgba(45, 51, 25, 1)",
+        pen: "rgba(159, 216, 203, 1)",
+        faceup: "rgba(27, 193, 162, 1)",
+        facedown: "rgba(202, 207, 214, 1)"
       }
     },
     fontFamily: {
