@@ -14,7 +14,7 @@ const MusicOnOff = () => {
   const { music } = settings;
 
   return (
-    <>
+    <div style={tw`my-4`}>
       <Text>Music</Text>
       <div style={tw`flex justify-center items-center`}>
         <SettingsButton
@@ -32,7 +32,7 @@ const MusicOnOff = () => {
           Off
         </SettingsButton>
       </div>
-    </>
+    </div>
   );
 };
 

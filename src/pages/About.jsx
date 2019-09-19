@@ -1,9 +1,10 @@
 /* eslint-disable react/no-unescaped-entities */
-import React from "react";
+import React, { useContext } from "react";
 
 import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 
+import { ThemeContext } from "styled-components";
 import tw from "tailwind.macro";
 
 import Button from "../components/Button";
@@ -12,12 +13,13 @@ import withTransition from "../HOC/withTransition";
 import { Github, LinkedIn } from "../components/Icons";
 
 const AboutPage = () => {
+  const themeContext = useContext(ThemeContext);
   return (
     <TW.Screen>
       <Helmet title="About" />
       <TW.Container>
         <TW.Panel>
-          <TW.Title>Altered Memory</TW.Title>
+          <TW.Title big>Altered Memory</TW.Title>
           <TW.Text>
             This game is a remake of my Javascript project at Flatiron School.
             During the project week we did not have time to finish it as we
@@ -34,29 +36,29 @@ const AboutPage = () => {
             </TW.A>
           </TW.Text>
           <TW.Title style={tw`mt-10`}>Ivan Szebenszki</TW.Title>
-          <TW.Text>
+          <TW.Text uppercase>
             London-based Full Stack Developer, Flatiron School Graduate
           </TW.Text>
           <TW.Text>
             <Github />
             <LinkedIn />
           </TW.Text>
-          <TW.Text style={tw`mt-10`}>
+          <TW.Text style={tw`mt-8`}>
             <Link to="/" as={Button}>
-              <Button>Back</Button>
+              <Button full>Back</Button>
             </Link>
           </TW.Text>
-          <TW.SmallText>
+          <TW.Text small uppercase>
             Music by{" "}
             <a
               href="https://www.youtube.com/user/myuuji"
               target="_blank"
               rel="noopener noreferrer"
-              style={tw`text-dark-pen`}
+              style={themeContext.text}
             >
               Nicolas Gasparini (Myuu)
             </a>
-          </TW.SmallText>
+          </TW.Text>
         </TW.Panel>
       </TW.Container>
     </TW.Screen>

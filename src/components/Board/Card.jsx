@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 
 import { useSpring, animated } from "react-spring";
 
 import Sound from "react-sound";
 import flipCardSound from "../../assets/sounds/flipcard.wav";
 
-import styled from "styled-components";
+import styled, { ThemeContext } from "styled-components";
 import tw from "tailwind.macro";
 
 const CardWrapper = styled.div`
@@ -45,6 +45,8 @@ const trans = (y, s) => `perspective(600px) rotateY(${y}deg) scale(${s})`;
 const Card = props => {
   const { card, clickOnCardHandler, cardSize, style } = props;
 
+  const theme = useContext(ThemeContext);
+
   const [isFlipCardSoundPlaying, setIsFlipCardSoundPlaying] = useState(false);
 
   const clickHandler = () => {
@@ -55,7 +57,7 @@ const Card = props => {
   };
 
   const springConfig = faceUp => ({
-    ...(faceUp ? tw`bg-dark-faceup` : tw`bg-dark-facedown`),
+    ...(faceUp ? theme.faceUpCard : theme.faceDownCard),
     opacity: faceUp ? 1 : 0,
     ys: [faceUp ? 180 : 0, 0.98],
     config: { mass: 2, tension: 500, friction: 42 }
