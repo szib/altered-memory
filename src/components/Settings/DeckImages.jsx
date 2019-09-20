@@ -13,10 +13,10 @@ const DeckImage = styled.div`
   ${tw`
     m-2
     rounded-lg 
-    bg-dark-card-front
     w-10
     h-10
   `}
+  ${props => props.theme.faceUpCard}
 `;
 
 const DeckImages = ({ images }) => {

@@ -1,25 +1,14 @@
 import React, { useRef } from "react";
 
-import styled from "styled-components";
-import tw from "tailwind.macro";
-
 import { useMeasure } from "@softbind/react-hooks";
 import { useTransition, animated } from "react-spring";
 
 import ProgressBar from "../ProgressBar/ProgressBar";
+import BoardWrapper from "./BoardWrapper";
 
 import Card from "./Card";
 
 const AnimatedCard = animated(Card);
-
-const BoardWrapper = styled.div`
-  box-sizing: border-box;
-  ${tw`w-full`}
-  ${tw`bg-dark-paper`}
-  ${tw`w-full h-full`}
-  grid-area: board;
-  position: relative;
-`;
 
 const getSeconds = diff => {
   if (diff === "easy") return 8;
@@ -81,7 +70,12 @@ const Board = ({ machine, clickOnCardHandler, className }) => {
   return (
     <BoardWrapper ref={boardEl} className={className}>
       {showProgressBar && (
-        <ProgressBar seconds={seconds} onCompleted={onCompleteHandler} />
+        <ProgressBar
+          seconds={seconds}
+          onCompleted={onCompleteHandler}
+          offsetY={offsetY}
+          width={bounds.width}
+        />
       )}
       {cardElements}
     </BoardWrapper>

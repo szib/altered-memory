@@ -18,7 +18,7 @@ const DeckSelector = () => {
   const images = cardImages[selectedDeck];
 
   return (
-    <>
+    <div style={tw`my-6`}>
       <Text>Deck</Text>
       <div style={tw`flex justify-center items-center`}>
         {decks.map(deck => (
@@ -32,7 +32,7 @@ const DeckSelector = () => {
         ))}
       </div>
       {images && <DeckImages images={images} />}
-    </>
+    </div>
   );
 };
 

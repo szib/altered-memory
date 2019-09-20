@@ -14,7 +14,7 @@ const DifficultySelector = () => {
   const { difficulties, selectedDifficulty } = settings;
 
   return (
-    <>
+    <div style={tw`my-4`}>
       <Text>Difficulty</Text>
       <div style={tw`flex justify-center items-center`}>
         {difficulties.map(difficulty => (
@@ -27,7 +27,7 @@ const DifficultySelector = () => {
           </SettingsButton>
         ))}
       </div>
-    </>
+    </div>
   );
 };
 

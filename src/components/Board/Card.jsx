@@ -1,8 +1,8 @@
-import React, { useCallback } from "react";
+import React, { useContext } from "react";
 
 import { useSpring, animated } from "react-spring";
 
-import styled from "styled-components";
+import styled, { ThemeContext } from "styled-components";
 import tw from "tailwind.macro";
 
 const CardWrapper = styled.div`
@@ -42,12 +42,16 @@ const trans = (y, s) => `perspective(600px) rotateY(${y}deg) scale(${s})`;
 const Card = props => {
   const { card, clickOnCardHandler, cardSize, style } = props;
 
-  const clickHandler = useCallback(() => {
-    clickOnCardHandler(card.id);
-  }, [card.id, clickOnCardHandler]);
+  const theme = useContext(ThemeContext);
+
+  const clickHandler = () => {
+    if (card.selectable && !card.selected && !card.faceUp) {
+      clickOnCardHandler(card.id);
+    }
+  };
 
   const springConfig = faceUp => ({
-    ...(faceUp ? tw`bg-dark-card-front` : tw`bg-dark-card-back`),
+    ...(faceUp ? theme.faceUpCard : theme.faceDownCard),
     opacity: faceUp ? 1 : 0,
     ys: [faceUp ? 180 : 0, 0.98],
     config: { mass: 2, tension: 500, friction: 42 }

@@ -8,22 +8,17 @@ const importAll = r => {
   return images;
 };
 
-const original = importAll(
+const raphael = importAll(
   require.context("./assets/images/original", false, /\.(png|jpe?g|svg)$/)
 );
 
-const tech = importAll(
-  require.context("./assets/images/tech", false, /\.(png|jpe?g|svg)$/)
-);
-
-const sports = importAll(
-  require.context("./assets/images/sports", false, /\.(png|jpe?g|svg)$/)
+const feather = importAll(
+  require.context("./assets/images/feather", false, /\.(png|jpe?g|svg)$/)
 );
 
 export const cardImages = {
-  original,
-  tech,
-  sports
+  raphael,
+  feather
 };
 
 export { backImage };

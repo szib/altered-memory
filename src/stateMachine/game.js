@@ -18,7 +18,7 @@ const gameStates = {
       onExit: ["hideCards"]
     },
     s0: {
-      onEntry: ["logContext", "incrementTurns"],
+      onEntry: ["logContext", "incrementTurns", "enableClicks"],
       on: {
         CLICK_ON_CARD: {
           target: "s1",
@@ -34,7 +34,7 @@ const gameStates = {
           cond: "selectable"
         }
       },
-      onExit: ["selectCard", "setFaceUp"]
+      onExit: ["selectCard", "setFaceUp", "disableClicks"]
     },
     s2: {
       onEntry: ["checkMatch"],

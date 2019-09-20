@@ -3,10 +3,6 @@
   "version": "0.0.5",
   "private": true,
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.22",
-    "@fortawesome/free-brands-svg-icons": "^5.10.2",
-    "@fortawesome/free-solid-svg-icons": "^5.10.2",
-    "@fortawesome/react-fontawesome": "^0.1.4",
     "@softbind/react-hooks": "0.0.3",
     "lodash.shuffle": "^4.2.0",
     "normalize.css": "^8.0.1",
@@ -40,7 +36,8 @@
       "@babel/preset-react"
     ],
     "plugins": [
-      "macros"
+      "macros",
+      "babel-plugin-styled-components"
     ]
   },
   "eslintConfig": {
@@ -74,10 +71,13 @@
     ]
   },
   "devDependencies": {
+    "@iconify/icons-raphael": "^1.0.1",
+    "@iconify/react": "^1.1.1",
     "babel-plugin-macros": "^2.6.1",
-    "eslint": "^6.3.0",
+    "babel-plugin-styled-components": "^1.10.6",
+    "eslint": "^6.4.0",
     "eslint-config-airbnb": "^18.0.1",
-    "eslint-config-prettier": "^6.1.0",
+    "eslint-config-prettier": "^6.3.0",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-prettier": "^3.1.0",

@@ -5,14 +5,7 @@ import tw from "tailwind.macro";
 
 import Button from "../components/Button";
 import * as TW from "../components/TW";
-
-const Item = tw.div`
-  text-dark-pen 
-  font-body
-  text-xl 
-  text-center
-  my-2
-`;
+import StatItem from "../components/StatItem";
 
 const GameStarter = ({ machine }) => {
   const startGame = () => {
@@ -30,18 +23,23 @@ const GameStarter = ({ machine }) => {
 
   return (
     <TW.Screen>
-      <TW.Container style={tw`text-dark-pen`}>
+      <TW.Container>
         <TW.Panel>
-          <TW.Title>Stats</TW.Title>
-          <Item>{`Score: ${score}`}</Item>
-          <Item>{`Turns: ${turns}`}</Item>
-          <Item>{`Matches: ${matches}`}</Item>
-          <Item>{`Longest steak: ${longestStreak}`}</Item>
-          <Item>{`Highest bonus: ${highestBonus}`}</Item>
-          <Item>{`Fails: ${fails}`}</Item>
-          <Button onClick={startGame}>New game</Button>
+          <TW.Title>Game statistics</TW.Title>
+          <StatItem title="Turns" value={turns}></StatItem>
+          <StatItem title="Score" value={score}></StatItem>
+          <StatItem title="Matches" value={matches}></StatItem>
+          <StatItem title="Longest steak" value={longestStreak}></StatItem>
+          <StatItem title="Highest bonus" value={highestBonus}></StatItem>
+          <StatItem title="Fails" value={fails}></StatItem>
+          <Button full onClick={startGame} style={tw`mt-6`}>
+            Start new game
+          </Button>
+          <Link to="/settings" as={Button}>
+            <Button full>Game settings</Button>
+          </Link>
           <Link to="/" as={Button}>
-            <Button>Back</Button>
+            <Button full>Home</Button>
           </Link>
         </TW.Panel>
       </TW.Container>

@@ -1,4 +1,3 @@
-export const TOGGLE_SOUND = "TOGGLE_SOUND";
 export const TOGGLE_MUSIC = "TOGGLE_MUSIC";
 export const TURN_MUSIC_ON = "TURN_MUSIC_ON";
 export const TURN_MUSIC_OFF = "TURN_MUSIC_OFF";
@@ -18,12 +17,6 @@ export const turnMusicOn = () => {
 export const turnMusicOff = () => {
   return {
     type: TURN_MUSIC_OFF
-  };
-};
-
-export const toggleSound = () => {
-  return {
-    type: TOGGLE_SOUND
   };
 };
 
