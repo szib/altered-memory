@@ -59,6 +59,28 @@ const AboutPage = () => {
               Nicolas Gasparini (Myuu)
             </a>
           </TW.Text>
+          <TW.Text small uppercase>
+            Feather icons by{" "}
+            <a
+              href="https://github.com/feathericon/feathericon"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={themeContext.text}
+            >
+              Megumi Hano
+            </a>
+          </TW.Text>
+          <TW.Text small uppercase>
+            Raphael icons by{" "}
+            <a
+              href="http://dmitrybaranovskiy.github.io/raphael/"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={themeContext.text}
+            >
+              Dmitry Baranovskiy
+            </a>
+          </TW.Text>
         </TW.Panel>
       </TW.Container>
     </TW.Screen>

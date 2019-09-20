@@ -8,8 +8,8 @@ import {
 } from "../actions/settings";
 
 const initialState = {
-  decks: ["original", "tech", "sports"],
-  selectedDeck: "original",
+  decks: ["raphael", "feather"],
+  selectedDeck: "raphael",
   difficulties: ["easy", "normal", "hard"],
   selectedDifficulty: "normal",
   music: false,
