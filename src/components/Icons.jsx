@@ -3,12 +3,7 @@ import React from "react";
 import tw from "tailwind.macro";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faMusic,
-  faBan,
-  faVolumeUp,
-  faVolumeOff
-} from "@fortawesome/free-solid-svg-icons";
+import { faMusic, faBan } from "@fortawesome/free-solid-svg-icons";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 
 const style = tw`text-3xl mx-2 cursor-pointer`;
@@ -40,24 +35,5 @@ export const Music = ({ clickHandler, enabled }) => {
         />
       )}
     </div>
-  );
-};
-
-export const Sound = ({ clickHandler, enabled }) => {
-  // TODO: fix width
-  return enabled ? (
-    <FontAwesomeIcon
-      fixedWidth
-      icon={faVolumeUp}
-      onClick={clickHandler}
-      size="4x"
-    />
-  ) : (
-    <FontAwesomeIcon
-      fixedWidth
-      icon={faVolumeOff}
-      onClick={clickHandler}
-      size="4x"
-    />
   );
 };

@@ -1,9 +1,6 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 
 import { useSpring, animated } from "react-spring";
-
-import Sound from "react-sound";
-import flipCardSound from "../../assets/sounds/flipcard.wav";
 
 import styled, { ThemeContext } from "styled-components";
 import tw from "tailwind.macro";
@@ -47,11 +44,8 @@ const Card = props => {
 
   const theme = useContext(ThemeContext);
 
-  const [isFlipCardSoundPlaying, setIsFlipCardSoundPlaying] = useState(false);
-
   const clickHandler = () => {
     if (card.selectable && !card.selected && !card.faceUp) {
-      setIsFlipCardSoundPlaying(true);
       clickOnCardHandler(card.id);
     }
   };
@@ -87,13 +81,6 @@ const Card = props => {
         image={card.frontImage}
         onMouseEnter={() => set({ ys: [card.faceUp ? 180 : 0, 1] })}
         onMouseLeave={() => set({ ys: [card.faceUp ? 180 : 0, 0.98] })}
-      />
-      <Sound
-        url={flipCardSound}
-        playStatus={
-          isFlipCardSoundPlaying ? Sound.status.PLAYING : Sound.status.PAUSED
-        }
-        onFinishedPlaying={() => setIsFlipCardSoundPlaying(false)}
       />
     </CardWrapper>
   );
