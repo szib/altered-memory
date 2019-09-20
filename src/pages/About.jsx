@@ -10,7 +10,7 @@ import tw from "tailwind.macro";
 import Button from "../components/Button";
 import * as TW from "../components/TW";
 import withTransition from "../HOC/withTransition";
-import { Github, LinkedIn } from "../components/Icons";
+import Icon from "../components/Icons";
 
 const AboutPage = () => {
   const themeContext = useContext(ThemeContext);
@@ -40,8 +40,11 @@ const AboutPage = () => {
             London-based Full Stack Developer, Flatiron School Graduate
           </TW.Text>
           <TW.Text>
-            <Github />
-            <LinkedIn />
+            <Icon iconName="github" url="https://github.com/szib" />
+            <Icon
+              iconName="linkedin"
+              url="https://www.linkedin.com/in/szib77/"
+            />
           </TW.Text>
           <TW.Text style={tw`mt-8`}>
             <Link to="/" as={Button}>

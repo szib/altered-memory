@@ -2,38 +2,33 @@ import React from "react";
 
 import tw from "tailwind.macro";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMusic, faBan } from "@fortawesome/free-solid-svg-icons";
-import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import { InlineIcon } from "@iconify/react";
+import volume0Icon from "@iconify/icons-raphael/volume0";
+import volume3Icon from "@iconify/icons-raphael/volume3";
+import githubaltIcon from "@iconify/icons-raphael/githubalt";
+import linkedinIcon from "@iconify/icons-raphael/linkedin";
 
 const style = tw`text-3xl mx-2 cursor-pointer`;
 
-export const Github = () => {
-  const clickHandler = () => window.open("https://github.com/szib", "_blank");
-  return (
-    <FontAwesomeIcon icon={faGithub} onClick={clickHandler} style={style} />
-  );
-};
-
-export const LinkedIn = () => {
-  const clickHandler = () =>
-    window.open("https://www.linkedin.com/in/szib77/", "_blank");
-  return (
-    <FontAwesomeIcon icon={faLinkedin} onClick={clickHandler} style={style} />
-  );
+const Icon = ({ url, iconName }) => {
+  const clickHandler = () => window.open(url, "_blank");
+  let icon;
+  switch (iconName) {
+    case "github":
+      icon = githubaltIcon;
+      break;
+    case "linkedin":
+      icon = linkedinIcon;
+      break;
+    default:
+      break;
+  }
+  return <InlineIcon icon={icon} onClick={clickHandler} style={style} />;
 };
 
 export const Music = ({ clickHandler, enabled }) => {
-  return (
-    <div className="fa-layers fa-4x" onClick={clickHandler}>
-      <FontAwesomeIcon fixedWidth icon={faMusic} transform="shrink-6" />
-      {!enabled && (
-        <FontAwesomeIcon
-          fixedWidth
-          icon={faBan}
-          style={{ color: "red", opacity: 0.7 }}
-        />
-      )}
-    </div>
-  );
+  const icon = enabled ? volume3Icon : volume0Icon;
+  return <InlineIcon icon={icon} onClick={clickHandler} height="4rem" />;
 };
+
+export default Icon;
