@@ -29,7 +29,7 @@ const GameStarter = ({ machine }) => {
           <StatItem title="Turns" value={turns}></StatItem>
           <StatItem title="Score" value={score}></StatItem>
           <StatItem title="Matches" value={matches}></StatItem>
-          <StatItem title="Longest steak" value={longestStreak}></StatItem>
+          <StatItem title="Longest streak" value={longestStreak}></StatItem>
           <StatItem title="Highest bonus" value={highestBonus}></StatItem>
           <StatItem title="Fails" value={fails}></StatItem>
           <Button full onClick={startGame} style={tw`mt-6`}>
