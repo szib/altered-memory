@@ -2,6 +2,7 @@
 
 import { backImage, cardImages } from "../../../images";
 import getRandomCards from "./levels";
+import { playCardSwapSound } from "./sounds";
 
 export const selectCard = (context, event) => {
   const selectedCard = context.cards.find(
@@ -57,6 +58,8 @@ export const swapCards = context => {
     context.level
   );
   context.chances = newChances;
+
+  if (cardsToSwap.length > 0) playCardSwapSound();
 
   for (let idx = 0; idx < cardsToSwap.length; idx += 2) {
     const firstId = cardsToSwap[idx];

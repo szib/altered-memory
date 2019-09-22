@@ -3,6 +3,7 @@ import * as Logger from "./logger";
 import * as Utils from "./utils";
 import * as Scores from "./scores";
 import * as Stats from "./stats";
+import * as Sounds from "./sounds";
 
 const decrementLives = context => {
   context.lives -= 1;
@@ -53,6 +54,7 @@ export default {
   ...Scores,
   ...Cards,
   ...Logger,
+  ...Sounds,
 
   decrementLives,
   resetContext,
