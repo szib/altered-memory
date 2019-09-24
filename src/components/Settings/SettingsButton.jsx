@@ -7,7 +7,7 @@ const SettingsButton = styled.div`
     m-2
 
     font-display
-    text-xl
+    text-md
     bg-transparent
     border-none
     

@@ -1,33 +1,33 @@
 import React from "react";
 
 import { useSelector, useDispatch } from "react-redux";
-import { turnMusicOff, turnMusicOn } from "../../redux/actions/settings";
+import { turnSoundOff, turnSoundOn } from "../../redux/actions/settings";
 
 import tw from "tailwind.macro";
 
 import { Text } from "../TW";
-import SettingsButton from "./SettingsButton";
+import SettingsButton from "../Settings/SettingsButton";
 
-const MusicOnOff = () => {
+const SoundOnOff = () => {
   const dispatch = useDispatch();
   const settings = useSelector(state => state.settings);
-  const { music } = settings;
+  const { sound } = settings;
 
   return (
     <div style={tw`my-4`}>
-      <Text>Music</Text>
+      <Text>Sounds</Text>
       <div style={tw`flex justify-center items-center`}>
         <SettingsButton
           key="on"
-          onClick={() => dispatch(turnMusicOn())}
-          active={music}
+          onClick={() => dispatch(turnSoundOn())}
+          active={sound}
         >
           On
         </SettingsButton>
         <SettingsButton
           key="off"
-          onClick={() => dispatch(turnMusicOff())}
-          active={!music}
+          onClick={() => dispatch(turnSoundOff())}
+          active={!sound}
         >
           Off
         </SettingsButton>
@@ -36,4 +36,4 @@ const MusicOnOff = () => {
   );
 };
 
-export default MusicOnOff;
+export default SoundOnOff;

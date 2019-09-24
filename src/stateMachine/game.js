@@ -28,6 +28,7 @@ const gameStates = {
       onExit: ["selectCard", "setFaceUp"]
     },
     s1: {
+      onEntry: ["playCardFlipSound"],
       on: {
         CLICK_ON_CARD: {
           target: "s2",
@@ -37,7 +38,7 @@ const gameStates = {
       onExit: ["selectCard", "setFaceUp", "disableClicks"]
     },
     s2: {
-      onEntry: ["checkMatch"],
+      onEntry: ["playCardFlipSound", "checkMatch"],
       after: {
         1: { target: "match", cond: "isMatched" },
         2: { target: "noMatch" }
@@ -54,7 +55,14 @@ const gameStates = {
         999: { target: "endGame", cond: "isPlayerDead" },
         1000: { target: "swappingCards" }
       },
-      onExit: ["logCards", "deselectCards", "logCards", "setFaceUp", "logCards"]
+      onExit: [
+        "playCardFlipSound",
+        "logCards",
+        "deselectCards",
+        "logCards",
+        "setFaceUp",
+        "logCards"
+      ]
     },
     swappingCards: {
       onEntry: ["resetZIndex", "swapCards"],

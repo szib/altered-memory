@@ -18,10 +18,10 @@ const getSeconds = diff => {
 
 const Board = ({ machine, clickOnCardHandler, className }) => {
   const { context } = machine;
-  const { cards, difficulty } = context;
+  const { cards, selectedDifficulty } = context;
 
   const showProgressBar = machine.state.value.running === "showCards";
-  const seconds = getSeconds(difficulty);
+  const seconds = getSeconds(selectedDifficulty);
 
   const boardEl = useRef(null);
   const measure = useMeasure(boardEl, "bounds");
