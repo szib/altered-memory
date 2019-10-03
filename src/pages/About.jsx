@@ -84,6 +84,17 @@ const AboutPage = () => {
               Dmitry Baranovskiy
             </a>
           </TW.Text>
+          <TW.Text small uppercase>
+            Jam icons by{" "}
+            <a
+              href="https://github.com/michaelampr/jam"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={themeContext.text}
+            >
+              Michael Amprimo
+            </a>
+          </TW.Text>
         </TW.Panel>
       </TW.Container>
     </TW.Screen>

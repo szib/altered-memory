@@ -9,7 +9,11 @@ const importAll = r => {
 };
 
 const raphael = importAll(
-  require.context("./assets/images/original", false, /\.(png|jpe?g|svg)$/)
+  require.context("./assets/images/raphael", false, /\.(png|jpe?g|svg)$/)
+);
+
+const jam = importAll(
+  require.context("./assets/images/jam", false, /\.(png|jpe?g|svg)$/)
 );
 
 const feather = importAll(
@@ -18,7 +22,8 @@ const feather = importAll(
 
 export const cardImages = {
   raphael,
-  feather
+  feather,
+  jam
 };
 
 export { backImage };
