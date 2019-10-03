@@ -1,8 +1,0 @@
-bug_report
-tag_face
-face
-directions_bus
-traffic
-fitness_center
-free_breakfast
-beach_access
