@@ -9,8 +9,7 @@ import Button from "../Button";
 import Item from "./InfoPanelItem";
 
 import Sounds from "./Sounds";
-import MusicOnOFF from "./MusicOnOff";
-import SoundOnOFF from "./SoundOnOff";
+import SoundButtons from "./SoundButtons";
 
 const StyledDiv = styled.div`
   ${props => props.theme.infopanel}
@@ -40,8 +39,7 @@ const InfoPanel = ({ machine }) => {
       <Item title="Level" value={level} />
       <div style={tw`flex justify-center w-2/3 self-center`}>
         {settings.sound && <Sounds />}
-        <MusicOnOFF />
-        <SoundOnOFF />
+        <SoundButtons />
       </div>
       <Button onClick={clickHandler}>Quit game</Button>
     </StyledDiv>
