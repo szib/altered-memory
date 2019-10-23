@@ -6,7 +6,7 @@ import { selectDifficulty } from "../../redux/actions/settings";
 import tw from "tailwind.macro";
 
 import { Text } from "../TW";
-import SettingsButton from "./SettingsButton";
+import SettingsButton from "../SettingsButton";
 
 const DifficultySelector = () => {
   const dispatch = useDispatch();

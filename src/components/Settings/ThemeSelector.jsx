@@ -6,7 +6,7 @@ import { selectTheme } from "../../redux/actions/themes";
 import tw from "tailwind.macro";
 
 import { Text } from "../TW";
-import SettingsButton from "./SettingsButton";
+import SettingsButton from "../SettingsButton";
 
 const ThemeSelector = () => {
   const dispatch = useDispatch();

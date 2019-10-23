@@ -6,7 +6,7 @@ import { turnMusicOff, turnMusicOn } from "../../redux/actions/settings";
 import tw from "tailwind.macro";
 
 import { Text } from "../TW";
-import SettingsButton from "../Settings/SettingsButton";
+import SettingsButton from "../SettingsButton";
 
 const MusicOnOff = () => {
   const dispatch = useDispatch();

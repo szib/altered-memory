@@ -6,7 +6,7 @@ import { useTransition, animated } from "react-spring";
 import ProgressBar from "../ProgressBar/ProgressBar";
 import BoardWrapper from "./BoardWrapper";
 
-import Card from "./Card";
+import Card from "../Card/Card";
 
 const AnimatedCard = animated(Card);
 
@@ -16,7 +16,7 @@ const getSeconds = diff => {
   return 6;
 };
 
-const Board = ({ machine, clickOnCardHandler, className }) => {
+const Board = ({ machine, clickOnCardHandler }) => {
   const { context } = machine;
   const { cards, selectedDifficulty } = context;
 
@@ -68,7 +68,7 @@ const Board = ({ machine, clickOnCardHandler, className }) => {
   );
 
   return (
-    <BoardWrapper ref={boardEl} className={className}>
+    <BoardWrapper ref={boardEl}>
       {showProgressBar && (
         <ProgressBar
           seconds={seconds}

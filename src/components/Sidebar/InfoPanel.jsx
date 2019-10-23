@@ -23,7 +23,7 @@ const StyledDiv = styled.div`
   }
 `;
 
-const InfoPanel = ({ className, machine }) => {
+const InfoPanel = ({ machine }) => {
   const { context } = machine;
   const { score, lives, level, bonus } = context;
   const settings = useSelector(state => state.settings);
@@ -33,7 +33,7 @@ const InfoPanel = ({ className, machine }) => {
   };
 
   return (
-    <StyledDiv className={className}>
+    <StyledDiv>
       <Item title="Score" value={score} />
       <Item title="Bonus" value={bonus} />
       <Item title="Lives" value={lives} />

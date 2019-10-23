@@ -1,41 +1,8 @@
 import React, { useContext } from "react";
+import { useSpring } from "react-spring";
+import { ThemeContext } from "styled-components";
 
-import { useSpring, animated } from "react-spring";
-
-import styled, { ThemeContext } from "styled-components";
-import tw from "tailwind.macro";
-
-const CardWrapper = styled.div`
-  box-sizing: border-box;
-
-  position: absolute;
-  top: 0;
-  left: 0;
-
-  width: ${props => props.cardSize * 0.95}px;
-  height: ${props => props.cardSize * 0.95}px;
-`;
-
-const CardDiv = animated(styled.div`
-  box-sizing: border-box;
-
-  position: absolute;
-  top: 0;
-  left: 0;
-
-  width: 100%;
-  height: 100%;
-
-  transform-origin: center;
-
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-blend-mode: normal;
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.4);
-  background-image: url(${props => props.image});
-
-  ${tw`rounded-lg`}
-`);
+import { CardWrapper, CardFace } from "./CardComponents";
 
 const trans = (y, s) => `perspective(600px) rotateY(${y}deg) scale(${s})`;
 
@@ -64,7 +31,7 @@ const Card = props => {
 
   return (
     <CardWrapper onClick={clickHandler} cardSize={cardSize} style={style}>
-      <CardDiv
+      <CardFace
         style={{
           opacity: opacity.interpolate(o => 1 - o),
           transform: ys.interpolate(trans),
@@ -72,7 +39,7 @@ const Card = props => {
         }}
         image={card.backImage}
       />
-      <CardDiv
+      <CardFace
         style={{
           opacity,
           transform: ys.interpolate(trans),

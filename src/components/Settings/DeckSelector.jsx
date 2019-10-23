@@ -7,7 +7,7 @@ import tw from "tailwind.macro";
 
 import DeckImages from "./DeckImages";
 import { Text } from "../TW";
-import SettingsButton from "./SettingsButton";
+import SettingsButton from "../SettingsButton";
 
 import { cardImages } from "../../images";
 
