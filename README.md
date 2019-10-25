@@ -2,8 +2,6 @@
 
 ## Description
 
----
-
 Memory game with a little twist... cards move around once in a while...
 
 [Live demo](https://altered-memory.netlify.com/)
@@ -12,27 +10,19 @@ Memory game with a little twist... cards move around once in a while...
 
 ## Install
 
----
-
 Clone repo, then run `npm install` and `npm start`
 
-### Authors and acknowledgment
-
----
+## Authors and acknowledgment
 
 [@richie1982](https://github.com/richie1982) - for working together on the original project.
 
-### Planned improvements
+## Planned improvements
 
----
-
-- [] mobile friendly version, React Native?
-- [] notifications e.g. congrats after completing a level
-- [] refactoring, clean code
+- mobile friendly version, React Native?
+- notifications e.g. congrats after completing a level
+- refactoring, clean code
 
 ## Contributing
-
----
 
 1.  **Fork** the repo on GitHub
 2.  **Clone** the project to your own machine
