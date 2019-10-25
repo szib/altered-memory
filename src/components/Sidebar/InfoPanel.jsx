@@ -9,8 +9,7 @@ import Button from "../Button";
 import Item from "./InfoPanelItem";
 
 import Sounds from "./Sounds";
-import MusicOnOFF from "./MusicOnOff";
-import SoundOnOFF from "./SoundOnOff";
+import SoundButtons from "./SoundButtons";
 
 const StyledDiv = styled.div`
   ${props => props.theme.infopanel}
@@ -23,7 +22,7 @@ const StyledDiv = styled.div`
   }
 `;
 
-const InfoPanel = ({ className, machine }) => {
+const InfoPanel = ({ machine }) => {
   const { context } = machine;
   const { score, lives, level, bonus } = context;
   const settings = useSelector(state => state.settings);
@@ -33,15 +32,14 @@ const InfoPanel = ({ className, machine }) => {
   };
 
   return (
-    <StyledDiv className={className}>
+    <StyledDiv>
       <Item title="Score" value={score} />
       <Item title="Bonus" value={bonus} />
       <Item title="Lives" value={lives} />
       <Item title="Level" value={level} />
       <div style={tw`flex justify-center w-2/3 self-center`}>
         {settings.sound && <Sounds />}
-        <MusicOnOFF />
-        <SoundOnOFF />
+        <SoundButtons />
       </div>
       <Button onClick={clickHandler}>Quit game</Button>
     </StyledDiv>

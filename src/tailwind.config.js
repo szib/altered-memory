@@ -17,11 +17,11 @@ module.exports = {
         facedown: "rgba(23, 104, 172, 1)"
       },
       pastel: {
-        paper: "rgba(201, 228, 202, 1)",
-        paper2: "rgba(135, 187, 162, 1)",
-        pen: "rgba(85, 130, 139, 1)",
-        faceup: "rgba(59, 96, 100, 1)",
-        facedown: "rgba(54, 73, 88, 1)"
+        paper: "#f1d1b5",
+        paper2: "#f0b7a4",
+        pen: "#305f72",
+        faceup: "#C33C54",
+        facedown: "#f18c8e"
       },
       fire: {
         paper: "rgba(139, 30, 63, 1)",
