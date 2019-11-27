@@ -1,19 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 
-import { useSelector, useDispatch } from "react-redux";
+import { store } from "../../store/store";
 import {
   turnSoundOff,
   turnSoundOn,
   turnMusicOn,
   turnMusicOff
-} from "../../redux/actions/settings";
+} from "../../store/actions";
 
 import OnOffButton from "./OnOffButton";
 
 const SoundButtons = () => {
-  const dispatch = useDispatch();
-  const settings = useSelector(state => state.settings);
-  const { sound, music } = settings;
+  const { state, dispatch } = useContext(store);
+  const { sound, music } = state;
 
   return (
     <>

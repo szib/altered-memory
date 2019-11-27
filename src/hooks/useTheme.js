@@ -1,10 +1,12 @@
-import { useSelector } from "react-redux";
+import { useContext } from "react";
+import { store } from "../store/store";
 
 import tw from "tailwind.macro";
 
 const useTheme = () => {
-  const settings = useSelector(state => state.themes);
-  const selectedTheme = settings.selectedTheme;
+  const globalState = useContext(store);
+  const { state } = globalState;
+  const { selectedTheme } = state;
 
   switch (selectedTheme) {
     case "dark":

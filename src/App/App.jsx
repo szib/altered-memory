@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 
+import { store } from "../store/store";
+
 import { Route, Switch, __RouterContext } from "react-router-dom";
 import { useTransition, animated } from "react-spring";
-
-import { useSelector } from "react-redux";
 
 import { ThemeProvider } from "styled-components";
 import useTheme from "../hooks/useTheme";
@@ -15,6 +15,8 @@ import LandingPage from "../pages/LandingPage";
 import Settings from "../pages/Settings";
 
 const App = () => {
+  const { state } = useContext(store);
+  const { music } = state;
   const theme = useTheme();
 
   const { location } = useContext(__RouterContext);
@@ -23,7 +25,6 @@ const App = () => {
     enter: { opacity: 1, transform: "translate(0, 0)" },
     leave: { opacity: 1, transform: "translate(-20%, 0)" }
   });
-  const { music } = useSelector(state => state.settings);
 
   return (
     <ThemeProvider theme={theme}>

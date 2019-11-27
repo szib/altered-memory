@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 
-import { useSelector, useDispatch } from "react-redux";
-import { selectTheme } from "../../redux/actions/themes";
+import { store } from "../../store/store";
+import { selectTheme } from "../../store/actions";
 
 import tw from "tailwind.macro";
 
@@ -9,9 +9,8 @@ import { Text } from "../TW";
 import SettingsButton from "../SettingsButton";
 
 const ThemeSelector = () => {
-  const dispatch = useDispatch();
-  const themes = useSelector(state => state.themes);
-  const { themeList, selectedTheme } = themes;
+  const { state, dispatch } = useContext(store);
+  const { themeList, selectedTheme } = state;
 
   return (
     <div style={tw`my-4`}>

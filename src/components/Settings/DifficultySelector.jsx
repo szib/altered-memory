@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 
-import { useSelector, useDispatch } from "react-redux";
-import { selectDifficulty } from "../../redux/actions/settings";
+import { store } from "../../store/store";
+import { selectDifficulty } from "../../store/actions";
 
 import tw from "tailwind.macro";
 
@@ -9,9 +9,8 @@ import { Text } from "../TW";
 import SettingsButton from "../SettingsButton";
 
 const DifficultySelector = () => {
-  const dispatch = useDispatch();
-  const settings = useSelector(state => state.settings);
-  const { difficulties, selectedDifficulty } = settings;
+  const { state, dispatch } = useContext(store);
+  const { difficulties, selectedDifficulty } = state;
 
   return (
     <div style={tw`my-4`}>

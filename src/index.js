@@ -2,8 +2,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import { Provider } from "react-redux";
-import store from "./redux/store";
+import { StateProvider } from "./store/store";
 
 import { BrowserRouter as Router } from "react-router-dom";
 
@@ -18,9 +17,9 @@ import DefaultHelmet from "./App/Helmet";
 ReactDOM.render(
   <Router>
     <DefaultHelmet />
-    <Provider store={store}>
+    <StateProvider>
       <App />
-    </Provider>
+    </StateProvider>
   </Router>,
   document.getElementById("root")
 );
