@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 
-import { useSelector } from "react-redux";
+import { store } from "../store/store";
 
 import styled from "styled-components";
 import tw from "tailwind.macro";
@@ -35,7 +35,8 @@ const AppDiv = styled.div`
 `;
 
 const Game = () => {
-  const settings = useSelector(state => state.settings);
+  // TODO: refactor settings
+  const { state: settings } = useContext(store);
   const context = { ...machineContext, ...settings };
 
   const machine = useMachine(machineConfig, machineOptions, context);

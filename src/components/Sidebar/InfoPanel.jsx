@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 
-import { useSelector } from "react-redux";
+import { store } from "../../store/store";
 
 import styled from "styled-components";
 import tw from "tailwind.macro";
@@ -25,7 +25,8 @@ const StyledDiv = styled.div`
 const InfoPanel = ({ machine }) => {
   const { context } = machine;
   const { score, lives, level, bonus } = context;
-  const settings = useSelector(state => state.settings);
+  const { state } = useContext(store);
+  const { sound } = state;
 
   const clickHandler = () => {
     machine.send("QUIT_GAME");
@@ -38,7 +39,7 @@ const InfoPanel = ({ machine }) => {
       <Item title="Lives" value={lives} />
       <Item title="Level" value={level} />
       <div style={tw`flex justify-center w-2/3 self-center`}>
-        {settings.sound && <Sounds />}
+        {sound && <Sounds />}
         <SoundButtons />
       </div>
       <Button onClick={clickHandler}>Quit game</Button>

@@ -9,6 +9,8 @@ export const TURN_SOUND_OFF = "TURN_SOUND_OFF";
 export const SELECT_DECK = "SELECT_DECK";
 export const SELECT_DIFFICULTY = "SELECT_DIFFICULTY";
 
+export const SELECT_THEME = "SELECT_THEME";
+
 export const toggleMusic = () => {
   return {
     type: TOGGLE_MUSIC
@@ -52,5 +54,12 @@ export const selectDifficulty = selectedDifficulty => {
   return {
     type: SELECT_DIFFICULTY,
     selectedDifficulty
+  };
+};
+
+export const selectTheme = theme => {
+  return {
+    type: SELECT_THEME,
+    theme
   };
 };
