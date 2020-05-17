@@ -2,7 +2,8 @@ import React, { useContext } from "react";
 
 import { store } from "../store/store";
 
-import { Route, Switch, __RouterContext } from "react-router-dom";
+//TODO: check react-router import warnings
+import { Route, Switch, useLocation } from "react-router-dom";
 import { useTransition, animated } from "react-spring";
 
 import { ThemeProvider } from "styled-components";
@@ -19,7 +20,7 @@ const App = () => {
   const { music } = state;
   const theme = useTheme();
 
-  const { location } = useContext(__RouterContext);
+  const location = useLocation();
   const transitions = useTransition(location, loc => loc.pathname, {
     from: { opacity: 1, transform: "translate(100%, 0)" },
     enter: { opacity: 1, transform: "translate(0, 0)" },
