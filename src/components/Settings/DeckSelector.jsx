@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 
-import { useSelector, useDispatch } from "react-redux";
-import { selectDeck } from "../../redux/actions/settings";
+import { store } from "../../store/store";
+import { selectDeck } from "../../store/actions";
 
 import tw from "tailwind.macro";
 
@@ -12,9 +12,8 @@ import SettingsButton from "../SettingsButton";
 import { cardImages } from "../../images";
 
 const DeckSelector = () => {
-  const dispatch = useDispatch();
-  const settings = useSelector(state => state.settings);
-  const { decks, selectedDeck } = settings;
+  const { state, dispatch } = useContext(store);
+  const { decks, selectedDeck } = state;
   const images = cardImages[selectedDeck];
 
   return (
